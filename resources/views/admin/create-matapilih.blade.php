@@ -24,11 +24,46 @@
             <input name="nama" type="text" class="form-control" id="nama" placeholder="Nama..." value="{{ old('nama') }}" required>
           </div>
           <div class="form-group">
-            <label for="alamat">Enter Alamat</label>
+            <label for="alamat">Alamat</label>
             <input name="alamat" type="text" class="form-control" id="alamat" placeholder="Alamat..." value="{{ old('alamat') }}" required>
           </div>
-          
           <div class="form-group">
+            <label for="rt">RT</label>
+            <input name="rt" type="text" class="form-control" id="rt" placeholder="rt..." value="{{ old('rt') }}" required>
+          </div>
+          <div class="form-group">
+            <label for="rw">RW</label>
+            <input name="rw" type="text" class="form-control" id="rw" placeholder="rw..." value="{{ old('rw') }}" required>
+          </div>
+          <div class="form-group">
+            <label for="tps">TPS</label>
+            <input name="tps" type="text" class="form-control" id="tps" placeholder="tps..." value="{{ old('tps') }}" required>
+          </div>
+          <div class="form-group">
+            <label for="kecamatan">Kecamatan</label>
+            <input name="kecamatan" type="text" class="form-control" id="kecamatan" placeholder="kecamatan..." value="{{ old('kecamatan') }}" required>
+          </div>
+          <div class="form-group">
+            <label for="kelurahan">Kelurahan</label>
+            <input name="kelurahan" type="text" class="form-control" id="kelurahan" placeholder="kelurahan..." value="{{ old('kelurahan') }}" required>
+          </div>
+          <div class="form-group">
+            <label for="jenis_kelamin">Jenis Kelamin</label>
+            <input name="jenis_kelamin" type="text" class="form-control" id="jenis_kelamin" placeholder="jenis_kelamin..." value="{{ old('jenis_kelamin') }}">
+          </div>
+          <div class="form-group">
+            <label for="nohp">Nomor HP</label>
+            <input name="nohp" type="text" class="form-control" id="nohp" placeholder="nohp..." value="{{ old('nohp') }}">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Koordinator</label>
+            <select name="tag[]" class="form-control" id="exampleFormControlSelect1">
+              @foreach($tags as $tag)
+                <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+              @endforeach
+            </select>
+          </div>
+          {{-- <div class="form-group">
             <label>Select Tags</label><br>
             <div class="form-control box">
               @foreach($tags as $tag)
@@ -38,7 +73,7 @@
               </label>
               @endforeach
             </div>
-          </div>
+          </div> --}}
           <div class="form-group">
             <label for="nik">admin</label>
             <input type="text" disabled class="form-control" value="{{ Auth::user()->name }}" required>
@@ -82,6 +117,11 @@
                 
                 $("#nama").val(realtime_data['nama']);
                 $("#alamat").val(realtime_data['alamat']);
+                $("#tps").val(realtime_data['tps']);
+                $("#kecamatan").val(realtime_data['kecamatan']);
+                $("#kecamatan_id").val(parse_data['kecamatan_id']);
+                $("#kelurahan").val(realtime_data['kelurahan']);
+                $("#jenis_kelamin").val(parse_data['jenis_kelamin']);
             },
             error: function(xhr, textStatus, error){
                 alert('Data NIK tidak ditemukan!');
