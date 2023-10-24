@@ -245,6 +245,40 @@ class AdminController extends Controller
       return back();
     }
 
+    // Matapilih trash
+    public function matapilih_trash($id)
+    {
+      $matapilih = Matapilih::findOrFail($id);
+      $matapilih->delete();
+      return back();
+    }
+
+    // Matapilih trashed
+    public function matapilih_trashed()
+    {
+      $matapilihs = Matapilih::onlyTrashed()->latest()->get();
+      return view('admin.matapilihtrash')->with('matapilihs', $matapilihs);
+    }
+
+    // Matapilih Force Delete
+    public function matapilih_forcedelete($id)
+    {
+      $matapilih = Matapilih::withTrashed()->where('id',$id)->first();
+      $matapilih->forcedelete();
+      Session::flash('success','Matapilih has deleted!');
+
+      return back();
+    }
+
+    // Matapilih restore
+    public function matapilih_restore($id)
+    {
+      $matapilih = Matapilih::withTrashed()->where('id',$id)->first();
+      $matapilih->restore();
+      Session::flash('info','Matapilih has been Restore!');
+
+      return back();
+    }
 
     // ============== CATEGORY ============= //
     

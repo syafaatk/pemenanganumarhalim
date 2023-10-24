@@ -55,10 +55,6 @@
                           <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard Post
                         </a>
-                        <a class="nav-link" href="{{ route('admin.post/create') }}">
-                          <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>
-                            Create Post
-                        </a>
                         <hr>
                         <a class="nav-link" href="{{ route('admin.matapilih') }}">
                           <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -85,7 +81,7 @@
                           <div class="sb-nav-link-icon"><i class="fa fa-bookmark" aria-hidden="true"></i></div>
                             Koordinator
                         </a>
-                        <a class="nav-link" href="{{ route('admin.post/trashed') }}">
+                        <a class="nav-link" href="{{ route('admin.matapilih/trashed') }}">
                           <div class="sb-nav-link-icon"><i class="fa fa-bookmark" aria-hidden="true"></i></div>
                             Trashed
                         </a>
