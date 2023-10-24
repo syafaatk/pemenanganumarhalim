@@ -16,7 +16,7 @@
             <label for="nik">NIK</label>
             <div class="input-group">
                 <input name="nik" type="text" class="form-control" id="nik" placeholder="NIK..." value="{{ old('nik') }}" required>
-                <a href="#" class="btn btn-primary" onclick="CariNIK()">Cari</a>
+                <a href="#" class="btn btn-primary" onclick="CariNIK()">Cari DPT</a>
             </div>
           </div>
           <div class="form-group">
