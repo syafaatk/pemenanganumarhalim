@@ -134,9 +134,6 @@
   @if(Session::has('info'))
     toastr.info("{{ Session::get('info')}}")
   @endif
-  @if(Session::has('danger'))
-    toastr.danger("{{ Session::get('danger')}}")
-  @endif
 </script>
 </body>
 </html>

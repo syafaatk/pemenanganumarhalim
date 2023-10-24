@@ -96,6 +96,39 @@ class AdminController extends Controller
         return back();
       }
     }
+    public function matapilih_edit($id)
+    {
+      $matapilih = Matapilih::findOrFail($id);
+      return view('admin.edit-matapilih')->with('matapilih',$matapilih)->with('tags', Tag::all());
+    }
+
+    // Matapilih Update
+    public function matapilih_update(Request $request, $id)
+    {
+      $matapilih = Matapilih::findOrFail($id);
+
+      $this->validate($request,[
+        'nama'=>'required|max:255',
+        'alamat'=>'required',
+        'nik'=>'required|max:16|min:16'
+      ]);
+
+      $matapilih->nama = $request->nama;
+      $matapilih->alamat= $request->alamat;
+      $matapilih->nik = $request->nik;
+      $matapilih->rt = $request->rt;
+      $matapilih->rw = $request->rw;
+      $matapilih->tps = $request->tps;
+      $matapilih->jenis_kelamin = $request->jenis_kelamin;
+      $matapilih->kecamatan = $request->kecamatan;
+      $matapilih->kelurahan = $request->kelurahan;
+      $matapilih->nohp = $request->nohp;
+      $matapilih->admin = $request->admin;
+      $matapilih->tags()->sync($request->tag);
+      $matapilih->save();
+      Session::flash('success','Matapilih has been updated!');
+      return redirect()->route('admin.dashboard');
+    }
 
     // Post Store
     public function post_store(Request $request)

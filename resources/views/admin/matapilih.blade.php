@@ -42,22 +42,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($matapilihs as $post)
+                        @foreach($matapilihs as $matapilih)
                             <tr>
-                                <td>{{ $post->id }}</td>
-                                <td>{{ $post->nama }}</td>
-                                <td>{{ $post->alamat }}</td>
-                                <td>{{ $post->nik }}</td>
-                                <td>{{ $post->rt }}</td>
-                                <td>{{ $post->rw }}</td>
-                                <td>{{ $post->tps }}</td>
-                                <td>{{ $post->jenis_kelain }}</td>
-                                <td>{{ $post->kecamatan }}</td>
-                                <td>{{ $post->kelurahan }}</td>
-                                <td>{{ $post->nohp }}</td>
+                                <td>{{ $matapilih->id }}</td>
+                                <td>{{ $matapilih->nama }}</td>
+                                <td>{{ $matapilih->alamat }}</td>
+                                <td>{{ $matapilih->nik }}</td>
+                                <td>{{ $matapilih->rt }}</td>
+                                <td>{{ $matapilih->rw }}</td>
+                                <td>{{ $matapilih->tps }}</td>
+                                <td>{{ $matapilih->jenis_kelain }}</td>
+                                <td>{{ $matapilih->kecamatan }}</td>
+                                <td>{{ $matapilih->kelurahan }}</td>
+                                <td>{{ $matapilih->nohp }}</td>
                                 <td>
                                     @foreach($tags as $tag)
-                                      @foreach($post->tags as $t)
+                                      @foreach($matapilih->tags as $t)
                                         @if($tag->id == $t->id)
                                           <p class="card bg-success text-white mb-4"
                                           style="display:inline-block; padding:1px; margin: 1px;">
@@ -66,9 +66,9 @@
                                       @endforeach
                                     @endforeach
                                 </td>
-                                <td class=""><a href="{{ route('admin.post/edit',['id' => $post->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
-                                <td class=""><a href="{{ route('admin.post/trash',['id' => $post->id]) }}"><i class="far fa-trash-alt"></i></a></td>
-                                <td class=""><a class="btn btn-danger" href="{{ route('admin.post/forcedelete',['id' => $post->id]) }}">Delete</a></td>
+                                <td class=""><a href="{{ route('admin.matapilih/edit',['id' => $matapilih->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
+                                <td class=""><a href="{{ route('admin.matapilih/trash',['id' => $matapilih->id]) }}"><i class="far fa-trash-alt"></i></a></td>
+                                <td class=""><a class="btn btn-danger" href="{{ route('admin.post/forcedelete',['id' => $matapilih->id]) }}">Delete</a></td>
                             </tr>
                         @endforeach
                     </tbody>
