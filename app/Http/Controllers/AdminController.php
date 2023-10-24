@@ -17,8 +17,8 @@ class AdminController extends Controller
     // Dashboard
     public function dashboard()
     {
-      $post = Post::latest()->get();
-      return view('admin.dashboard')->with('posts',$post )
+      $matapilih = Matapilih::latest()->get();
+      return view('admin.dashboard')->with('matapilihs',$matapilih )
                                     ->with('category', Category::all())
                                     ->with('tags', Tag::all());
     }
