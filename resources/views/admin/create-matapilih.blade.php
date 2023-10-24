@@ -29,11 +29,11 @@
           </div>
           <div class="form-group">
             <label for="rt">RT</label>
-            <input name="rt" type="text" class="form-control" id="rt" placeholder="rt..." value="{{ old('rt') }}" required>
+            <input name="rt" type="text" class="form-control" id="rt" placeholder="rt..." value="{{ old('rt') }}">
           </div>
           <div class="form-group">
             <label for="rw">RW</label>
-            <input name="rw" type="text" class="form-control" id="rw" placeholder="rw..." value="{{ old('rw') }}" required>
+            <input name="rw" type="text" class="form-control" id="rw" placeholder="rw..." value="{{ old('rw') }}">
           </div>
           <div class="form-group">
             <label for="tps">TPS</label>
@@ -57,9 +57,9 @@
           </div>
           <div class="form-group">
             <label for="exampleFormControlSelect1">Select Koordinator</label>
-            <select name="tag[]" class="form-control" id="exampleFormControlSelect1">
+            <select name="tag[]" class="form-control single" id="exampleFormControlSelect1" multiple="multiple">
               @foreach($tags as $tag)
-                <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                <option value="{{ $tag->id }}">{{ $tag->tag }}--{{ $tag->kecamatan }}--{{ $tag->kelurahan }}</option>
               @endforeach
             </select>
           </div>
@@ -129,6 +129,9 @@
             
         })
     }
+    $(document).ready(function() {
+        $('.single').select2();
+    });
 </script>
 </main>
 
