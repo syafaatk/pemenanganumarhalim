@@ -51,7 +51,7 @@
                                 <td>{{ $matapilih->rt }}</td>
                                 <td>{{ $matapilih->rw }}</td>
                                 <td>{{ $matapilih->tps }}</td>
-                                <td>{{ $matapilih->jenis_kelain }}</td>
+                                <td>{{ $matapilih->jenis_kelamin }}</td>
                                 <td>{{ $matapilih->kecamatan }}</td>
                                 <td>{{ $matapilih->kelurahan }}</td>
                                 <td>{{ $matapilih->nohp }}</td>
