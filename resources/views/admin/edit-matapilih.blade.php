@@ -50,10 +50,10 @@
             <label for="kelurahan">Kelurahan</label>
             <input name="kelurahan" type="text" class="form-control" id="kelurahan" placeholder="kelurahan..." value="{{ $matapilih->kelurahan }}" required>
           </div>
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="jenis_kelamin">Jenis Kelamin</label>
             <input name="jenis_kelamin" type="text" class="form-control" id="jenis_kelamin" placeholder="jenis_kelamin..." value="{{ $matapilih->jenis_kelamin }}">
-          </div>
+          </div> --}}
           <div class="form-group">
             <label for="nohp">Nomor HP</label>
             <input name="nohp" type="text" class="form-control" id="nohp" placeholder="nohp..." value="{{ $matapilih->nohp }}">
