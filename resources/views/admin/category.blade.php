@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="card mb-4">
-        <div class="card-header"><i class="fas fa-table mr-1"></i>Categories</div>
+        <div class="card-header"><i class="fas fa-table mr-1"></i>Kecamatan</div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">

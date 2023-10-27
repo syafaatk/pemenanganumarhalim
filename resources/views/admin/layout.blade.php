@@ -71,10 +71,6 @@
                           <div class="sb-nav-link-icon"><i class="fa fa-bookmark" aria-hidden="true"></i></div>
                             Kecamatan
                         </a>
-                        <a class="nav-link" href="{{ route('admin.tag/create') }}">
-                          <div class="sb-nav-link-icon"><i class="fa fa-hashtag" aria-hidden="true"></i></div>
-                            Create Koordinator
-                        </a>
                         <a class="nav-link" href="{{ route('admin.tag') }}">
                           <div class="sb-nav-link-icon"><i class="fa fa-bookmark" aria-hidden="true"></i></div>
                             Koordinator
