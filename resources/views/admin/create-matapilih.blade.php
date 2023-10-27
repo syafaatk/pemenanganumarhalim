@@ -21,11 +21,13 @@
           </div>
           <div class="form-group">
             <label for="nama">Nama</label>
-            <input name="nama" type="text" class="form-control" id="nama" placeholder="Nama..." value="{{ old('nama') }}" required>
+            <input type="text" disabled class="form-control" value="{{ old('nama') }}" required>
+            <input name="nama" type="hidden" class="form-control" id="nama" placeholder="Nama..." value="{{ old('nama') }}" required>
           </div>
           <div class="form-group">
             <label for="alamat">Alamat</label>
-            <input name="alamat" type="text" class="form-control" id="alamat" placeholder="Alamat..." value="{{ old('alamat') }}" required>
+            <input type="text" disabled class="form-control" value="{{ old('alamat') }}" required>
+            <input name="alamat" type="hidden" class="form-control" id="alamat" placeholder="Alamat..." value="{{ old('alamat') }}" required>
           </div>
           <div class="form-group">
             <label for="rt">RT</label>
@@ -37,15 +39,18 @@
           </div>
           <div class="form-group">
             <label for="tps">TPS</label>
-            <input name="tps" type="text" class="form-control" id="tps" placeholder="tps..." value="{{ old('tps') }}" required>
+            <input type="text" disabled class="form-control" value="{{ old('tps') }}" required>
+            <input name="tps" type="hidden" class="form-control" id="tps" placeholder="tps..." value="{{ old('tps') }}" required>
           </div>
           <div class="form-group">
             <label for="kecamatan">Kecamatan</label>
-            <input name="kecamatan" type="text" class="form-control" id="kecamatan" placeholder="kecamatan..." value="{{ old('kecamatan') }}" required>
+            <input type="text" disabled class="form-control" value="{{ old('kecamatan') }}" required>
+            <input name="kecamatan" type="hidden" class="form-control" id="kecamatan" placeholder="kecamatan..." value="{{ old('kecamatan') }}" required>
           </div>
           <div class="form-group">
             <label for="kelurahan">Kelurahan</label>
-            <input name="kelurahan" type="text" class="form-control" id="kelurahan" placeholder="kelurahan..." value="{{ old('kelurahan') }}" required>
+            <input type="text" disabled class="form-control" value="{{ old('kelurahan') }}" required>
+            <input name="kelurahan" type="hidden" class="form-control" id="kelurahan" placeholder="kelurahan..." value="{{ old('kelurahan') }}" required>
           </div>
           {{-- <div class="form-group">
             <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -57,7 +62,7 @@
           </div>
           <div class="form-group">
             <label for="exampleFormControlSelect1">Select Koordinator</label>
-            <select name="koordinator" class="form-control single" id="exampleFormControlSelect1" multiple="multiple">
+            <select name="koordinator" class="form-control single" id="exampleFormControlSelect1" required>
               @foreach($koordinators as $koordinator)
                 <option value="{{ $koordinator->name }}">{{ $koordinator->name }}</option>
               @endforeach

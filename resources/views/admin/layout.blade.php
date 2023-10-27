@@ -62,10 +62,6 @@
                           <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Mata Pilih
                         </a>
-                        <a class="nav-link" href="{{ route('admin.matapilih/create') }}">
-                          <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>
-                            Create Mata Pilih
-                        </a>
                         <hr>
                         <a class="nav-link" href="{{ route('admin.category') }}">
                           <div class="sb-nav-link-icon"><i class="fa fa-bookmark" aria-hidden="true"></i></div>
