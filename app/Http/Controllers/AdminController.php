@@ -83,7 +83,7 @@ class AdminController extends Controller
     public function matapilih_edit($id)
     {
       $matapilih = Matapilih::findOrFail($id);
-      return view('admin.edit-matapilih')->with('matapilih',$matapilih)->with('tags', Tag::all());
+      return view('admin.edit-matapilih')->with('matapilih',$matapilih)->with('koordinators', Koordinator::all());
     }
 
     // Matapilih Update

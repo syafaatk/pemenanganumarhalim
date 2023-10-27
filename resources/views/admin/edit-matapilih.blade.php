@@ -76,12 +76,12 @@
             <div class="form-group">
               <label for="exampleFormControlSelect1">Select Koordinator</label>
               <select name="koordinator" class="form-control single" id="exampleFormControlSelect1">
-                @foreach($tags as $tag)
-                  <option value="{{ $tag->tag }}"
-                    @if($tag->tag == $matapilih->koordinator)
+                @foreach($koordinators as $koordinator)
+                  <option value="{{ $koordinator->name }}"
+                    @if($koordinator->name == $matapilih->koordinator)
                       selected
                     @endif
-                  >{{ $tag->tag }}--{{ $tag->kecamatan }}--{{ $tag->kelurahan }}</option>
+                  >{{ $koordinator->name }}</option>
                 @endforeach
               </select>
             </div>
