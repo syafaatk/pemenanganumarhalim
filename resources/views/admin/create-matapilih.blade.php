@@ -21,12 +21,12 @@
           </div>
           <div class="form-group">
             <label for="nama">Nama</label>
-            <input type="text" disabled class="form-control" value="{{ old('nama') }}" required>
+            <input type="text" disabled class="form-control" id="nama1" value="{{ old('nama') }}" required>
             <input name="nama" type="hidden" class="form-control" id="nama" placeholder="Nama..." value="{{ old('nama') }}" required>
           </div>
           <div class="form-group">
             <label for="alamat">Alamat</label>
-            <input type="text" disabled class="form-control" value="{{ old('alamat') }}" required>
+            <input type="text" disabled class="form-control" id="alamat1" value="{{ old('alamat') }}" required>
             <input name="alamat" type="hidden" class="form-control" id="alamat" placeholder="Alamat..." value="{{ old('alamat') }}" required>
           </div>
           <div class="form-group">
@@ -39,17 +39,17 @@
           </div>
           <div class="form-group">
             <label for="tps">TPS</label>
-            <input type="text" disabled class="form-control" value="{{ old('tps') }}" required>
+            <input type="text" disabled class="form-control" id="tps1"  value="{{ old('tps') }}" required>
             <input name="tps" type="hidden" class="form-control" id="tps" placeholder="tps..." value="{{ old('tps') }}" required>
           </div>
           <div class="form-group">
             <label for="kecamatan">Kecamatan</label>
-            <input type="text" disabled class="form-control" value="{{ old('kecamatan') }}" required>
+            <input type="text" disabled class="form-control" id="kecamatan1" value="{{ old('kecamatan') }}" required>
             <input name="kecamatan" type="hidden" class="form-control" id="kecamatan" placeholder="kecamatan..." value="{{ old('kecamatan') }}" required>
           </div>
           <div class="form-group">
             <label for="kelurahan">Kelurahan</label>
-            <input type="text" disabled class="form-control" value="{{ old('kelurahan') }}" required>
+            <input type="text" disabled class="form-control" id="kelurahan1" value="{{ old('kelurahan') }}" required>
             <input name="kelurahan" type="hidden" class="form-control" id="kelurahan" placeholder="kelurahan..." value="{{ old('kelurahan') }}" required>
           </div>
           {{-- <div class="form-group">
@@ -117,6 +117,13 @@
                 $("#kecamatan_id").val(parse_data['kecamatan_id']);
                 $("#kelurahan").val(realtime_data['kelurahan']);
                 $("#jenis_kelamin").val(parse_data['jenis_kelamin']);
+                $("#nama1").val(realtime_data['nama']);
+                $("#alamat1").val(realtime_data['alamat']);
+                $("#tps1").val(realtime_data['tps']);
+                $("#kecamatan1").val(realtime_data['kecamatan']);
+                $("#kecamatan_id1").val(parse_data['kecamatan_id']);
+                $("#kelurahan1").val(realtime_data['kelurahan']);
+                $("#jenis_kelamin1").val(parse_data['jenis_kelamin']);
             },
             error: function(xhr, textStatus, error){
                 alert('Data NIK tidak ditemukan!');
