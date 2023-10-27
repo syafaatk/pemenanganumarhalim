@@ -57,23 +57,12 @@
           </div>
           <div class="form-group">
             <label for="exampleFormControlSelect1">Select Koordinator</label>
-            <select name="tag[]" class="form-control single" id="exampleFormControlSelect1" multiple="multiple">
+            <select name="koordinator" class="form-control single" id="exampleFormControlSelect1" multiple="multiple">
               @foreach($tags as $tag)
-                <option value="{{ $tag->id }}">{{ $tag->tag }}--{{ $tag->kecamatan }}--{{ $tag->kelurahan }}</option>
+                <option value="{{ $tag->tag }}">{{ $tag->tag }}--{{ $tag->kecamatan }}--{{ $tag->kelurahan }}</option>
               @endforeach
             </select>
           </div>
-          {{-- <div class="form-group">
-            <label>Select Tags</label><br>
-            <div class="form-control box">
-              @foreach($tags as $tag)
-              <label>
-                <input type="checkbox" name="tag[]" value="{{ $tag->id }}"/>
-                {{ $tag->tag }}
-              </label>
-              @endforeach
-            </div>
-          </div> --}}
           <div class="form-group">
             <label for="nik">admin</label>
             <input type="text" disabled class="form-control" value="{{ Auth::user()->name }}" required>

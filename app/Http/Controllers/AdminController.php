@@ -124,6 +124,7 @@ class AdminController extends Controller
       $matapilih->kelurahan = $request->kelurahan;
       $matapilih->nohp = $request->nohp;
       $matapilih->admin = $request->admin;
+      $matapilih->tags = $request->koordinator;
       $matapilih->tags()->sync($request->tag);
       $matapilih->save();
       Session::flash('success','Matapilih has been updated!');

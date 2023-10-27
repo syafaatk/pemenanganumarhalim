@@ -31,7 +31,6 @@
                             <th>RT</th>
                             <th>RW</th>
                             <th>TPS</th>
-                            <th>JK</th>
                             <th>Kecamatan</th>
                             <th>Kelurahan</th>
                             <th>No HP</th>
@@ -51,11 +50,10 @@
                                 <td>{{ $matapilih->rt }}</td>
                                 <td>{{ $matapilih->rw }}</td>
                                 <td>{{ $matapilih->tps }}</td>
-                                <td>{{ $matapilih->jenis_kelamin }}</td>
                                 <td>{{ $matapilih->kecamatan }}</td>
                                 <td>{{ $matapilih->kelurahan }}</td>
                                 <td>{{ $matapilih->nohp }}</td>
-                                <td>
+                                {{-- <td>
                                     @foreach($tags as $tag)
                                       @foreach($matapilih->tags as $t)
                                         @if($tag->id == $t->id)
@@ -65,7 +63,8 @@
                                         @endif
                                       @endforeach
                                     @endforeach
-                                </td>
+                                </td> --}}
+                                <td>{{ $matapilih->koordinator }}</td>
                                 <td class=""><a href="{{ route('admin.matapilih/edit',['id' => $matapilih->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
                                 <td class=""><a href="{{ route('admin.matapilih/trash',['id' => $matapilih->id]) }}"><i class="far fa-trash-alt"></i></a></td>
                                 <td class=""><a class="btn btn-danger" href="{{ route('admin.matapilih/forcedelete',['id' => $matapilih->id]) }}">Delete</a></td>
