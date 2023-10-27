@@ -58,9 +58,9 @@
             <label for="nohp">Nomor HP</label>
             <input name="nohp" type="text" class="form-control" id="nohp" placeholder="nohp..." value="{{ $matapilih->nohp }}">
           </div>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Select Koordinator</label>
-            <select name="tag[]" class="form-control single" id="exampleFormControlSelect1" multiple="multiple">
+          {{-- <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Koordinator</label> --}}
+            {{-- <select name="tag[]" class="form-control single" id="exampleFormControlSelect1" multiple="multiple">
               
               @foreach($tags as $tag)
               <option value="{{ $tag->id }}">{{ $tag->tag }}--{{ $tag->kecamatan }}--{{ $tag->kelurahan }}</option>
@@ -72,7 +72,19 @@
                   >{{ $tag->tag }}--{{ $tag->kecamatan }}--{{ $tag->kelurahan }}</option>
                 @endforeach
             @endforeach
-            </select>
+            </select> --}}
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Select Koordinator</label>
+              <select name="koordinator" class="form-control single" id="exampleFormControlSelect1">
+                @foreach($tags as $tag)
+                  <option value="{{ $tag->tag }}"
+                    @if($tag->tag == $matapilih->koordinator)
+                      selected
+                    @endif
+                  >{{ $tag->tag }}--{{ $tag->kecamatan }}--{{ $tag->kelurahan }}</option>
+                @endforeach
+              </select>
+            </div>
           </div>
           <div class="form-group">
             <label for="nik">admin</label>

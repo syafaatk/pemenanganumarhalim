@@ -87,6 +87,7 @@ class AdminController extends Controller
             'kelurahan' => $request->kelurahan,
             'nohp' => $request->nohp,
             'admin' => $request->admin,
+            'koordinator' => $request->koordinator,
           ]);
           $matapilih->tags()->attach($request->tag);
           Session::flash('success','Mata Pilih Successfully Created.');
@@ -124,8 +125,8 @@ class AdminController extends Controller
       $matapilih->kelurahan = $request->kelurahan;
       $matapilih->nohp = $request->nohp;
       $matapilih->admin = $request->admin;
-      $matapilih->tags = $request->koordinator;
-      $matapilih->tags()->sync($request->tag);
+      $matapilih->koordinator = $request->koordinator;
+      // $matapilih->tags()->sync($request->tag);
       $matapilih->save();
       Session::flash('success','Matapilih has been updated!');
       return redirect()->route('admin.dashboard');
