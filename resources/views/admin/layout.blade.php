@@ -69,11 +69,11 @@
                         <hr>
                         <a class="nav-link" href="{{ route('admin.category/create') }}">
                           <div class="sb-nav-link-icon"><i class="fa fa-hashtag" aria-hidden="true"></i></div>
-                            Create Category
+                            Create Kecamatan
                         </a>
                         <a class="nav-link" href="{{ route('admin.category') }}">
                           <div class="sb-nav-link-icon"><i class="fa fa-bookmark" aria-hidden="true"></i></div>
-                            Category
+                            Kecamatan
                         </a>
                         <a class="nav-link" href="{{ route('admin.tag/create') }}">
                           <div class="sb-nav-link-icon"><i class="fa fa-hashtag" aria-hidden="true"></i></div>

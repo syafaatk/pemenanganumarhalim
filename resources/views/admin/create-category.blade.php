@@ -1,11 +1,11 @@
 @extends('admin.layout')
 
-@section('title','Create Category')
+@section('title','Buat Kecamatan')
 
 @section('content')
 
 <div id="layoutSidenav_content"><div class="container-fluid">
-  <h1 class="mt-4">Create Category</h1>
+  <h1 class="mt-4">Buat Kecamatan</h1>
   <div class="row ml-2">
     <div class="card col-sm-8 shadow p-3 mb-5 bg-white rounded">
       <div class="card-body">
@@ -14,11 +14,11 @@
         {{ csrf_field() }}
 
           <div class="form-group">
-            <label>Category</label>
+            <label>Kecamatan</label>
             <input name="name" type="text" class="form-control" required {{ old('name') }}>
           </div>
 
-          <button value="submit" class="btn btn-success">Publish Category</button>
+          <button value="submit" class="btn btn-success">Tambah</button>
         </form>
        </div>
     </div>
