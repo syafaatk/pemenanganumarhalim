@@ -60,7 +60,8 @@ class AdminController extends Controller
       $this->validate($request,[
         'nama'=>'required|max:255',
         'alamat'=>'required',
-        'nik'=>'required|max:16|min:16'
+        'nik'=>'required|max:16|min:16',
+        'koordinator'=>'required'
       ]);
       $cek = Matapilih::where('nik', $request->nik)->first();
       //dd($cek);
