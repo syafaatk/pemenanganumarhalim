@@ -75,10 +75,6 @@
                           <div class="sb-nav-link-icon"><i class="fa fa-bookmark" aria-hidden="true"></i></div>
                             Trashed
                         </a>
-                        <a class="nav-link" href="tables.html"
-                            ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
