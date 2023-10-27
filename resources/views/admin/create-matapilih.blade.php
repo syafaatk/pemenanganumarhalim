@@ -58,8 +58,8 @@
           <div class="form-group">
             <label for="exampleFormControlSelect1">Select Koordinator</label>
             <select name="koordinator" class="form-control single" id="exampleFormControlSelect1" multiple="multiple">
-              @foreach($tags as $tag)
-                <option value="{{ $tag->tag }}">{{ $tag->tag }}--{{ $tag->kecamatan }}--{{ $tag->kelurahan }}</option>
+              @foreach($koordinators as $koordinator)
+                <option value="{{ $koordinator->name }}">{{ $koordinator->name }}</option>
               @endforeach
             </select>
           </div>

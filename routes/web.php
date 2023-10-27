@@ -39,6 +39,13 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
   Route::get('/category/edit/{id}', 'CategoryController@category_edit')->name('admin.category/edit');
   Route::post('/category/update/{id}', 'CategoryController@category_update')->name('admin.category/update');
   Route::get('/category/delete/{id}', 'CategoryController@category_delete')->name('admin.category/delete');
+  //koordinator
+  Route::get('/koordinator', 'KoordinatorController@koordinator')->name('admin.koordinator');
+  Route::get('/koordinator/create', 'KoordinatorController@koordinator_create')->name('admin.koordinator/create');
+  Route::post('/koordinator/store', 'KoordinatorController@koordinator_store')->name('admin.koordinator/store');
+  Route::get('/koordinator/edit/{id}', 'KoordinatorController@koordinator_edit')->name('admin.koordinator/edit');
+  Route::post('/koordinator/update/{id}', 'KoordinatorController@koordinator_update')->name('admin.koordinator/update');
+  Route::get('/koordinator/delete/{id}', 'KoordinatorController@koordinator_delete')->name('admin.koordinator/delete');
   //tag
   Route::get('/tag', 'AdminController@tag')->name('admin.tag');
   Route::get('/tag/create', 'AdminController@tag_create')->name('admin.tag/create');
