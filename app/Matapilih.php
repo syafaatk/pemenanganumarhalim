@@ -11,12 +11,12 @@ class Matapilih extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'nama', 'alamat' , 'nik', 'rt', 'rw', 'tps', 'jenis_kelamin', 'kecamatan', 'kelurahan', 'nohp', 'admin', 'koordinator'
+        'nama', 'alamat' , 'nik', 'rt', 'rw', 'tps', 'jenis_kelamin', 'kecamatan', 'kelurahan', 'nohp', 'admin', 'koordinators_id'
     ];
 
-    // public function category(){
-    //   return $this->belongsTo('App\Category');
-    // }
+    public function koordinator(){
+      return $this->belongsTo('App\Koordinator');
+    }
 
     public function tags(){
       return $this->belongsToMany('App\Tag');

@@ -34,7 +34,7 @@
                             <th>Kelurahan</th>
                             <th>No HP</th>
                             <th>Koordinator</th>
-                            <th>Admin</th>
+                            {{-- <th>Admin</th> --}}
                             <th>Edit</th>
                             {{-- <th>Trashed</th>
                             <th>Delete</th> --}}
@@ -53,8 +53,8 @@
                                 <td>{{ $matapilih->kecamatan }}</td>
                                 <td>{{ $matapilih->kelurahan }}</td>
                                 <td>{{ $matapilih->nohp }}</td>
-                                <td>{{ $matapilih->koordinator }}</td>
-                                <td>{{ $matapilih->admin }}</td>
+                                <td>{{ $matapilih->koordinator->name }}</td>
+                                {{-- <td>{{ $matapilih->admin }}</td> --}} --}}
                                 <td class=""><a href="{{ route('admin.matapilih/edit',['id' => $matapilih->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
                                 {{-- <td class=""><a href="{{ route('admin.matapilih/trash',['id' => $matapilih->id]) }}"><i class="far fa-trash-alt"></i></a></td>
                                 <td class=""><a class="btn btn-danger" href="{{ route('admin.matapilih/forcedelete',['id' => $matapilih->id]) }}">Delete</a></td> --}}
