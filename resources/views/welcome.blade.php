@@ -82,7 +82,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Pemenangan Kms.H.M. Umar Halim
+                    VISI MISI
                 </div>
             </div>
         </div>
