@@ -65,7 +65,7 @@
             <select name="koordinator" class="form-control single" id="exampleFormControlSelect1" required>
               <option></option>
               @foreach($koordinators as $koordinator)
-                <option value="{{ $koordinator->name }}">{{ $koordinator->name }}</option>
+                <option value="{{ $koordinator->id }}">{{ $koordinator->name }}</option>
               @endforeach
             </select>
           </div>
