@@ -16,21 +16,23 @@
       </div>
       </div>
 
-      {{-- <div class="col-xl-3 col-md-6">
-        <div class="card bg-warning text-white mb-4">
-          <a href="{{ route('admin.category') }}">
-            <div class="card-body text-white">Categories</div>
-          </a>
-          <div class="card-header">{{ $category->count() }}</div>
+      @foreach($viewer as $view)
+      <div class="col-xl-1 col-md-2">
+        <div class="card bg-danger text-white mb-4">
+            <a href="">
+              <div class="card-body text-white">{{ $view->name }}</div>
+            </a>
+            <div class="card-header">{{ $view->total }}</div>
         </div>
-      </div> --}}
+      </div>
+      @endforeach
 
       <div class="col-xl-3 col-md-6">
         <div class="card bg-success text-white mb-4">
-          <a href="{{ route('admin.tag') }}">
+          <a href="{{ route('admin.koordinator') }}">
             <div class="card-body text-white">Koordinator</div>
           </a>
-          <div class="card-header">{{ $tags->count() }}</div>
+          <div class="card-header">{{ $koordinators->count() }}</div>
         </div>
       </div>
 

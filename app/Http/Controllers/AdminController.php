@@ -17,17 +17,15 @@ class AdminController extends Controller
     // Dashboard
     public function dashboard()
     {
-      // $viewer = Matapilih::select(DB::raw("SUM(kecamatan) as count"))  
-      //   ->orderBy("created_at")  
-      //   ->groupBy(DB::raw("kecamatan"))  
-      //   ->get()->toArray();  
-      // $viewer = array_column($viewer, 'count');  
-
+      $viewer = Matapilih::selectRaw('users.name, COUNT(*) as total')
+        ->JOIN('users','users.id', '=', 'matapilihs.admin')
+        ->groupBy("users.name")  
+        ->get();
       $matapilih = Matapilih::latest()->get();
       return view('admin.dashboard')->with('matapilihs',$matapilih )
                                     ->with('category', Category::all())
-                                    ->with('tags', Tag::all());
-                                    // ->with('viewer',json_encode($viewer,JSON_NUMERIC_CHECK));
+                                    ->with('koordinators', Koordinator::all())
+                                    ->with('viewer',$viewer);
     }
 
     // =============== Mata Pilih =============== //

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Session;
 use App\Tag;
 use App\Koordinator;
+use App\Matapilih;
 use Illuminate\Http\Request;
 
 class KoordinatorController extends Controller
@@ -12,7 +13,13 @@ class KoordinatorController extends Controller
   //Koordinator
   public function koordinator()
   {
-    return view('admin.koordinator')->with('koordinators', Koordinator::latest()->get());
+    $viewer = Koordinator::selectRaw('koordinators.id, COUNT(matapilihs.id) as total')
+        ->leftJoin('matapilihs','koordinators.id', '=', 'matapilihs.koordinator_id')
+        ->groupBy("koordinators.id")  
+        ->get();
+    //dd($viewer);
+    return view('admin.koordinator')->with('koordinators', Koordinator::latest()->get())
+                                    ->with('viewer',$viewer);
   }
 
   // Koodrinator Create

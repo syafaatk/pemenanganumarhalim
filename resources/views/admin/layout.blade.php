@@ -34,6 +34,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.koordinator') }}">Koordinator</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.category') }}">Kecamatan</a>
+          </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw" style="margin-right:10px;"></i>{{ Auth::user()->name}}</a>
                 <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="userDropdown">

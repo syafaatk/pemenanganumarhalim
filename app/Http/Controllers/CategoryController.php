@@ -13,7 +13,14 @@ class CategoryController extends Controller
   //Category
   public function category()
   {
-    return view('admin.category')->with('categories', Category::latest()->get());
+    $viewer = Category::selectRaw('categories.id, COUNT(matapilihs.kecamatan) as total')
+        ->leftJoin('matapilihs','categories.name', '=', 'matapilihs.kecamatan')
+        ->whereNull('matapilihs.deleted_at')
+        ->groupBy("categories.id")  
+        ->get();
+    //dd($viewer);
+    return view('admin.category')->with('categories', Category::latest()->get())
+                                 ->with('viewer',$viewer);
   }
 
   // Category Create

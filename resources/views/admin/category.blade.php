@@ -23,6 +23,7 @@
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Total</th>
                             <th style="width:100px; text-align:center;">Edit</th>
                             <th style="width:100px; text-align:center;">Delete</th>
                         </tr>
@@ -31,6 +32,11 @@
                         @foreach($categories as $category)
                           <tr>
                               <td>{{ $category->name }}</td>
+                              @foreach($viewer as $view)
+                                @if ($view->id == $category->id)
+                                    <td>{{ $view->total }}</td>
+                                @endif
+                              @endforeach
                               <td class="md-0"><a href="{{ route('admin.category/edit',['id' => $category->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
                               <td class=""><a href="{{ route('admin.category/delete',['id' => $category->id]) }}"><i class="far fa-trash-alt"></i></a> </td>
                           </tr>

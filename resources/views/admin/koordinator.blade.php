@@ -24,6 +24,7 @@
                         <tr>
                             <th>Nama</th>
                             <th>No HP</th>
+                            <th>Total</th>
                             <th style="width:100px; text-align:center;">Edit</th>
                             <th style="width:100px; text-align:center;">Delete</th>
                         </tr>
@@ -33,6 +34,11 @@
                           <tr>
                               <td>{{ $koordinator->name }}</td>
                               <td>{{ $koordinator->nohp }}</td>
+                              @foreach($viewer as $view)
+                                @if ($view->id == $koordinator->id)
+                                    <td>{{ $view->total }}</td>
+                                @endif
+                              @endforeach
                               <td class="md-0"><a href="{{ route('admin.koordinator/edit',['id' => $koordinator->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
                               <td class=""><a href="{{ route('admin.koordinator/delete',['id' => $koordinator->id]) }}"><i class="far fa-trash-alt"></i></a> </td>
                           </tr>
