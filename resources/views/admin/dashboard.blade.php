@@ -58,7 +58,60 @@
         </div>
     </div> --}}
 
-</div>
+  </div>
+  <div class="container-fluid">
+    <div class="card mb-4">
+      <canvas id="myBarChart" width="100%" height="30%"></canvas>
+    </div>
+  </div>
 </main>
+<script>
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
 
+// Bar Chart Example
+var ctx = document.getElementById("myBarChart");
+var myLineChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: {!! ($kecamatan_nama) !!},
+    datasets: [{
+      label: "Total",
+      backgroundColor: "rgba(2,117,216,1)",
+      borderColor: "rgba(2,117,216,1)",
+      data: {{$kecamatan_total}},
+    }],
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'Kecamatan'
+        },
+        gridLines: {
+          display: false
+        },
+        ticks: {
+          maxTicksLimit: 19,
+          beginAtZero: true
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 250,
+          maxTicksLimit: 10,
+          beginAtZero: true
+        },
+        gridLines: {
+          display: true
+        }
+      }],
+    },
+    legend: {
+      display: false
+    }
+  }
+});
+</script>
 @endsection

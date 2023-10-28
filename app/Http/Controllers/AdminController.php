@@ -22,10 +22,26 @@ class AdminController extends Controller
         ->groupBy("users.name")  
         ->get();
       $matapilih = Matapilih::latest()->get();
+      $viewer2 = Matapilih::selectRaw('users.name, COUNT(*) as total')
+        ->JOIN('users','users.id', '=', 'matapilihs.admin')
+        ->groupBy("users.name")
+        ->pluck('total')
+        ->toJson();
+      $kecamatan = Category::selectRaw('categories.name, COUNT(matapilihs.kecamatan) as total')
+        ->leftJoin('matapilihs','categories.name', '=', 'matapilihs.kecamatan')
+        ->whereNull('matapilihs.deleted_at')
+        ->groupBy("categories.name");  
+      $kecamatan_total = $kecamatan->pluck('total')->toJson();
+      $kecamatan_nama = $kecamatan->pluck('categories.name')->toJson();
+      //dd($kecamatan_nama);
+      //dd($viewer2);
       return view('admin.dashboard')->with('matapilihs',$matapilih )
                                     ->with('category', Category::all())
                                     ->with('koordinators', Koordinator::all())
-                                    ->with('viewer',$viewer);
+                                    ->with('viewer',$viewer)
+                                    ->with('kecamatan_total',$kecamatan_total)
+                                    ->with('kecamatan_nama',$kecamatan_nama);
+                                    // ->with('viewer',json_encode($viewer_1,JSON_NUMERIC_CHECK));
     }
 
     // =============== Mata Pilih =============== //
