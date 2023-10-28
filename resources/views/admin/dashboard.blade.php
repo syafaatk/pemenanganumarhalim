@@ -16,19 +16,19 @@
       </div>
       </div>
 
-      <div class="col-xl-3 col-md-6">
+      {{-- <div class="col-xl-3 col-md-6">
         <div class="card bg-warning text-white mb-4">
           <a href="{{ route('admin.category') }}">
             <div class="card-body text-white">Categories</div>
           </a>
           <div class="card-header">{{ $category->count() }}</div>
         </div>
-      </div>
+      </div> --}}
 
       <div class="col-xl-3 col-md-6">
         <div class="card bg-success text-white mb-4">
           <a href="{{ route('admin.tag') }}">
-            <div class="card-body text-white">Tags</div>
+            <div class="card-body text-white">Koordinator</div>
           </a>
           <div class="card-header">{{ $tags->count() }}</div>
         </div>
