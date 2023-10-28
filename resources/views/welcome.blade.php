@@ -1,90 +1,242 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Admin CRUD</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    
+    <!-- Styles -->
+    <style>
+        html, body {
+            background-color: #fff;
+            color: #636b6f;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 200;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .full-height {
+            height: 100vh;
+        }
+        
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .position-ref {
+            position: relative;
+        }
+        
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
+        
+        .content {
+            text-align: center;
+        }
+        
+        .title {
+            font-size: 50px;
+        }
+        
+        .links > a {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        
+        .m-b-md {
+            margin-bottom: 30px;
+        }
+    </style>
+    </style>
+	<link rel="stylesheet" id="wp-block-library-css" href="https://template2.kamisatu.co.id/wp-includes/css/dist/block-library/style.min.css?ver=6.2.2" media="all">
+<link rel="stylesheet" id="jet-engine-frontend-css" href="https://template2.kamisatu.co.id/wp-content/plugins/jet-engine/assets/css/frontend.css?ver=3.1.4" media="all">
+<link rel="stylesheet" id="classic-theme-styles-css" href="https://template2.kamisatu.co.id/wp-includes/css/classic-themes.min.css?ver=6.2.2" media="all">
+<style id="global-styles-inline-css">
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel="stylesheet" id="pafe-extension-style-css" href="https://template2.kamisatu.co.id/wp-content/plugins/piotnet-addons-for-elementor-pro/assets/css/minify/extension.min.css?ver=7.0.7" media="all">
+<link rel="stylesheet" id="pafe-font-awesome-5-css" href="https://template2.kamisatu.co.id/wp-content/plugins/piotnet-addons-for-elementor-pro/assets/css/minify/font-awesome-5.min.css?ver=7.0.7" media="all">
+<link rel="stylesheet" id="pafe-woocommerce-sales-funnels-style-css" href="https://template2.kamisatu.co.id/wp-content/plugins/piotnet-addons-for-elementor-pro/assets/css/minify/woocommerce-sales-funnels.min.css?ver=7.0.7" media="all">
+<link rel="stylesheet" id="hello-elementor-css" href="https://template2.kamisatu.co.id/wp-content/themes/hello-elementor/style.min.css?ver=2.7.1" media="all">
+<link rel="stylesheet" id="hello-elementor-theme-style-css" href="https://template2.kamisatu.co.id/wp-content/themes/hello-elementor/theme.min.css?ver=2.7.1" media="all">
+<link rel="stylesheet" id="elementor-frontend-css" href="https://template2.kamisatu.co.id/wp-content/plugins/elementor/assets/css/frontend-lite.min.css?ver=3.12.1" media="all">
+<style id="elementor-frontend-inline-css">
+.elementor-219 .elementor-element.elementor-element-22dbecbd:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-22dbecbd > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#20228c;}.elementor-219 .elementor-element.elementor-element-571c87c > .elementor-widget-container{background-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-c94a8f9:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-c94a8f9 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#20228c;background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/04/2.jpg");}.elementor-219 .elementor-element.elementor-element-c94a8f9::before, .elementor-219 .elementor-element.elementor-element-c94a8f9 > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-c94a8f9 > .e-con-inner > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-c94a8f9 > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-c94a8f9 > .e-con-inner > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-c94a8f9 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{background-color:#ed681c;}.elementor-219 .elementor-element.elementor-element-8169e5e:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-8169e5e > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#20228c;background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/04/3.jpg");}.elementor-219 .elementor-element.elementor-element-8169e5e::before, .elementor-219 .elementor-element.elementor-element-8169e5e > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-8169e5e > .e-con-inner > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-8169e5e > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-8169e5e > .e-con-inner > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-8169e5e > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{background-color:#ed681c;}.elementor-219 .elementor-element.elementor-element-2fb572f:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-2fb572f > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#20228c;background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/04/1.jpg");}.elementor-219 .elementor-element.elementor-element-2fb572f::before, .elementor-219 .elementor-element.elementor-element-2fb572f > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-2fb572f > .e-con-inner > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-2fb572f > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-2fb572f > .e-con-inner > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-2fb572f > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{background-color:#ed681c;}.elementor-219 .elementor-element.elementor-element-7fdd7565::before, .elementor-219 .elementor-element.elementor-element-7fdd7565 > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-7fdd7565 > .e-con-inner > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-7fdd7565 > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-7fdd7565 > .e-con-inner > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-7fdd7565 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/03/campaign-banner.png");}.elementor-219 .elementor-element.elementor-element-cf6963a .elementor-button{background-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-cf6963a .elementor-button:hover, .elementor-219 .elementor-element.elementor-element-cf6963a .elementor-button:focus{color:#ba0101;}.elementor-219 .elementor-element.elementor-element-cf6963a .elementor-button:hover svg, .elementor-219 .elementor-element.elementor-element-cf6963a .elementor-button:focus svg{fill:#ba0101;}.elementor-219 .elementor-element.elementor-element-5ceb4f4 .elementor-button{background-color:#20228c;}.elementor-219 .elementor-element.elementor-element-5ceb4f4 .elementor-button:hover, .elementor-219 .elementor-element.elementor-element-5ceb4f4 .elementor-button:focus{color:#ba0101;}.elementor-219 .elementor-element.elementor-element-5ceb4f4 .elementor-button:hover svg, .elementor-219 .elementor-element.elementor-element-5ceb4f4 .elementor-button:focus svg{fill:#ba0101;}.elementor-219 .elementor-element.elementor-element-8fc3f7b .elementor-heading-title{color:#20228c;}.elementor-219 .elementor-element.elementor-element-aa58496.elementor-view-stacked .elementor-icon{background-color:#20228c;}.elementor-219 .elementor-element.elementor-element-aa58496.elementor-view-framed .elementor-icon, .elementor-219 .elementor-element.elementor-element-aa58496.elementor-view-default .elementor-icon{fill:#20228c;color:#20228c;border-color:#20228c;}.elementor-219 .elementor-element.elementor-element-b25b37e{--divider-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-1915b73 .elementor-button{background-color:#ed681c;}.elementor-219 .elementor-element.elementor-element-1915b73 .elementor-button:hover, .elementor-219 .elementor-element.elementor-element-1915b73 .elementor-button:focus{background-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-2ae5138:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-2ae5138 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#2e3d44;}.elementor-219 .elementor-element.elementor-element-2ae5138::before, .elementor-219 .elementor-element.elementor-element-2ae5138 > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-2ae5138 > .e-con-inner > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-2ae5138 > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-2ae5138 > .e-con-inner > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-2ae5138 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/03/candidate-img.png");}.elementor-219 .elementor-element.elementor-element-2233026 .elementor-button{background-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-2233026 .elementor-button:hover, .elementor-219 .elementor-element.elementor-element-2233026 .elementor-button:focus{color:#ba0101;}.elementor-219 .elementor-element.elementor-element-2233026 .elementor-button:hover svg, .elementor-219 .elementor-element.elementor-element-2233026 .elementor-button:focus svg{fill:#ba0101;}.elementor-219 .elementor-element.elementor-element-7539c14a:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-7539c14a > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/04/video-section-bg.png");}.elementor-219 .elementor-element.elementor-element-4663bad .elementor-button{background-color:#ed681c;}.elementor-219 .elementor-element.elementor-element-1a5e1b3d:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-1a5e1b3d > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#20228c;}.elementor-219 .elementor-element.elementor-element-1a5e1b3d::before, .elementor-219 .elementor-element.elementor-element-1a5e1b3d > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-1a5e1b3d > .e-con-inner > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-1a5e1b3d > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-1a5e1b3d > .e-con-inner > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-1a5e1b3d > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/03/campaign-banner.png");}.elementor-219 .elementor-element.elementor-element-e882bc6 .jet-countdown-timer__item{background-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-9b07eb8 .elementor-heading-title{color:#ba0101;}.elementor-219 .elementor-element.elementor-element-191f05b:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-191f05b > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/03/campaign-banner-2.png");}.elementor-219 .elementor-element.elementor-element-a28ef4f{--divider-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-0dd323e .jet-listing-grid__scroll-slider::-webkit-scrollbar-thumb{background-color:#ba0101;border:none;}.elementor-219 .elementor-element.elementor-element-25b6f90 .elementor-button{background-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-25b6f90 .elementor-button:hover, .elementor-219 .elementor-element.elementor-element-25b6f90 .elementor-button:focus{color:#ba0101;}.elementor-219 .elementor-element.elementor-element-25b6f90 .elementor-button:hover svg, .elementor-219 .elementor-element.elementor-element-25b6f90 .elementor-button:focus svg{fill:#ba0101;}.elementor-219 .elementor-element.elementor-element-4c4edbc{--divider-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-d5dbc1a .jet-listing-grid__scroll-slider::-webkit-scrollbar-thumb{background-color:#ba0101;border:none;}.elementor-219 .elementor-element.elementor-element-ccac2af .elementor-button{background-color:#ed681c;}.elementor-219 .elementor-element.elementor-element-ccac2af .elementor-button:hover, .elementor-219 .elementor-element.elementor-element-ccac2af .elementor-button:focus{background-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-d7b0107:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-d7b0107 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/03/campaign-banner.png");}.elementor-219 .elementor-element.elementor-element-edbb175 .elementor-button{fill:#ba0101;color:#ba0101;}.elementor-219 .elementor-element.elementor-element-edbb175 .elementor-button:hover, .elementor-219 .elementor-element.elementor-element-edbb175 .elementor-button:focus{background-color:#ed681c;}.elementor-219 .elementor-element.elementor-element-0ab1ea3 .jet-listing-grid__slider .jet-slick-dots li.slick-active{background:#ba0101;}.elementor-219 .elementor-element.elementor-element-67f0b8e{--divider-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-ed558d8 .jet-listing-grid__scroll-slider::-webkit-scrollbar-thumb{background-color:#ba0101;border:none;}.elementor-219 .elementor-element.elementor-element-2f2c28f .elementor-button{background-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-2f2c28f .elementor-button:hover, .elementor-219 .elementor-element.elementor-element-2f2c28f .elementor-button:focus{background-color:#ed681c;}.elementor-219 .elementor-element.elementor-element-478313ae:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-478313ae > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#20228c;}.elementor-219 .elementor-element.elementor-element-45541a3 .elementor-button{background-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-5e3095a{--divider-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-9772ba3:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-9772ba3 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#20228c;}.elementor-219 .elementor-element.elementor-element-d7c1c0b .jet-instagram-gallery__content:before{background-color:#ba0101;}.elementor-219 .elementor-element.elementor-element-aca8a7a .elementor-button{background-color:#ba0101;}@media(max-width:767px){.elementor-219 .elementor-element.elementor-element-c94a8f9:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-c94a8f9 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/04/2.jpg");}.elementor-219 .elementor-element.elementor-element-8169e5e:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-8169e5e > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/04/3.jpg");}.elementor-219 .elementor-element.elementor-element-2fb572f:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-2fb572f > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/04/1.jpg");}.elementor-219 .elementor-element.elementor-element-2ae5138::before, .elementor-219 .elementor-element.elementor-element-2ae5138 > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-2ae5138 > .e-con-inner > .elementor-background-video-container::before, .elementor-219 .elementor-element.elementor-element-2ae5138 > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-2ae5138 > .e-con-inner > .elementor-background-slideshow::before, .elementor-219 .elementor-element.elementor-element-2ae5138 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/03/candidate-img.png");}.elementor-219 .elementor-element.elementor-element-7539c14a:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-7539c14a > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/04/video-section-bg.png");}.elementor-219 .elementor-element.elementor-element-191f05b:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-191f05b > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/03/campaign-banner-2.png");}.elementor-219 .elementor-element.elementor-element-d7b0107:not(.elementor-motion-effects-element-type-background), .elementor-219 .elementor-element.elementor-element-d7b0107 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image:url("https://template2.kamisatu.co.id/wp-content/uploads/2023/03/campaign-banner.png");}}
+.elementor-138 .elementor-element.elementor-element-416e7c4f:not(.elementor-motion-effects-element-type-background), .elementor-138 .elementor-element.elementor-element-416e7c4f > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#20228c;}.elementor-138 .elementor-element.elementor-element-0d781ce .elementor-button{background-color:#ba0101;}.elementor-138 .elementor-element.elementor-element-0d781ce .elementor-button:hover, .elementor-138 .elementor-element.elementor-element-0d781ce .elementor-button:focus{color:#ba0101;}.elementor-138 .elementor-element.elementor-element-0d781ce .elementor-button:hover svg, .elementor-138 .elementor-element.elementor-element-0d781ce .elementor-button:focus svg{fill:#ba0101;}.elementor-138 .elementor-element.elementor-element-b916f0c:not(.elementor-motion-effects-element-type-background), .elementor-138 .elementor-element.elementor-element-b916f0c > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#20228c;}
+.elementor-135 .elementor-element.elementor-element-1667d5e3 .elementor-social-icon{background-color:#ba0101;}.elementor-135 .elementor-element.elementor-element-cd48803.elementor-view-stacked .elementor-icon{background-color:#ba0101;}.elementor-135 .elementor-element.elementor-element-cd48803.elementor-view-framed .elementor-icon, .elementor-135 .elementor-element.elementor-element-cd48803.elementor-view-default .elementor-icon{fill:#ba0101;color:#ba0101;border-color:#ba0101;}.elementor-135 .elementor-element.elementor-element-cd48803 .elementor-icon-box-title{color:#ba0101;}.elementor-135 .elementor-element.elementor-element-27f6b5f > .elementor-widget-container{border-color:#ba0101;}.elementor-135 .elementor-element.elementor-element-c7ae273 .elementor-social-icon{background-color:#ba0101;}.elementor-135 .elementor-element.elementor-element-54c35e4.elementor-view-stacked .elementor-icon{background-color:#ba0101;}.elementor-135 .elementor-element.elementor-element-54c35e4.elementor-view-framed .elementor-icon, .elementor-135 .elementor-element.elementor-element-54c35e4.elementor-view-default .elementor-icon{fill:#ba0101;color:#ba0101;border-color:#ba0101;}.elementor-135 .elementor-element.elementor-element-54c35e4 .elementor-icon-box-title{color:#ba0101;}.elementor-135 .elementor-element.elementor-element-0d57971 > .elementor-widget-container{border-color:#ba0101;}.elementor-135 .elementor-element.elementor-element-1a03fb14:not(.elementor-motion-effects-element-type-background), .elementor-135 .elementor-element.elementor-element-1a03fb14 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-36ede81.elementor-view-framed .elementor-icon{background-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-36ede81.elementor-view-stacked .elementor-icon{color:#ed681c;}.elementor-135 .elementor-element.elementor-element-36ede81.elementor-view-stacked .elementor-icon svg{fill:#ed681c;}.elementor-135 .elementor-element.elementor-element-36ede81.elementor-view-stacked .elementor-icon:hover{background-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-36ede81.elementor-view-framed .elementor-icon:hover, .elementor-135 .elementor-element.elementor-element-36ede81.elementor-view-default .elementor-icon:hover{color:#ed681c;border-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-36ede81.elementor-view-framed .elementor-icon:hover, .elementor-135 .elementor-element.elementor-element-36ede81.elementor-view-default .elementor-icon:hover svg{fill:#ed681c;}.elementor-135 .elementor-element.elementor-element-b169eea.elementor-view-framed .elementor-icon{background-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-b169eea.elementor-view-stacked .elementor-icon{color:#ed681c;}.elementor-135 .elementor-element.elementor-element-b169eea.elementor-view-stacked .elementor-icon svg{fill:#ed681c;}.elementor-135 .elementor-element.elementor-element-b169eea.elementor-view-stacked .elementor-icon:hover{background-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-b169eea.elementor-view-framed .elementor-icon:hover, .elementor-135 .elementor-element.elementor-element-b169eea.elementor-view-default .elementor-icon:hover{color:#ed681c;border-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-b169eea.elementor-view-framed .elementor-icon:hover, .elementor-135 .elementor-element.elementor-element-b169eea.elementor-view-default .elementor-icon:hover svg{fill:#ed681c;}.elementor-135 .elementor-element.elementor-element-9114162.elementor-view-stacked .elementor-icon{background-color:#ba0101;}.elementor-135 .elementor-element.elementor-element-9114162.elementor-view-framed .elementor-icon, .elementor-135 .elementor-element.elementor-element-9114162.elementor-view-default .elementor-icon{color:#ba0101;border-color:#ba0101;}.elementor-135 .elementor-element.elementor-element-9114162.elementor-view-framed .elementor-icon, .elementor-135 .elementor-element.elementor-element-9114162.elementor-view-default .elementor-icon svg{fill:#ba0101;}.elementor-135 .elementor-element.elementor-element-d8fa401.elementor-view-framed .elementor-icon{background-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-d8fa401.elementor-view-stacked .elementor-icon{color:#ed681c;}.elementor-135 .elementor-element.elementor-element-d8fa401.elementor-view-stacked .elementor-icon svg{fill:#ed681c;}.elementor-135 .elementor-element.elementor-element-d8fa401.elementor-view-stacked .elementor-icon:hover{background-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-d8fa401.elementor-view-framed .elementor-icon:hover, .elementor-135 .elementor-element.elementor-element-d8fa401.elementor-view-default .elementor-icon:hover{color:#ed681c;border-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-d8fa401.elementor-view-framed .elementor-icon:hover, .elementor-135 .elementor-element.elementor-element-d8fa401.elementor-view-default .elementor-icon:hover svg{fill:#ed681c;}.elementor-135 .elementor-element.elementor-element-bf905b0.elementor-view-framed .elementor-icon{background-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-bf905b0.elementor-view-stacked .elementor-icon{color:#ed681c;}.elementor-135 .elementor-element.elementor-element-bf905b0.elementor-view-stacked .elementor-icon svg{fill:#ed681c;}.elementor-135 .elementor-element.elementor-element-bf905b0.elementor-view-stacked .elementor-icon:hover{background-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-bf905b0.elementor-view-framed .elementor-icon:hover, .elementor-135 .elementor-element.elementor-element-bf905b0.elementor-view-default .elementor-icon:hover{color:#ed681c;border-color:#ed681c;}.elementor-135 .elementor-element.elementor-element-bf905b0.elementor-view-framed .elementor-icon:hover, .elementor-135 .elementor-element.elementor-element-bf905b0.elementor-view-default .elementor-icon:hover svg{fill:#ed681c;}
+</style>
+    <link rel="stylesheet" id="elementor-post-113-css" href="https://template2.kamisatu.co.id/wp-content/uploads/elementor/css/post-113.css?ver=1682317020" media="all">
+    <link rel="stylesheet" id="jet-popup-frontend-css" href="https://template2.kamisatu.co.id/wp-content/plugins/jet-popup/assets/css/jet-popup-frontend.css?ver=2.0.0" media="all">
+    <link rel="stylesheet" id="elementor-post-365-css" href="https://template2.kamisatu.co.id/wp-content/uploads/elementor/css/post-365.css?ver=1682317036" media="all">
+    <link rel="stylesheet" id="elementor-post-475-css" href="https://template2.kamisatu.co.id/wp-content/uploads/elementor/css/post-475.css?ver=1682444061" media="all">
+    <link rel="stylesheet" id="elementor-post-611-css" href="https://template2.kamisatu.co.id/wp-content/uploads/elementor/css/post-611.css?ver=1682317036" media="all">
+    <link rel="stylesheet" id="elementor-post-570-css" href="https://template2.kamisatu.co.id/wp-content/uploads/elementor/css/post-570.css?ver=1682317037" media="all">
+    <link rel="stylesheet" id="elementor-post-515-css" href="https://template2.kamisatu.co.id/wp-content/uploads/elementor/css/post-515.css?ver=1682317037" media="all">
+    <link rel="stylesheet" id="elementor-post-1548-css" href="https://template2.kamisatu.co.id/wp-content/uploads/elementor/css/post-1548.css?ver=1682317037" media="all">
+    <link rel="stylesheet" id="jet-blocks-css" href="https://template2.kamisatu.co.id/wp-content/uploads/elementor/css/custom-jet-blocks.css?ver=1.3.5" media="all">
+    <link rel="stylesheet" id="jet-elements-css" href="https://template2.kamisatu.co.id/wp-content/plugins/jet-elements/assets/css/jet-elements.css?ver=2.6.9" media="all">
+    <link rel="stylesheet" id="jet-elements-skin-css" href="https://template2.kamisatu.co.id/wp-content/plugins/jet-elements/assets/css/jet-elements-skin.css?ver=2.6.9" media="all">
+    <link rel="stylesheet" id="elementor-icons-css" href="https://template2.kamisatu.co.id/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.18.0" media="all">
+    <link rel="stylesheet" id="swiper-css" href="https://template2.kamisatu.co.id/wp-content/plugins/elementor/assets/lib/swiper/css/swiper.min.css?ver=5.3.6" media="all">
+    <link rel="stylesheet" id="elementor-pro-css" href="https://template2.kamisatu.co.id/wp-content/plugins/elementor-pro/assets/css/frontend-lite.min.css?ver=3.12.2" media="all">
+    <link rel="stylesheet" id="elementor-global-css" href="https://template2.kamisatu.co.id/wp-content/uploads/elementor/css/global.css?ver=1682317021" media="all">
+    <link rel="stylesheet" id="elementor-post-219-css" href="https://template2.kamisatu.co.id/wp-content/uploads/elementor/css/post-219.css?ver=1687868628" media="all">
+    <link rel="stylesheet" id="elementor-post-138-css" href="https://template2.kamisatu.co.id/wp-content/uploads/elementor/css/post-138.css?ver=1682578537" media="all">
+    <link rel="stylesheet" id="elementor-post-135-css" href="https://template2.kamisatu.co.id/wp-content/uploads/elementor/css/post-135.css?ver=1682447354" media="all">
+    {{-- <link rel="stylesheet" id="google-fonts-1-css" href="https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CPoppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CNoto+Serif+Georgian%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CAsap%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CSail%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Serif%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&amp;display=swap&amp;ver=6.2.2" media="all"> --}}
+    <link rel="stylesheet" id="elementor-icons-shared-0-css" href="https://template2.kamisatu.co.id/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css?ver=5.15.3" media="all">
+    <link rel="stylesheet" id="elementor-icons-fa-solid-css" href="https://template2.kamisatu.co.id/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css?ver=5.15.3" media="all">
+    <link rel="stylesheet" id="elementor-icons-fa-regular-css" href="https://template2.kamisatu.co.id/wp-content/plugins/elementor/assets/lib/font-awesome/css/regular.min.css?ver=5.15.3" media="all">
+    <link rel="stylesheet" id="elementor-icons-fa-brands-css" href="https://template2.kamisatu.co.id/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min.css?ver=5.15.3" media="all">
+    
+</head>
+<body>
+    <div class="flex-center position-ref full-height">
+        @if (Route::has('login'))
+        <div class="top-right links">
+            @auth
+            <a href="{{ url('/home') }}">Home</a>
+            <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+            @else
+            <a href="{{ route('login') }}">Login</a>
+            
+            {{-- @if (Route::has('register'))
+            <a href="{{ route('register') }}">Register</a>
+            @endif --}}
+            @endauth
+        </div>
+        @endif
 
-        <title>Admin CRUD</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 50px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                      <a href="{{ url('/home') }}">Home</a>
-                      <a href="{{ route('admin.dashboard') }}">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        {{-- @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif --}}
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    VISI MISI
-                </div>
+        <div class="page-content">
+            <div data-elementor-type="wp-page" data-elementor-id="219" class="elementor elementor-219">
+                <section class="elementor-section elementor-top-section elementor-element elementor-element-22dbecbd elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="22dbecbd" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;jet_parallax_layout_list&quot;:[]}">
+                    <div class="elementor-container elementor-column-gap-default">
+                        <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-50fdedfd" data-id="50fdedfd" data-element_type="column">
+                            <div class="elementor-widget-wrap elementor-element-populated elementor-motion-effects-parent">
+                                <section class="elementor-section elementor-inner-section elementor-element elementor-element-4bff0470 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-motion-effects-element elementor-motion-effects-element-type-background" data-id="4bff0470" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;background_motion_fx_motion_fx_mouse&quot;:&quot;yes&quot;,&quot;background_motion_fx_mouseTrack_effect&quot;:&quot;yes&quot;,&quot;jet_parallax_layout_list&quot;:[],&quot;background_motion_fx_mouseTrack_speed&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1,&quot;sizes&quot;:[]}}">
+                                    <div class="elementor-motion-effects-container">
+                                        <div class="elementor-motion-effects-layer" style="width: 110%; height: 110%; --translateX: -95.54450867052013px; --translateY: -10.084444561774026px; transform: translateX(var(--translateX))translateY(var(--translateY));">
+                                        </div>
+                                    </div>
+                                    <div class="elementor-container elementor-column-gap-default">
+                                        <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-fac5678 animated-slow animated zoomIn" data-id="fac5678" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;zoomIn&quot;,&quot;animation_delay&quot;:500}">
+                                            <div class="elementor-widget-wrap elementor-element-populated">
+                                                <div class="elementor-element elementor-element-361d8de3 elementor-widget elementor-widget-heading" data-id="361d8de3" data-element_type="widget" data-widget_type="heading.default">
+                                                    <div class="elementor-widget-container">
+                                                        <style>/*! elementor - v3.12.1 - 02-04-2023 */
+                                                            .elementor-heading-title
+                                                            {
+                                                                padding:0;
+                                                                margin:0;
+                                                                line-height:1
+                                                            }
+                                                            .elementor-widget-heading .elementor-heading-title[class*=elementor-size-]>a
+                                                            {
+                                                                color:inherit;
+                                                                font-size:inherit;
+                                                                line-height:inherit
+                                                            }
+                                                            .elementor-widget-heading .elementor-heading-title.elementor-size-small
+                                                            {
+                                                                font-size:15px
+                                                            }
+                                                            .elementor-widget-heading .elementor-heading-title.elementor-size-medium   
+                                                            {
+                                                                font-size:19px
+                                                            }
+                                                            .elementor-widget-heading .elementor-heading-title.elementor-size-large
+                                                            {
+                                                                font-size:29px
+                                                            }
+                                                            .elementor-widget-heading .elementor-heading-title.elementor-size-xl
+                                                            {
+                                                                font-size:39px
+                                                            }
+                                                            .elementor-widget-heading .elementor-heading-title.elementor-size-xxl
+                                                            {
+                                                                font-size:59px
+                                                            }
+                                                        </style>
+                                                        <h1 class="elementor-heading-title elementor-size-default">Menuju Indonesia Sejahtera dan Maju</h1>		
+                                                    </div>
+                                                </div>
+                                                <div class="elementor-element elementor-element-46901ca6 elementor-widget elementor-widget-heading" data-id="46901ca6" data-element_type="widget" data-widget_type="heading.default">
+                                                    <div class="elementor-widget-container">
+                                                        <p class="elementor-heading-title elementor-size-default">
+                                                            Membangun bersama untuk kesejahteraan dan kemajuan Indonesia
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="elementor-element elementor-element-11d9ad2 elementor-hidden-mobile elementor-widget elementor-widget-video" data-id="11d9ad2" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/youtu.be\/gsqWKOmcpy4&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+                                                    <div class="elementor-widget-container">
+                                                        <style>/*! elementor - v3.12.1 - 02-04-2023 */
+                                                            .elementor-widget-video .elementor-widget-container{overflow:hidden;transform:translateZ(0)}.elementor-widget-video .elementor-wrapper iframe,.elementor-widget-video .elementor-wrapper video{height:100%;width:100%;display:flex;border:none;background-color:#000}.elementor-widget-video .elementor-open-inline .elementor-custom-embed-image-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:50%}.elementor-widget-video .elementor-custom-embed-image-overlay{cursor:pointer;text-align:center}.elementor-widget-video .elementor-custom-embed-image-overlay:hover .elementor-custom-embed-play i{opacity:1}.elementor-widget-video .elementor-custom-embed-image-overlay img{display:block;width:100%}.elementor-widget-video .e-hosted-video .elementor-video{-o-object-fit:cover;object-fit:cover}.e-con-inner>.elementor-widget-video,.e-con>.elementor-widget-video{width:var(--container-widget-width);--flex-grow:var(--container-widget-flex-grow)}
+                                                        </style>
+                                                        <div class="elementor-wrapper elementor-open-inline">
+                                                            <video class="elementor-video" width="320" height="240" controls>
+                                                                <source src="{{ url('/upload/post/cea7ef3b.mp4') }}" type="video/mp4">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-408f3c4e" data-id="408f3c4e" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;slideshow&quot;,&quot;background_slideshow_gallery&quot;:[{&quot;id&quot;:1737,&quot;url&quot;:&quot;https:\/\/template2.kamisatu.co.id\/wp-content\/uploads\/2023\/04\/14321b05-ellipse-1.png&quot;}],&quot;background_slideshow_loop&quot;:&quot;yes&quot;,&quot;background_slideshow_slide_duration&quot;:5000,&quot;background_slideshow_slide_transition&quot;:&quot;fade&quot;,&quot;background_slideshow_transition_duration&quot;:500}"><div class="elementor-background-slideshow swiper-container" dir="rtl"><div class="swiper-wrapper"><div class="elementor-background-slideshow__slide swiper-slide">
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-6affffe elementor-absolute elementor-widget__width-auto elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-image-box" data-id="6affffe" data-element_type="widget" data-settings="{&quot;_animation_mobile&quot;:&quot;slideInUp&quot;,&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image-box.default">
+                                        <div class="elementor-widget-container">
+                                            <style>/*! elementor - v3.12.1 - 02-04-2023 */
+                                                .elementor-widget-image-box .elementor-image-box-content{width:100%}@media (min-width:768px){.elementor-widget-image-box.elementor-position-left .elementor-image-box-wrapper,.elementor-widget-image-box.elementor-position-right .elementor-image-box-wrapper{display:flex}.elementor-widget-image-box.elementor-position-right .elementor-image-box-wrapper{text-align:right;flex-direction:row-reverse}.elementor-widget-image-box.elementor-position-left .elementor-image-box-wrapper{text-align:left;flex-direction:row}.elementor-widget-image-box.elementor-position-top .elementor-image-box-img{margin:auto}.elementor-widget-image-box.elementor-vertical-align-top .elementor-image-box-wrapper{align-items:flex-start}.elementor-widget-image-box.elementor-vertical-align-middle .elementor-image-box-wrapper{align-items:center}.elementor-widget-image-box.elementor-vertical-align-bottom .elementor-image-box-wrapper{align-items:flex-end}}@media (max-width:767px){.elementor-widget-image-box .elementor-image-box-img{margin-left:auto!important;margin-right:auto!important;margin-bottom:15px}}.elementor-widget-image-box .elementor-image-box-img{display:inline-block}.elementor-widget-image-box .elementor-image-box-title a{color:inherit}.elementor-widget-image-box .elementor-image-box-wrapper{text-align:center}.elementor-widget-image-box .elementor-image-box-description{margin:0}</style><div class="elementor-image-box-wrapper"><figure class="elementor-image-box-img"><img decoding="async" width="512" height="493" src="{{ url('/upload/post/15906538096.jpg') }}" class="attachment-full size-full wp-image-1576" alt="" loading="lazy" srcset="{{ url('/upload/post/15906538096.jpg') }}" sizes="(max-width: 512px) 100vw, 512px"></figure></div>		</div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-571c87c elementor-widget elementor-widget-heading" data-id="571c87c" data-element_type="widget" data-settings="{&quot;_animation_mobile&quot;:&quot;zoomIn&quot;}" data-widget_type="heading.default">
+                                                <div class="elementor-widget-container">
+                                                    <h2 class="elementor-heading-title elementor-size-default">DAPIL SUMSEL 1</h2></div>
+                                                </div>
+                                                <div class="elementor-element elementor-element-154f9b1a animated-slow elementor-widget elementor-widget-image animated fadeIn" data-id="154f9b1a" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:1000}" data-widget_type="image.default">
+                                                    <div class="elementor-widget-container">
+                                                        <img decoding="async" width="700" height="988" style="width:100%;" src="{{ url('/upload/post/1588539656.png') }}" class="attachment-full size-full wp-image-2129" alt="" loading="lazy" srcset="{{ url('/upload/post/1588539656.png') }}">															</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <div class="elementor-element elementor-element-7ea8a32 elementor-hidden-desktop elementor-hidden-tablet elementor-widget elementor-widget-video" data-id="7ea8a32" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/youtu.be\/gsqWKOmcpy4&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="elementor-wrapper elementor-open-inline">
+                                                <iframe class="elementor-video" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Anda Seorang Caleg? Luangkan waktu 3 menit melihat video ini" width="640" height="360" src="https://www.youtube.com/embed/gsqWKOmcpy4?controls=1&amp;rel=0&amp;playsinline=0&amp;modestbranding=0&amp;autoplay=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Ftemplate2.kamisatu.co.id&amp;widgetid=3" id="widget4"></iframe>		</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
             </div>
         </div>
-    </body>
-</html>
+        </body>
+        </html>
+        
