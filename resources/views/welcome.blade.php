@@ -175,13 +175,14 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
                                                                 font-size:59px
                                                             }
                                                         </style>
-                                                        <h1 class="elementor-heading-title elementor-size-default">Menuju Indonesia Sejahtera dan Maju</h1>		
+                                                        <h1 class="elementor-heading-title elementor-size-default">BANTU RAKYAT</h1>	
+                                                        <h2 class="elementor-heading-title elementor-size-default">Menuju Indonesia Sejahtera dan Maju</h2>		
                                                     </div>
                                                 </div>
                                                 <div class="elementor-element elementor-element-46901ca6 elementor-widget elementor-widget-heading" data-id="46901ca6" data-element_type="widget" data-widget_type="heading.default">
                                                     <div class="elementor-widget-container">
                                                         <p class="elementor-heading-title elementor-size-default">
-                                                            Membangun bersama untuk kesejahteraan dan kemajuan Indonesia
+                                                            Palembang - Banyuasin - Musi Banyuasin - Musi Rawas - Lubuk linggau - Musi Rawas Utara
                                                         </p>
                                                     </div>
                                                 </div>
