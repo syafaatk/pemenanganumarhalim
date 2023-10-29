@@ -12,7 +12,10 @@
         @include('layouts.errors')
         <form action="{{ route('admin.category/update',['id' => $category->id]) }}" method="POST">
         {{ csrf_field() }}
-
+          <div class="form-group">
+            <label>Kabupaten Kota</label>
+            <input name="kabkota" type="text" value="{{ $category->kabkota }}" class="form-control">
+          </div>
           <div class="form-group">
             <label>Kecamatan</label>
             <input name="name" type="text" value="{{ $category->name }}" class="form-control">

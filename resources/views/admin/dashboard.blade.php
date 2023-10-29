@@ -92,7 +92,7 @@ var myLineChart = new Chart(ctx, {
           display: false
         },
         ticks: {
-          maxTicksLimit: 19,
+          maxTicksLimit: 25,
           beginAtZero: true
         }
       }],

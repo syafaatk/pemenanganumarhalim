@@ -38,6 +38,7 @@ class CategoryController extends Controller
     ]);
 
     $category = new Category;
+    $category->kabkota = $request->kabkota;
     $category->name = $request->name;
     $category->save();
 
@@ -56,9 +57,10 @@ class CategoryController extends Controller
   public function category_update(Request $request, $id)
   {
     $category = Category::findOrFail($id);
+    $category->kabkota = $request->kabkota;
     $category->name = $request->name;
     $category->save();
-    Session::flash('success','Category has been updated!');
+    Session::flash('success','Kecamatan has been updated!');
 
     return redirect()->route('admin.category');
   }

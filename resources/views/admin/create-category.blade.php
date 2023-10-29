@@ -12,7 +12,10 @@
         @include('layouts.errors')
         <form action="{{ route('admin.category/store') }}" method="POST">
         {{ csrf_field() }}
-
+          <div class="form-group">
+            <label>Kabupaten Kota</label>
+            <input name="kabkota" type="text" class="form-control" required {{ old('kabkota') }}>
+          </div>
           <div class="form-group">
             <label>Kecamatan</label>
             <input name="name" type="text" class="form-control" required {{ old('name') }}>

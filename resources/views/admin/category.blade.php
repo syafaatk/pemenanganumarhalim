@@ -22,7 +22,8 @@
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Kota</th>
+                            <th>Kecamatan</th>
                             <th>Total</th>
                             <th style="width:100px; text-align:center;">Edit</th>
                             <th style="width:100px; text-align:center;">Delete</th>
@@ -31,6 +32,7 @@
                     <tbody>
                         @foreach($categories as $category)
                           <tr>
+                              <td>{{ $category->kabkota }}</td>
                               <td>{{ $category->name }}</td>
                               @foreach($viewer as $view)
                                 @if ($view->id == $category->id)
