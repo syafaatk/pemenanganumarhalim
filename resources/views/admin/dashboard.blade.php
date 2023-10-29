@@ -60,8 +60,13 @@
 
   </div>
   <div class="container-fluid">
-    <div class="card mb-4">
-      <canvas id="myBarChart" width="100%" height="30%"></canvas>
+    <div class="row">
+      <div class="col-xl-6 col-md-12 mb-4">
+        <canvas id="BarChartPalembang" width="50%" height="30%"></canvas>
+      </div>
+      <div class="col-xl-6 col-md-12 mb-4">
+        <canvas id="BarChartBanyuasin" width="50%" height="30%"></canvas>
+      </div>
     </div>
   </div>
 </main>
@@ -70,16 +75,17 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Bar Chart Example
-var ctx = document.getElementById("myBarChart");
+var ctx = document.getElementById("BarChartPalembang");
+var cty = document.getElementById("BarChartBanyuasin");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: {!! ($kecamatan_nama) !!},
+    labels: {!! ($palembang_nama) !!},
     datasets: [{
-      label: "Total",
+      label: "PALEMBANG",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: {{$kecamatan_total}},
+      data: {{$palembang_total}},
     }],
   },
   options: {
@@ -99,7 +105,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 2000,
+          max: 500,
           maxTicksLimit: 50,
           beginAtZero: true
         },
@@ -109,7 +115,49 @@ var myLineChart = new Chart(ctx, {
       }],
     },
     legend: {
-      display: false
+      display: true
+    }
+  }
+});
+var myLineChart = new Chart(cty, {
+  type: 'bar',
+  data: {
+    labels: {!! ($banyuasin_nama) !!},
+    datasets: [{
+      label: "BANYUASIN",
+      backgroundColor: "rgba(2,117,216,1)",
+      borderColor: "rgba(2,117,216,1)",
+      data: {{$banyuasin_total}},
+    }],
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'Kecamatan'
+        },
+        gridLines: {
+          display: false
+        },
+        ticks: {
+          maxTicksLimit: 25,
+          beginAtZero: true
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 100,
+          maxTicksLimit: 50,
+          beginAtZero: true
+        },
+        gridLines: {
+          display: true
+        }
+      }],
+    },
+    legend: {
+      display: true
     }
   }
 });

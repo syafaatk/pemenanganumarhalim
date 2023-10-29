@@ -27,20 +27,31 @@ class AdminController extends Controller
         ->groupBy("users.name")
         ->pluck('total')
         ->toJson();
-      $kecamatan = Category::selectRaw('categories.name, COUNT(matapilihs.kecamatan) as total')
+      $palembang = Category::selectRaw('categories.name, COUNT(matapilihs.kecamatan) as total')
         ->leftJoin('matapilihs','categories.name', '=', 'matapilihs.kecamatan')
         ->whereNull('matapilihs.deleted_at')
+        ->where('categories.kabkota','=','PALEMBANG')
         ->groupBy("categories.name");  
-      $kecamatan_total = $kecamatan->pluck('total')->toJson();
-      $kecamatan_nama = $kecamatan->pluck('categories.name')->toJson();
+      $banyuasin = Category::selectRaw('categories.name, COUNT(matapilihs.kecamatan) as total')
+        ->leftJoin('matapilihs','categories.name', '=', 'matapilihs.kecamatan')
+        ->whereNull('matapilihs.deleted_at')
+        ->where('categories.kabkota','=','BANYUASIN')
+        ->groupBy("categories.name");  
+      $palembang_total = $palembang->pluck('total')->toJson();
+      $palembang_nama = $palembang->pluck('categories.name')->toJson();
+      $banyuasin_total = $banyuasin->pluck('total')->toJson();
+      $banyuasin_nama = $banyuasin->pluck('categories.name')->toJson();
+      //dd($banyuasin_nama);
       //dd($kecamatan_nama);
       //dd($viewer2);
       return view('admin.dashboard')->with('matapilihs',$matapilih )
                                     ->with('category', Category::all())
                                     ->with('koordinators', Koordinator::all())
                                     ->with('viewer',$viewer)
-                                    ->with('kecamatan_total',$kecamatan_total)
-                                    ->with('kecamatan_nama',$kecamatan_nama);
+                                    ->with('palembang_total',$palembang_total)
+                                    ->with('palembang_nama',$palembang_nama)
+                                    ->with('banyuasin_total',$banyuasin_total)
+                                    ->with('banyuasin_nama',$banyuasin_nama);
                                     // ->with('viewer',json_encode($viewer_1,JSON_NUMERIC_CHECK));
     }
 
