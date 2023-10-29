@@ -12,7 +12,11 @@
       @include('layouts/errors')
       <form action="{{ route('admin.matapilih/update',['id' => $matapilih->id]) }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
-
+        <div class="form-group">
+          <label for="nik">Admin</label>
+          <input type="text" disabled class="form-control" value="{{ $matapilih->user->name }}">
+          {{-- <input name="admin" type="hidden" class="form-control" id="admin" value="{{ Auth::user()->name }}" required> --}}
+        </div>
           <div class="form-group">
             <label for="nik">NIK</label>
             <div class="input-group">
@@ -20,36 +24,56 @@
                 <input name="nik" type="hidden" class="form-control" id="nik" placeholder="NIK..." value="{{ $matapilih->nik }}" required>
             </div>
           </div>
-          <div class="form-group">
-            <label for="nama">Nama</label>
-            <input disabled type="text" class="form-control" id="nama" placeholder="Nama..." value="{{ $matapilih->nama }}">
-            <input name="nama" type="hidden" class="form-control" id="nama" placeholder="Nama..." value="{{ $matapilih->nama }}" required>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="nama">Nama</label>
+                <input disabled type="text" class="form-control" id="nama" placeholder="Nama..." value="{{ $matapilih->nama }}">
+                <input name="nama" type="hidden" class="form-control" id="nama" placeholder="Nama..." value="{{ $matapilih->nama }}" required>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <input disabled type="text" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}">
+                <input name="alamat" type="hidden" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}" required>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="alamat">Alamat</label>
-            <input disabled type="text" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}">
-            <input name="alamat" type="hidden" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}" required>
-          </div>
-          <div class="form-group">
-            <label for="rt">RT</label>
-            <input name="rt" type="text" class="form-control" id="rt" placeholder="rt..." value="{{ $matapilih->rt }}">
-          </div>
-          <div class="form-group">
-            <label for="rw">RW</label>
-            <input name="rw" type="text" class="form-control" id="rw" placeholder="rw..." value="{{ $matapilih->rw }}">
+            
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="rt">RT</label>
+                <input name="rt" type="text" class="form-control" id="rt" placeholder="rt..." value="{{ $matapilih->rt }}">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="rw">RW</label>
+                <input name="rw" type="text" class="form-control" id="rw" placeholder="rw..." value="{{ $matapilih->rw }}">
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="tps">TPS</label>
             <input name="tps" type="text" class="form-control" id="tps" placeholder="tps..." value="{{ $matapilih->tps }}" required>
           </div>
-          <div class="form-group">
-            <label for="kecamatan">Kecamatan</label>
-            <input name="kecamatan" type="text" class="form-control" id="kecamatan" placeholder="kecamatan..." value="{{ $matapilih->kecamatan }}" required>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="kecamatan">Kecamatan</label>
+                <input name="kecamatan" type="text" class="form-control" id="kecamatan" placeholder="kecamatan..." value="{{ $matapilih->kecamatan }}" required>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="kelurahan">Kelurahan</label>
+                <input name="kelurahan" type="text" class="form-control" id="kelurahan" placeholder="kelurahan..." value="{{ $matapilih->kelurahan }}" required>
+              </div>  
+            </div>
           </div>
-          <div class="form-group">
-            <label for="kelurahan">Kelurahan</label>
-            <input name="kelurahan" type="text" class="form-control" id="kelurahan" placeholder="kelurahan..." value="{{ $matapilih->kelurahan }}" required>
-          </div>
+          
           {{-- <div class="form-group">
             <label for="jenis_kelamin">Jenis Kelamin</label>
             <input name="jenis_kelamin" type="text" class="form-control" id="jenis_kelamin" placeholder="jenis_kelamin..." value="{{ $matapilih->jenis_kelamin }}">
@@ -77,19 +101,14 @@
               <label for="exampleFormControlSelect1">Select Koordinator</label>
               <select name="koordinator" class="form-control single" id="exampleFormControlSelect1">
                 @foreach($koordinators as $koordinator)
-                  <option value="{{ $koordinator->name }}"
-                    @if($koordinator->name == $matapilih->koordinator)
+                  <option value="{{ $koordinator->id }}"
+                    @if($koordinator->id == $matapilih->koordinator_id)
                       selected
                     @endif
                   >{{ $koordinator->name }}</option>
                 @endforeach
               </select>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="nik">admin</label>
-            <input type="text" disabled class="form-control" value="{{ Auth::user()->name }}" required>
-            <input name="admin" type="hidden" class="form-control" id="admin" value="{{ Auth::user()->name }}" required>
           </div>
 
           <button value="submit" class="btn btn-success">Simpan</button>

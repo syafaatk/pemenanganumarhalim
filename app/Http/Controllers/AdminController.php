@@ -18,12 +18,12 @@ class AdminController extends Controller
     public function dashboard()
     {
       $viewer = Matapilih::selectRaw('users.name, COUNT(*) as total')
-        ->JOIN('users','users.id', '=', 'matapilihs.admin')
+        ->JOIN('users','users.id', '=', 'matapilihs.user_id')
         ->groupBy("users.name")  
         ->get();
       $matapilih = Matapilih::latest()->get();
       $viewer2 = Matapilih::selectRaw('users.name, COUNT(*) as total')
-        ->JOIN('users','users.id', '=', 'matapilihs.admin')
+        ->JOIN('users','users.id', '=', 'matapilihs.user_id')
         ->groupBy("users.name")
         ->pluck('total')
         ->toJson();
@@ -103,7 +103,7 @@ class AdminController extends Controller
             'kecamatan' => $request->kecamatan,
             'kelurahan' => $request->kelurahan,
             'nohp' => $request->nohp,
-            'admin' => $request->admin,
+            'user_id' => $request->user_id,
             'koordinator_id' => $request->koordinator,
           ]);
           $matapilih->tags()->attach($request->tag);
@@ -141,7 +141,7 @@ class AdminController extends Controller
       $matapilih->kecamatan = $request->kecamatan;
       $matapilih->kelurahan = $request->kelurahan;
       $matapilih->nohp = $request->nohp;
-      $matapilih->admin = $request->admin;
+      // $matapilih->user_id = $request->user_id;
       $matapilih->koordinator_id = $request->koordinator;
       // $matapilih->tags()->sync($request->tag);
       $matapilih->save();
