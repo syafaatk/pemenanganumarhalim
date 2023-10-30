@@ -55,9 +55,21 @@
               </div>
             </div>
           </div>
-          <div class="form-group">
-            <label for="tps">TPS</label>
-            <input name="tps" type="text" class="form-control" id="tps" placeholder="tps..." value="{{ $matapilih->tps }}" required>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="tps">TPS</label>
+                <input type="text" disabled class="form-control" id="tps1"  value="{{ $matapilih->tps }}" required>
+                <input name="tps" type="hidden" class="form-control" id="tps" placeholder="tps..." value="{{ $matapilih->tps }}" required>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="kabupaten">Kabupaten</label>
+                <input type="text" disabled class="form-control" id="kabupaten1" value="{{ $matapilih->kabupaten }}" required>
+                <input name="kabupaten" type="hidden" class="form-control" id="kabupaten" placeholder="kabupaten..." value="{{ $matapilih->kabupaten }}" required>
+              </div>
+            </div>
           </div>
           <div class="row">
             <div class="col">
