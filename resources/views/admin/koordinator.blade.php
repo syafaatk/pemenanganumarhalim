@@ -23,6 +23,7 @@
                     <thead>
                         <tr>
                             <th>Nama</th>
+                            <th>Keterangan</th>
                             <th>No HP</th>
                             <th>Total</th>
                             <th style="width:100px; text-align:center;">Edit</th>
@@ -33,6 +34,18 @@
                         @foreach($koordinators as $koordinator)
                           <tr>
                               <td>{{ $koordinator->name }}</td>
+                              
+                                @if ($koordinator->keterangan == 1)
+                                    <td>USTADZ</td>
+                                @elseif($koordinator->keterangan == 2)
+                                    <td>KKP</td>
+                                @elseif($koordinator->keterangan == 3)
+                                    <td>PARTAI</td>
+                                @elseif($koordinator->keterangan == 4)
+                                    <td>KELUARGA</td>
+                                @else
+                                    <td>-</td>
+                                @endif
                               <td>{{ $koordinator->nohp }}</td>
                               @foreach($viewer as $view)
                                 @if ($view->id == $koordinator->id)

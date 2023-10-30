@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Koordinator extends Model
 {
-  protected $fillable = ['name','nohp'];
+  protected $fillable = ['name','nohp','keterangan'];
 
   public function matapilihs(){
     return $this->hasMany('App\Matapilih');

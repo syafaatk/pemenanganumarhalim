@@ -18,6 +18,16 @@
             <input name="name" type="text" class="form-control" required {{ old('name') }}>
           </div>
           <div class="form-group">
+            <label>Keterangan</label>
+            <select name="keterangan" class="form-control single" id="exampleFormControlSelect1" required {{ old('keterangan') }}>
+              <option value=""></option>
+              <option value="1">USTADZ</option>
+              <option value="2">KKP</option>
+              <option value="3">Partai</option>
+              <option value="4">Keluarga</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label>No HP</label>
             <input name="nohp" type="text" class="form-control" required {{ old('nohp') }}>
           </div>

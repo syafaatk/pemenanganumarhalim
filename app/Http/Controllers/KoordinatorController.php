@@ -38,6 +38,7 @@ class KoordinatorController extends Controller
 
     $koordinator = new Koordinator;
     $koordinator->name = $request->name;
+    $koordinator->keterangan = $request->keterangan;
     $koordinator->nohp = $request->nohp;
     $koordinator->save();
 
@@ -57,6 +58,7 @@ class KoordinatorController extends Controller
   {
     $koordinator = Koordinator::findOrFail($id);
     $koordinator->name = $request->name;
+    $koordinator->keterangan = $request->keterangan;
     $koordinator->nohp = $request->nohp;
     $koordinator->save();
     Session::flash('success','Koordinator has been updated!');
