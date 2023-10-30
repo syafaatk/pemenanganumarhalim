@@ -19,7 +19,7 @@
         <div class="card-header"><i class="fas fa-table mr-1"></i>Kecamatan</div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered table-hover" id="dataTablekecamatan" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Kota</th>

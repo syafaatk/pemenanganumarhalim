@@ -24,6 +24,38 @@
           <div class="card-header">{{ $koordinators->count() }}</div>
         </div>
       </div>
+      <div class="col-xl-1 col-md-2">
+        <div class="card bg-danger text-white mb-4">
+            <a href="">
+              <div class="card-body text-white">Palembang</div>
+            </a>
+            <div class="card-header">{{ $palembang_sum }}</div>
+        </div>
+      </div>
+      <div class="col-xl-1 col-md-2">
+        <div class="card bg-danger text-white mb-4">
+            <a href="">
+              <div class="card-body text-white">Banyuasin</div>
+            </a>
+            <div class="card-header">{{ $banyuasin_sum }}</div>
+        </div>
+      </div>
+      <div class="col-xl-1 col-md-2">
+        <div class="card bg-danger text-white mb-4">
+            <a href="">
+              <div class="card-body text-white">Lubuk Linggau</div>
+            </a>
+            <div class="card-header">{{ $lubuklinggau_sum }}</div>
+        </div>
+      </div>
+      <div class="col-xl-1 col-md-2">
+        <div class="card bg-danger text-white mb-4">
+            <a href="">
+              <div class="card-body text-white">Musi Banyuasin</div>
+            </a>
+            <div class="card-header">{{ $musibanyuasin_sum }}</div>
+        </div>
+      </div>
 
       {{-- <div class="col-xl-3 col-md-6">
           <div class="card bg-danger text-white mb-4">

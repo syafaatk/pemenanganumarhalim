@@ -43,3 +43,25 @@ $(document).ready(function() {
       ]
   } );
 } );
+$(document).ready(function() {
+  $('#dataTablekecamatan').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+          'copy', 'csv', 'excel', 'print',
+          {
+            extend: 'pdfHtml5',
+            exportOptions: {
+              columns: [ 0, 1, 2]
+            },
+            orientation: 'landscape',
+            pageSize: 'LEGAL'}
+      ],
+      columnDefs: [
+        {
+            target: 3,
+            searchable: false,
+            sortable : false
+        }
+      ]
+  } );
+} );

@@ -71,11 +71,16 @@ class AdminController extends Controller
         ->where('categories.kabkota','=','BANYUASIN')
         ->groupBy("categories.name");
       //dd($aktifitas_tanggal);
+      $palembang_sum = Matapilih::where('kabupaten','=','KOTA PALEMBANG')->count();
+      $banyuasin_sum = Matapilih::where('kabupaten','=','BANYUASIN')->count();
+      $musibanyuasin_sum = Matapilih::where('kabupaten','=','MUSI BANYUASIN')->count();
+      $lubuklinggau_sum = Matapilih::where('kabupaten','=','KOTA LUBUK LINGGAU')->count();
+
       $palembang_total = $palembang->pluck('total')->toJson();
       $palembang_nama = $palembang->pluck('categories.name')->toJson();
       $banyuasin_total = $banyuasin->pluck('total')->toJson();
       $banyuasin_nama = $banyuasin->pluck('categories.name')->toJson();
-      //dd($banyuasin_nama);
+      //dd($palembang_sum);
       //dd($kecamatan_nama);
       //dd($viewer2);
       return view('admin.dashboard')->with('matapilihs',$matapilih )
@@ -84,7 +89,11 @@ class AdminController extends Controller
                                     ->with('palembang_total',$palembang_total)
                                     ->with('palembang_nama',$palembang_nama)
                                     ->with('banyuasin_total',$banyuasin_total)
-                                    ->with('banyuasin_nama',$banyuasin_nama);
+                                    ->with('banyuasin_nama',$banyuasin_nama)
+                                    ->with('banyuasin_sum',$banyuasin_sum)
+                                    ->with('musibanyuasin_sum',$musibanyuasin_sum)
+                                    ->with('palembang_sum',$palembang_sum)
+                                    ->with('lubuklinggau_sum',$lubuklinggau_sum);
                                     // ->with('viewer',json_encode($viewer_1,JSON_NUMERIC_CHECK));
     }
 
