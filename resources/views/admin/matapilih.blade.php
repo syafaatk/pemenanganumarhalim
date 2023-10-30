@@ -34,8 +34,10 @@
                             <th>No HP</th>
                             <th>Koordinator</th>
                             <th>Admin</th>
+                            @if(Auth::user()->super_admin == "1")
                             <th>Edit</th>
                             <th>Delete</th>
+                            @endif
                             {{-- <th>Delete</th> --}}
                         </tr>
                     </thead>
@@ -54,9 +56,11 @@
                                 <td>{{ $matapilih->nohp }}</td>
                                 <td>{{ $matapilih->koordinator->name }}</td>
                                 <td>{{ $matapilih->user->name }}</td>
+                                @if(Auth::user()->super_admin == "1")
                                 <td class=""><a href="{{ route('admin.matapilih/edit',['id' => $matapilih->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
                                 <td class=""><a href="{{ route('admin.matapilih/trash',['id' => $matapilih->id]) }}"><i class="far fa-trash-alt"></i></a></td>
                                 {{-- <td class=""><a class="btn btn-danger" href="{{ route('admin.matapilih/forcedelete',['id' => $matapilih->id]) }}">Delete</a></td> --}}
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

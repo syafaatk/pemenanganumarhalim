@@ -26,8 +26,10 @@
                             <th>Keterangan</th>
                             <th>No HP</th>
                             <th>Total</th>
+                            @if(Auth::user()->super_admin == "1")
                             <th style="width:100px; text-align:center;">Edit</th>
                             <th style="width:100px; text-align:center;">Delete</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -54,8 +56,10 @@
                                 @endif
                               @endforeach
                               </td>
+                              @if(Auth::user()->super_admin == "1")
                               <td class="md-0"><a href="{{ route('admin.koordinator/edit',['id' => $koordinator->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
                               <td class=""><a href="{{ route('admin.koordinator/delete',['id' => $koordinator->id]) }}"><i class="far fa-trash-alt"></i></a> </td>
+                              @endif
                           </tr>
                         @endforeach
                     </tbody>
