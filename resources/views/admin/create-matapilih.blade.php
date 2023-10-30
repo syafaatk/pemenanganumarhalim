@@ -142,13 +142,13 @@
                 $("#alamat").val(realtime_data['alamat']);
                 $("#tps").val(realtime_data['tps']);
                 $("#kecamatan").val(realtime_data['kecamatan']);
-                $("#kabupaten").val(parse_data['kota_kabupaten']);
+                $("#kabupaten").val(realtime_data['kabupaten']);
                 $("#kelurahan").val(realtime_data['kelurahan']);
                 $("#nama1").val(realtime_data['nama']);
                 $("#alamat1").val(realtime_data['alamat']);
                 $("#tps1").val(realtime_data['tps']);
                 $("#kecamatan1").val(realtime_data['kecamatan']);
-                $("#kabupaten1").val(parse_data['kota_kabupaten']);
+                $("#kabupaten1").val(realtime_data['kabupaten']);
                 $("#kelurahan1").val(realtime_data['kelurahan']);
                 $("#jenis_kelamin1").val(parse_data['jenis_kelamin']);
             },
