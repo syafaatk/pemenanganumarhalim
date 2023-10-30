@@ -72,7 +72,7 @@
           <div class="form-group">
             <label for="nik">admin</label>
             <input type="text" disabled class="form-control" value="{{ Auth::user()->name }}" required>
-            <input name="admin" type="hidden" class="form-control" id="admin" value="{{ Auth::user()->id }}" required>
+            <input name="user_id" type="hidden" class="form-control" id="admin" value="{{ Auth::user()->id }}" required>
           </div>
           <button value="submit" class="btn btn-success">Simpan</button>
         </form>
