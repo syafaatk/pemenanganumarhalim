@@ -56,6 +56,22 @@
             <div class="card-header">{{ $musibanyuasin_sum }}</div>
         </div>
       </div>
+      <div class="col-xl-1 col-md-2">
+        <div class="card bg-danger text-white mb-4">
+            <a href="">
+              <div class="card-body text-white">Musi Rawas Utara</div>
+            </a>
+            <div class="card-header">0</div>
+        </div>
+      </div>
+      <div class="col-xl-1 col-md-2">
+        <div class="card bg-danger text-white mb-4">
+            <a href="">
+              <div class="card-body text-white">Musi Rawas</div>
+            </a>
+            <div class="card-header">0</div>
+        </div>
+      </div>
 
       {{-- <div class="col-xl-3 col-md-6">
           <div class="card bg-danger text-white mb-4">
