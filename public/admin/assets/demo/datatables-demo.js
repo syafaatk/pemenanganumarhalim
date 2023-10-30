@@ -135,13 +135,6 @@ $(document).ready(function() {
             },
             orientation: 'landscape',
             pageSize: 'LEGAL'}
-      ],
-      columnDefs: [
-        {
-            target: 3,
-            searchable: false,
-            sortable : false
-        }
       ]
   } );
 } );

@@ -45,7 +45,6 @@
                               <td class="md-0"><a href="{{ route('admin.category/edit',['id' => $category->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
                               <td class=""><a href="{{ route('admin.category/delete',['id' => $category->id]) }}"><i class="far fa-trash-alt"></i></a> </td>
                               @endif
-                              
                           </tr>
                         @endforeach
                     </tbody>
