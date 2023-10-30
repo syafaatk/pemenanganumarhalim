@@ -31,7 +31,7 @@ $(document).ready(function() {
             exportOptions: {
               columns: [ 0, 1, 2]
             },
-            orientation: 'landscape',
+            orientation: 'portrait',
             pageSize: 'LEGAL'}
       ],
       columnDefs: [
