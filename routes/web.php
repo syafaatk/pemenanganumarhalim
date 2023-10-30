@@ -42,6 +42,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/koordinator/delete/{id}', 'KoordinatorController@koordinator_delete')->name('admin.koordinator/delete');
 
     Route::get('/tag/delete/{id}', 'AdminController@tag_delete')->name('admin.tag/delete');
+    Route::get('/change-password', 'AdminController@changePassword')->name('admin.changepassword');
+    Route::post('/change-password', 'AdminController@changePasswordSave')->name('admin.postChangePassword');
   });
 
   Route::middleware(['checkUserAccessAdmin'])->group(function () {
@@ -59,6 +61,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::post('/koordinator/store', 'KoordinatorController@koordinator_store')->name('admin.koordinator/store');
     Route::get('/koordinator/edit/{id}', 'KoordinatorController@koordinator_edit')->name('admin.koordinator/edit');
     Route::post('/koordinator/update/{id}', 'KoordinatorController@koordinator_update')->name('admin.koordinator/update');
+    Route::get('/change-password', 'AdminController@changePassword')->name('admin.changePassword');
+    Route::post('/change-password', 'AdminController@changePasswordSave')->name('admin.postChangePassword');
   });
 
   Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
