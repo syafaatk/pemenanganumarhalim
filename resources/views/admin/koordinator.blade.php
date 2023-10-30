@@ -22,6 +22,7 @@
                 <table class="table table-bordered table-hover" id="dataTablekoordinator" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Keterangan</th>
                             <th>No HP</th>
@@ -35,7 +36,8 @@
                     <tbody>
                         @foreach($koordinators as $koordinator)
                           <tr>
-                              <td>{{ $koordinator->name }}</td>
+                               <td>{{ $loop->iteration }}</td>
+                               <td>{{ $koordinator->name }}</td>
                               
                                 @if ($koordinator->keterangan == 1)
                                     <td>USTADZ</td>
