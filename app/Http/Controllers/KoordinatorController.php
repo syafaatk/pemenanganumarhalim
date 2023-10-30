@@ -15,6 +15,7 @@ class KoordinatorController extends Controller
   {
     $viewer = Koordinator::selectRaw('koordinators.id, COUNT(matapilihs.id) as total')
         ->leftJoin('matapilihs','koordinators.id', '=', 'matapilihs.koordinator_id')
+        ->whereNull('matapilihs.deleted_at')
         ->groupBy("koordinators.id")  
         ->get();
     //dd($viewer);
