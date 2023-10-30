@@ -29,14 +29,14 @@ $(document).ready(function() {
           {
             extend: 'pdfHtml5',
             exportOptions: {
-              columns: [ 0, 1]
+              columns: [ 0, 1, 2]
             },
             orientation: 'landscape',
             pageSize: 'LEGAL'}
       ],
       columnDefs: [
         {
-            target: 1,
+            target: 2,
             searchable: false,
             sortable : false
         }
