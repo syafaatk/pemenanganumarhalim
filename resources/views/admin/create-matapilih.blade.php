@@ -19,43 +19,68 @@
                 <a href="#" class="btn btn-primary" onclick="CariNIK()">Cari DPT</a>
             </div>
           </div>
-          <div class="form-group">
-            <label for="nama">Nama</label>
-            <input type="text" disabled class="form-control" id="nama1" value="{{ old('nama') }}" required>
-            <input name="nama" type="hidden" class="form-control" id="nama" placeholder="Nama..." value="{{ old('nama') }}" required>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="nama">Nama</label>
+                <input type="text" disabled class="form-control" id="nama1" value="{{ old('nama') }}" required>
+                <input name="nama" type="hidden" class="form-control" id="nama" placeholder="Nama..." value="{{ old('nama') }}" required>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <input type="text" disabled class="form-control" id="alamat1" value="{{ old('alamat') }}" required>
+                <input name="alamat" type="hidden" class="form-control" id="alamat" placeholder="Alamat..." value="{{ old('alamat') }}" required>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="alamat">Alamat</label>
-            <input type="text" disabled class="form-control" id="alamat1" value="{{ old('alamat') }}" required>
-            <input name="alamat" type="hidden" class="form-control" id="alamat" placeholder="Alamat..." value="{{ old('alamat') }}" required>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="rt">RT</label>
+                <input name="rt" type="text" class="form-control" id="rt" placeholder="rt..." value="{{ old('rt') }}">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="rw">RW</label>
+                <input name="rw" type="text" class="form-control" id="rw" placeholder="rw..." value="{{ old('rw') }}">
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="rt">RT</label>
-            <input name="rt" type="text" class="form-control" id="rt" placeholder="rt..." value="{{ old('rt') }}">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="tps">TPS</label>
+                <input type="text" disabled class="form-control" id="tps1"  value="{{ old('tps') }}" required>
+                <input name="tps" type="hidden" class="form-control" id="tps" placeholder="tps..." value="{{ old('tps') }}" required>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="kabupaten">Kabupaten</label>
+                <input type="text" disabled class="form-control" id="kabupaten1" value="{{ old('kabupaten') }}" required>
+                <input name="kabupaten" type="hidden" class="form-control" id="kabupaten" placeholder="kabupaten..." value="{{ old('kabupaten') }}" required>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="rw">RW</label>
-            <input name="rw" type="text" class="form-control" id="rw" placeholder="rw..." value="{{ old('rw') }}">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="kecamatan">Kecamatan</label>
+                <input type="text" disabled class="form-control" id="kecamatan1" value="{{ old('kecamatan') }}" required>
+                <input name="kecamatan" type="hidden" class="form-control" id="kecamatan" placeholder="kecamatan..." value="{{ old('kecamatan') }}" required>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="kelurahan">Kelurahan</label>
+                <input type="text" disabled class="form-control" id="kelurahan1" value="{{ old('kelurahan') }}" required>
+                <input name="kelurahan" type="hidden" class="form-control" id="kelurahan" placeholder="kelurahan..." value="{{ old('kelurahan') }}" required>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="tps">TPS</label>
-            <input type="text" disabled class="form-control" id="tps1"  value="{{ old('tps') }}" required>
-            <input name="tps" type="hidden" class="form-control" id="tps" placeholder="tps..." value="{{ old('tps') }}" required>
-          </div>
-          <div class="form-group">
-            <label for="kecamatan">Kecamatan</label>
-            <input type="text" disabled class="form-control" id="kecamatan1" value="{{ old('kecamatan') }}" required>
-            <input name="kecamatan" type="hidden" class="form-control" id="kecamatan" placeholder="kecamatan..." value="{{ old('kecamatan') }}" required>
-          </div>
-          <div class="form-group">
-            <label for="kelurahan">Kelurahan</label>
-            <input type="text" disabled class="form-control" id="kelurahan1" value="{{ old('kelurahan') }}" required>
-            <input name="kelurahan" type="hidden" class="form-control" id="kelurahan" placeholder="kelurahan..." value="{{ old('kelurahan') }}" required>
-          </div>
-          {{-- <div class="form-group">
-            <label for="jenis_kelamin">Jenis Kelamin</label>
-            <input name="jenis_kelamin" type="text" class="form-control" id="jenis_kelamin" placeholder="jenis_kelamin..." value="{{ old('jenis_kelamin') }}">
-          </div> --}}
           <div class="form-group">
             <label for="nohp">Nomor HP</label>
             <input name="nohp" type="text" class="form-control" id="nohp" placeholder="nohp..." value="{{ old('nohp') }}">
@@ -117,14 +142,13 @@
                 $("#alamat").val(realtime_data['alamat']);
                 $("#tps").val(realtime_data['tps']);
                 $("#kecamatan").val(realtime_data['kecamatan']);
-                $("#kecamatan_id").val(parse_data['kecamatan_id']);
+                $("#kabupaten").val(parse_data['kota_kabupaten']);
                 $("#kelurahan").val(realtime_data['kelurahan']);
-                $("#jenis_kelamin").val(parse_data['jenis_kelamin']);
                 $("#nama1").val(realtime_data['nama']);
                 $("#alamat1").val(realtime_data['alamat']);
                 $("#tps1").val(realtime_data['tps']);
                 $("#kecamatan1").val(realtime_data['kecamatan']);
-                $("#kecamatan_id1").val(parse_data['kecamatan_id']);
+                $("#kabupaten1").val(parse_data['kota_kabupaten']);
                 $("#kelurahan1").val(realtime_data['kelurahan']);
                 $("#jenis_kelamin1").val(parse_data['jenis_kelamin']);
             },

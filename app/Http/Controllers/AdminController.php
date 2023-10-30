@@ -100,6 +100,7 @@ class AdminController extends Controller
             'rw' => $request->rw,
             'tps' => $request->tps,
             'jenis_kelamin' => $request->jenis_kelamin,
+            'kabupaten' => $request->kabupaten,
             'kecamatan' => $request->kecamatan,
             'kelurahan' => $request->kelurahan,
             'nohp' => $request->nohp,
@@ -138,6 +139,7 @@ class AdminController extends Controller
       $matapilih->rw = $request->rw;
       $matapilih->tps = $request->tps;
       $matapilih->jenis_kelamin = $request->jenis_kelamin;
+      $matapilih->kabupaten = $request->kabupaten;
       $matapilih->kecamatan = $request->kecamatan;
       $matapilih->kelurahan = $request->kelurahan;
       $matapilih->nohp = $request->nohp;
