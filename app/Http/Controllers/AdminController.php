@@ -36,7 +36,11 @@ class AdminController extends Controller
         ->leftJoin('matapilihs','categories.name', '=', 'matapilihs.kecamatan')
         ->whereNull('matapilihs.deleted_at')
         ->where('categories.kabkota','=','BANYUASIN')
-        ->groupBy("categories.name");  
+        ->groupBy("categories.name");
+      $aktifitas = Matapilih::selectRaw('DATE(created_at) as tanggal , COUNT(CASE WHEN user_id = 1 THEN 1 ELSE NULL END) AS aktifitas_almira, COUNT(CASE WHEN user_id = 2 THEN 1 ELSE NULL END) AS aktifitas_nina, COUNT(CASE WHEN user_id = 3 THEN 1 ELSE NULL END) AS aktifitas_vina') 
+        ->groupBy('tanggal')
+        ->get();
+      //dd($aktifitas_tanggal);
       $palembang_total = $palembang->pluck('total')->toJson();
       $palembang_nama = $palembang->pluck('categories.name')->toJson();
       $banyuasin_total = $banyuasin->pluck('total')->toJson();
@@ -45,6 +49,7 @@ class AdminController extends Controller
       //dd($kecamatan_nama);
       //dd($viewer2);
       return view('admin.dashboard')->with('matapilihs',$matapilih )
+                                    ->with('aktifitas',$aktifitas )
                                     ->with('category', Category::all())
                                     ->with('koordinators', Koordinator::all())
                                     ->with('viewer',$viewer)
