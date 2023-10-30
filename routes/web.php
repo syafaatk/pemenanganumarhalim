@@ -62,6 +62,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
   });
 
   Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
+  Route::get('/dashboard-admin', 'AdminController@dashboard_admin')->name('admin.dashboard-admin');
   //matapilih
   Route::get('/matapilih', 'AdminController@matapilih')->name('admin.matapilih');
   //category

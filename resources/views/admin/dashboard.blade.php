@@ -16,17 +16,6 @@
       </div>
       </div>
 
-      @foreach($viewer as $view)
-      <div class="col-xl-1 col-md-2">
-        <div class="card bg-danger text-white mb-4">
-            <a href="">
-              <div class="card-body text-white">{{ $view->name }}</div>
-            </a>
-            <div class="card-header">{{ $view->total }}</div>
-        </div>
-      </div>
-      @endforeach
-
       <div class="col-xl-3 col-md-6">
         <div class="card bg-success text-white mb-4">
           <a href="{{ route('admin.koordinator') }}">
@@ -69,33 +58,6 @@
       </div>
     </div>
   </div>
-  <div class="card mb-4">
-    <div class="card-header"><i class="fas fa-table mr-1"></i>All Aktifitas</div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Tanggal</th>
-                        <th>Almira</th>
-                        <th>Nina</th>
-                        <th>Vina</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($aktifitas as $akt)
-                        <tr>
-                            <td>{{ $akt->tanggal }}</td>
-                            <td>{{ $akt->aktifitas_almira }}</td>
-                            <td>{{ $akt->aktifitas_nina }}</td>
-                            <td>{{ $akt->aktifitas_vina }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
 </main>
 <script>
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';

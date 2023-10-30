@@ -36,6 +36,9 @@
             <a class="nav-link active" aria-current="page" href="{{ route('admin.dashboard') }}">Dashboard</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{{ route('admin.dashboard-admin') }}">Aktifitas</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.matapilih') }}">Mata Pilih</a>
           </li>
           <li class="nav-item">

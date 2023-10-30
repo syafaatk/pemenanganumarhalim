@@ -17,10 +17,6 @@ class AdminController extends Controller
     // Dashboard
     public function dashboard()
     {
-      $viewer = Matapilih::selectRaw('users.name, COUNT(*) as total')
-        ->JOIN('users','users.id', '=', 'matapilihs.user_id')
-        ->groupBy("users.name")  
-        ->get();
       $matapilih = Matapilih::latest()->get();
       $viewer2 = Matapilih::selectRaw('users.name, COUNT(*) as total')
         ->JOIN('users','users.id', '=', 'matapilihs.user_id')
@@ -37,9 +33,6 @@ class AdminController extends Controller
         ->whereNull('matapilihs.deleted_at')
         ->where('categories.kabkota','=','BANYUASIN')
         ->groupBy("categories.name");
-      $aktifitas = Matapilih::selectRaw('DATE(created_at) as tanggal , COUNT(CASE WHEN user_id = 1 THEN 1 ELSE NULL END) AS aktifitas_almira, COUNT(CASE WHEN user_id = 2 THEN 1 ELSE NULL END) AS aktifitas_nina, COUNT(CASE WHEN user_id = 3 THEN 1 ELSE NULL END) AS aktifitas_vina') 
-        ->groupBy('tanggal')
-        ->get();
       //dd($aktifitas_tanggal);
       $palembang_total = $palembang->pluck('total')->toJson();
       $palembang_nama = $palembang->pluck('categories.name')->toJson();
@@ -49,14 +42,33 @@ class AdminController extends Controller
       //dd($kecamatan_nama);
       //dd($viewer2);
       return view('admin.dashboard')->with('matapilihs',$matapilih )
-                                    ->with('aktifitas',$aktifitas )
                                     ->with('category', Category::all())
                                     ->with('koordinators', Koordinator::all())
-                                    ->with('viewer',$viewer)
                                     ->with('palembang_total',$palembang_total)
                                     ->with('palembang_nama',$palembang_nama)
                                     ->with('banyuasin_total',$banyuasin_total)
                                     ->with('banyuasin_nama',$banyuasin_nama);
+                                    // ->with('viewer',json_encode($viewer_1,JSON_NUMERIC_CHECK));
+    }
+
+    public function dashboard_admin()
+    {
+      $viewer = Matapilih::selectRaw('users.name, COUNT(*) as total')
+        ->JOIN('users','users.id', '=', 'matapilihs.user_id')
+        ->groupBy("users.name")  
+        ->get();
+      $viewer2 = Matapilih::selectRaw('users.name, COUNT(*) as total')
+        ->JOIN('users','users.id', '=', 'matapilihs.user_id')
+        ->groupBy("users.name")
+        ->pluck('total')
+        ->toJson();
+      $aktifitas = Matapilih::selectRaw('DATE(created_at) as tanggal , COUNT(CASE WHEN user_id = 1 THEN 1 ELSE NULL END) AS aktifitas_almira, COUNT(CASE WHEN user_id = 2 THEN 1 ELSE NULL END) AS aktifitas_nina, COUNT(CASE WHEN user_id = 3 THEN 1 ELSE NULL END) AS aktifitas_vina') 
+        ->groupBy('tanggal')
+        ->get();
+      return view('admin.dashboard-admin')->with('aktifitas',$aktifitas )
+                                    ->with('category', Category::all())
+                                    ->with('koordinators', Koordinator::all())
+                                    ->with('viewer',$viewer);
                                     // ->with('viewer',json_encode($viewer_1,JSON_NUMERIC_CHECK));
     }
 

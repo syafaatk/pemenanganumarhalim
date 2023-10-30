@@ -28,6 +28,7 @@
                             <th>RT</th>
                             <th>RW</th>
                             <th>TPS</th>
+                            <th>Kabupaten</th>
                             <th>Kecamatan</th>
                             <th>Kelurahan</th>
                             <th>No HP</th>
@@ -47,6 +48,7 @@
                                 <td>{{ $matapilih->rt }}</td>
                                 <td>{{ $matapilih->rw }}</td>
                                 <td>{{ $matapilih->tps }}</td>
+                                <td>{{ $matapilih->kabupaten }}</td>
                                 <td>{{ $matapilih->kecamatan }}</td>
                                 <td>{{ $matapilih->kelurahan }}</td>
                                 <td>{{ $matapilih->nohp }}</td>
