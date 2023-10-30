@@ -40,7 +40,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/koordinator/edit/{id}', 'KoordinatorController@koordinator_edit')->name('admin.koordinator/edit');
     Route::post('/koordinator/update/{id}', 'KoordinatorController@koordinator_update')->name('admin.koordinator/update');
     Route::get('/koordinator/delete/{id}', 'KoordinatorController@koordinator_delete')->name('admin.koordinator/delete');
-    
+
     Route::get('/tag/delete/{id}', 'AdminController@tag_delete')->name('admin.tag/delete');
   });
 
@@ -64,21 +64,16 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
   Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
   //matapilih
   Route::get('/matapilih', 'AdminController@matapilih')->name('admin.matapilih');
-  
   //category
   Route::get('/category', 'CategoryController@category')->name('admin.category');
-  
-  
   //koordinator
   Route::get('/koordinator', 'KoordinatorController@koordinator')->name('admin.koordinator');
-  
   //tag
   Route::get('/tag', 'AdminController@tag')->name('admin.tag');
   Route::get('/tag/create', 'AdminController@tag_create')->name('admin.tag/create');
   Route::post('/tag/store', 'AdminController@tag_store')->name('admin.tag/store');
   Route::get('/tag/edit/{id}', 'AdminController@tag_edit')->name('admin.tag/edit');
   Route::post('/tag/update/{id}', 'AdminController@tag_update')->name('admin.tag/update');
-  
   //post
   Route::get('/post/create', 'AdminController@post_create')->name('admin.post/create');
   Route::post('/post/store', 'AdminController@post_store')->name('admin.post/store');
