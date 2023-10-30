@@ -22,6 +22,12 @@
 </head>
 
 <body class="sb-nav-fixed sb-sidenav-toggled">
+  @if(session('message'))
+      <script>
+          // Tambahkan JavaScript untuk menampilkan dialog box
+          alert("{{ session('message') }}");
+      </script>
+  @endif
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="{{ url('/home') }}">Admin CRUD</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button><!-- Navbar Search-->
         <!-- Navbar-->
