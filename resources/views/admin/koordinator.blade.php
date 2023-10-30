@@ -47,11 +47,13 @@
                                     <td>-</td>
                                 @endif
                               <td>{{ $koordinator->nohp }}</td>
+                              <td>
                               @foreach($viewer as $view)
                                 @if ($view->id == $koordinator->id)
-                                    <td>{{ $view->total }}</td>
+                                    {{ $view->total }}
                                 @endif
                               @endforeach
+                              </td>
                               <td class="md-0"><a href="{{ route('admin.koordinator/edit',['id' => $koordinator->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
                               <td class=""><a href="{{ route('admin.koordinator/delete',['id' => $koordinator->id]) }}"><i class="far fa-trash-alt"></i></a> </td>
                           </tr>
