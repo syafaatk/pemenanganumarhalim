@@ -200,7 +200,7 @@ class AdminController extends Controller
       // $matapilih->tags()->sync($request->tag);
       $matapilih->save();
       Session::flash('success','Matapilih has been updated!');
-      return redirect()->route('admin.dashboard');
+      return back();
     }
 
     // Matapilih trash
