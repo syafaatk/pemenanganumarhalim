@@ -52,7 +52,8 @@ class AdminController extends Controller
     // Mata Pilih Create
     public function matapilih_create()
     {
-        return view('admin.create-matapilih')->with('tags', Tag::all());
+        dd("test");
+        // return view('admin.create-matapilih')->with('tags', Tag::all());
     }
 
     // Mata Pilih Store
