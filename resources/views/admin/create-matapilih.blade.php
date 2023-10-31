@@ -89,8 +89,8 @@
             <label for="exampleFormControlSelect1">Select Koordinator</label>
             <select name="koordinator" class="form-control single" id="exampleFormControlSelect1" required>
               <option></option>
-              @foreach($koordinators as $koordinator)
-                <option value="{{ $koordinator->id }}">{{ $koordinator->name }}</option>
+              @foreach($koordinator as $k)
+                <option value="{{ $k->id }}">{{ $k->name }}</option>
               @endforeach
             </select>
           </div>
