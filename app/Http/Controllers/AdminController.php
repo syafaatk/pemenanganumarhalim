@@ -121,7 +121,7 @@ class AdminController extends Controller
 
     // =============== Mata Pilih =============== //
     // Dashboard
-    public function matapili2h()
+    public function matapilih2()
     {
       $dataChunks = [];
       $matapilih = Matapilih::chunk(200, function ($dataChunk) use (&$dataChunks) {
