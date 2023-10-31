@@ -155,9 +155,9 @@ class AdminController extends Controller
     // Mata Pilih Create
     public function matapilih_create()
     {
-      $koordinator = Koordinator::latest()->get();
-      //dd($koordinator);
-      return view('admin.create-matapilih', ['koordinator' => $koordinator]);
+      $data = Koordinator::latest()->get();
+      dd($data);
+      return view('admin.create-matapilih', ['data' => $data]);
     }
 
     // Mata Pilih Store
