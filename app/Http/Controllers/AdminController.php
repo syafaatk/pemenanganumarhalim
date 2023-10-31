@@ -157,7 +157,7 @@ class AdminController extends Controller
     {
       $data = Koordinator::latest()->get();
       //dd($data);
-      return view('admin.create-matapilih', ['data' => $data]);
+      return view('admin.create-matapilih', ['koordinator' => $data]);
     }
 
     // Mata Pilih Store
