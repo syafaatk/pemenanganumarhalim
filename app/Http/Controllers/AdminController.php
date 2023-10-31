@@ -122,10 +122,14 @@ class AdminController extends Controller
     // Dashboard
     public function matapilih()
     {
-      $matapilih = Matapilih::latest()->get();
-      return view('admin.matapilih')->with('matapilihs',$matapilih )
-                                    ->with('koordinators', Koordinator::all())
-                                    ->with('tags', Tag::all());
+      $dataChunks = [];
+      $matapilih = Matapilih::chunk(200, function ($dataChunk) use (&$dataChunks) {
+          $dataChunks[] = $dataChunk;
+      });
+      //dd($matapilih);
+      return view('admin.matapilih',['dataChunks' => $dataChunks])
+      ->with('koordinators', Koordinator::all())
+      ->with('tags', Tag::all());
     }
 
     // Mata Pilih Create

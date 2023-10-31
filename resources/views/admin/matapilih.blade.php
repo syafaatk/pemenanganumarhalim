@@ -19,7 +19,7 @@
         <div class="card-header"><i class="fas fa-table mr-1"></i>All Posts</div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -42,26 +42,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($matapilihs as $matapilih)
+                        @foreach ($dataChunks as $dataChunk)
+                            @foreach ($dataChunk as $record)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $matapilih->nama }}</td>
-                                <td>{{ $matapilih->nik }}</td>
-                                <td>{{ $matapilih->rt }}</td>
-                                <td>{{ $matapilih->rw }}</td>
-                                <td>{{ $matapilih->tps }}</td>
-                                <td>{{ $matapilih->kabupaten }}</td>
-                                <td>{{ $matapilih->kecamatan }}</td>
-                                <td>{{ $matapilih->kelurahan }}</td>
-                                <td>{{ $matapilih->nohp }}</td>
-                                <td>{{ $matapilih->koordinator->name }}</td>
-                                <td>{{ $matapilih->user->name }}</td>
+                                <td>{{ $record->nama }}</td>
+                                <td>{{ $record->nik }}</td>
+                                <td>{{ $record->rt }}</td>
+                                <td>{{ $record->rw }}</td>
+                                <td>{{ $record->tps }}</td>
+                                <td>{{ $record->kabupaten }}</td>
+                                <td>{{ $record->kecamatan }}</td>
+                                <td>{{ $record->kelurahan }}</td>
+                                <td>{{ $record->nohp }}</td>
+                                <td>{{ $record->koordinator->name }}</td>
+                                <td>{{ $record->user->name }}</td>
                                 @if(Auth::user()->super_admin == "1")
-                                <td class=""><a href="{{ route('admin.matapilih/edit',['id' => $matapilih->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
-                                <td class=""><a href="{{ route('admin.matapilih/trash',['id' => $matapilih->id]) }}"><i class="far fa-trash-alt"></i></a></td>
+                                <td class=""><a href="{{ route('admin.matapilih/edit',['id' => $record->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
+                                <td class=""><a href="{{ route('admin.matapilih/trash',['id' => $record->id]) }}"><i class="far fa-trash-alt"></i></a></td>
                                 {{-- <td class=""><a class="btn btn-danger" href="{{ route('admin.matapilih/forcedelete',['id' => $matapilih->id]) }}">Delete</a></td> --}}
                                 @endif
                             </tr>
+                            @endforeach
                         @endforeach
                     </tbody>
                 </table>
@@ -71,5 +73,29 @@
 
 </div>
 </main>
+<script>
+$(document).ready(function() {
+    $('#myTable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'print',
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                columns: [ 0, 1, 3 , 4, 5, 6, 7 ,8, 9 ]
+                },
+                orientation: 'landscape',
+                pageSize: 'LEGAL'}
+        ],
+        columnDefs: [
+            {
+                target: 0,
+                searchable: false,
+                sortable : false
+            }
+        ],
+    });
+});
+</script>
 
 @endsection
