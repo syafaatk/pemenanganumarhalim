@@ -29,7 +29,7 @@
             <a href="">
               <div class="card-body text-white">Palembang</div>
             </a>
-            <div class="card-header">{{ $palembang_sum }}</div>
+            <div class="card-header"></div>
         </div>
       </div>
       <div class="col-xl-1 col-md-2">
@@ -37,7 +37,7 @@
             <a href="">
               <div class="card-body text-white">Banyuasin</div>
             </a>
-            <div class="card-header">{{ $banyuasin_sum }}</div>
+            <div class="card-header"></div>
         </div>
       </div>
       <div class="col-xl-1 col-md-2">
@@ -45,7 +45,7 @@
             <a href="">
               <div class="card-body text-white">Lubuk Linggau</div>
             </a>
-            <div class="card-header">{{ $lubuklinggau_sum }}</div>
+            <div class="card-header"></div>
         </div>
       </div>
       <div class="col-xl-1 col-md-2">
@@ -53,7 +53,7 @@
             <a href="">
               <div class="card-body text-white">Musi Banyuasin</div>
             </a>
-            <div class="card-header">{{ $musibanyuasin_sum }}</div>
+            <div class="card-header"></div>
         </div>
       </div>
       <div class="col-xl-1 col-md-2">
