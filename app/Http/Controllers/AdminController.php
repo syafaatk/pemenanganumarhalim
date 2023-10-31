@@ -1,13 +1,13 @@
 <?php
 namespace App\Http\Controllers;
 use Session;
+use DataTables;
 use App\Matapilih;
 use App\Koordinator;
 use App\Category;
 use App\Tag;
 use App\User;
 use App\Profile;
-use DataTables;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -155,8 +155,9 @@ class AdminController extends Controller
     // Mata Pilih Create
     public function matapilih_create()
     {
-      $koordinators = Koordinator::latest()->get();
-      return view('admin.create-matapilih')->with('koordinators', $koordinators);
+      $koordinator = Koordinator::latest()->get();
+      dd($koordinator);
+      return view('admin.create-matapilih')->with('koordinators', $koordinator);
     }
 
     // Mata Pilih Store
