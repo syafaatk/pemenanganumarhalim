@@ -21,7 +21,7 @@
           <a href="{{ route('admin.koordinator') }}">
             <div class="card-body text-white">Koordinator</div>
           </a>
-          <div class="card-header">{{ $koordinators->count() }}</div>
+          <div class="card-header"></div>
         </div>
       </div>
       <div class="col-xl-1 col-md-2">
