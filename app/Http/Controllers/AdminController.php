@@ -135,7 +135,7 @@ class AdminController extends Controller
     //Category
     public function matapilih()
     {
-      return view('admin.matapilih');
+      return view('admin.matapilih')->with('koordinators', Koordinator::all());
     }
 
     public function getMatapilih(Request $request)
