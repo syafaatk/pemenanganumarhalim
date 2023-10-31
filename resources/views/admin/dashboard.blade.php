@@ -21,7 +21,7 @@
           <a href="{{ route('admin.koordinator') }}">
             <div class="card-body text-white">Koordinator</div>
           </a>
-          <div class="card-header"></div>
+          <div class="card-header">{{ $koordinators->count() }}</div>
         </div>
       </div>
       <div class="col-xl-1 col-md-2">
@@ -29,7 +29,7 @@
             <a href="">
               <div class="card-body text-white">Palembang</div>
             </a>
-            <div class="card-header"></div>
+            <div class="card-header">{{ $palembang_sum }}</div>
         </div>
       </div>
       <div class="col-xl-1 col-md-2">
@@ -37,7 +37,7 @@
             <a href="">
               <div class="card-body text-white">Banyuasin</div>
             </a>
-            <div class="card-header"></div>
+            <div class="card-header">{{ $banyuasin_sum }}</div>
         </div>
       </div>
       <div class="col-xl-1 col-md-2">
@@ -45,7 +45,7 @@
             <a href="">
               <div class="card-body text-white">Lubuk Linggau</div>
             </a>
-            <div class="card-header"></div>
+            <div class="card-header">{{ $lubuklinggau_sum }}</div>
         </div>
       </div>
       <div class="col-xl-1 col-md-2">
@@ -53,7 +53,7 @@
             <a href="">
               <div class="card-body text-white">Musi Banyuasin</div>
             </a>
-            <div class="card-header"></div>
+            <div class="card-header">{{ $musibanyuasin_sum }}</div>
         </div>
       </div>
       <div class="col-xl-1 col-md-2">
@@ -117,12 +117,12 @@ var cty = document.getElementById("BarChartBanyuasin");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ,
+    labels: {!! ($palembang_nama) !!},
     datasets: [{
       label: "PALEMBANG",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: ,
+      data: {{$palembang_total}},
     }],
   },
   options: {
@@ -158,12 +158,12 @@ var myLineChart = new Chart(ctx, {
 var myLineChart = new Chart(cty, {
   type: 'bar',
   data: {
-    labels: ,
+    labels: {!! ($banyuasin_nama) !!},
     datasets: [{
       label: "BANYUASIN",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: ,
+      data: {{$banyuasin_total}},
     }],
   },
   options: {
