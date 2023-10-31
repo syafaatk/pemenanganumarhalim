@@ -117,12 +117,12 @@ var cty = document.getElementById("BarChartBanyuasin");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: {!! ($palembang_nama) !!},
+    labels: ,
     datasets: [{
       label: "PALEMBANG",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: {{$palembang_total}},
+      data: ,
     }],
   },
   options: {
@@ -158,12 +158,12 @@ var myLineChart = new Chart(ctx, {
 var myLineChart = new Chart(cty, {
   type: 'bar',
   data: {
-    labels: {!! ($banyuasin_nama) !!},
+    labels: ,
     datasets: [{
       label: "BANYUASIN",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: {{$banyuasin_total}},
+      data: ,
     }],
   },
   options: {
