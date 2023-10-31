@@ -57,13 +57,13 @@
             {
                 data: 'id',
                 'render': function (data, type, full, meta) {
-                    return '<a class="btn btn-primary" data-action="edit" href="category/edit/' + data + '"><i class="far fa-pencil-alt"></i></a>';
+                    return '<a class="btn btn-primary" data-action="edit" href="{{ url("admin/category/edit") }}/'+ data +'"><i class="far fa-pencil-alt"></i></a>';
                 }
             },
             {
                 data: 'id',
                 'render': function (data, type, full, meta) {
-                    return '<a class="btn btn-danger" data-action="delete" href="category/delete/' + data + '"><i class="far fa-trash-alt"></i></an>';
+                    return '<a class="btn btn-danger" data-action="delete" href="{{ url("admin/category/delete") }}/'+ data +'"><i class="far fa-trash-alt"></i></a>';
                 }
             },
         ],
