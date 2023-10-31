@@ -7,7 +7,7 @@ use App\Category;
 use App\Tag;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class ContohController extends Controller
 {
    public function __construct()
    {
