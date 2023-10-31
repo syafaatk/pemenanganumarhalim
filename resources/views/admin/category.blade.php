@@ -19,34 +19,18 @@
         <div class="card-header"><i class="fas fa-table mr-1"></i>Kecamatan</div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTablekecamatan" width="100%" cellspacing="0">
+                <table class="table table-bordered yajra-datatable">
                     <thead>
                         <tr>
-                            <th>Kota</th>
-                            <th>Kecamatan</th>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>KabKota</th>
                             <th>Total</th>
-                            @if(Auth::user()->super_admin == "1")
-                            <th style="width:100px; text-align:center;">Edit</th>
-                            <th style="width:100px; text-align:center;">Delete</th>
-                            @endif
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($categories as $category)
-                          <tr>
-                              <td>{{ $category->kabkota }}</td>
-                              <td>{{ $category->name }}</td>
-                              @foreach($viewer as $view)
-                                @if ($view->id == $category->id)
-                                    <td>{{ $view->total }}</td>
-                                @endif
-                              @endforeach
-                              @if(Auth::user()->super_admin == "1")
-                              <td class="md-0"><a href="{{ route('admin.category/edit',['id' => $category->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
-                              <td class=""><a href="{{ route('admin.category/delete',['id' => $category->id]) }}"><i class="far fa-trash-alt"></i></a> </td>
-                              @endif
-                          </tr>
-                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -54,5 +38,48 @@
     </div>
 </div>
 </main>
-
+<script type="text/javascript">
+    $(function () {
+      var table = $('.yajra-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('admin.category.list') }}",
+        columns: [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'name', name: 'name'},
+            {data: 'kabkota', name: 'kabkota'},
+            {
+                data: 'total',
+                'render': function (data, type, full, meta) {
+                    return data;
+                }
+            },
+            {
+                data: 'id',
+                'render': function (data, type, full, meta) {
+                    return '<a class="btn btn-primary" data-action="edit" href="category/edit/' + data + '"><i class="far fa-pencil-alt"></i></a>';
+                }
+            },
+            {
+                data: 'id',
+                'render': function (data, type, full, meta) {
+                    return '<a class="btn btn-danger" data-action="delete" href="category/delete/' + data + '"><i class="far fa-trash-alt"></i></an>';
+                }
+            },
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'print',
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                columns: [ 0, 1, 2]
+                },
+                orientation: 'landscape',
+                pageSize: 'LEGAL'
+            }
+        ],
+      });
+    });
+  </script>
 @endsection

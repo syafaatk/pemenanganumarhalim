@@ -7,20 +7,30 @@ use App\Post;
 use App\Tag;
 use App\Category;
 use Illuminate\Http\Request;
+use DataTables;
 
 class CategoryController extends Controller
 {
   //Category
   public function category()
   {
-    $viewer = Category::selectRaw('categories.id, COUNT(matapilihs.kecamatan) as total')
-        ->leftJoin('matapilihs','categories.name', '=', 'matapilihs.kecamatan')
-        ->whereNull('matapilihs.deleted_at')
-        ->groupBy("categories.id")  
-        ->get();
-    //dd($viewer);
-    return view('admin.category')->with('categories', Category::latest()->get())
-                                 ->with('viewer',$viewer);
+    return view('admin.category');
+  }
+
+  public function getCategories(Request $request)
+  {
+      if ($request->ajax()) {
+          $data = Category::selectRaw('categories.id,categories.name,categories.kabkota, COUNT(matapilihs.kecamatan) as total')
+          ->leftJoin('matapilihs','categories.name', '=', 'matapilihs.kecamatan')
+          ->whereNull('matapilihs.deleted_at')
+          ->groupBy("categories.id")
+          ->groupBy("categories.name")
+          ->groupBy("categories.kabkota")
+          ->get();
+          return Datatables::of($data)
+              ->addIndexColumn()
+              ->make(true);
+      }
   }
 
   // Category Create

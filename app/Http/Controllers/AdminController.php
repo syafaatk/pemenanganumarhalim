@@ -7,6 +7,7 @@ use App\Category;
 use App\Tag;
 use App\User;
 use App\Profile;
+use DataTables;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -120,7 +121,7 @@ class AdminController extends Controller
 
     // =============== Mata Pilih =============== //
     // Dashboard
-    public function matapilih()
+    public function matapili2h()
     {
       $dataChunks = [];
       $matapilih = Matapilih::chunk(200, function ($dataChunk) use (&$dataChunks) {
@@ -130,6 +131,25 @@ class AdminController extends Controller
       return view('admin.matapilih',['dataChunks' => $dataChunks])
       ->with('koordinators', Koordinator::all())
       ->with('tags', Tag::all());
+    }
+    //Category
+    public function matapilih()
+    {
+      return view('admin.matapilih');
+    }
+
+    public function getMatapilih(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Matapilih::selectRaw('matapilihs.*,users.name as nama_user,koordinators.name as nama_koordinator')
+            ->leftJoin('koordinators','matapilihs.koordinator_id', '=', 'koordinators.id')
+            ->leftJoin('users','matapilihs.user_id', '=', 'users.id')
+            ->whereNull('matapilihs.deleted_at')
+            ->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->make(true);
+        }
     }
 
     // Mata Pilih Create

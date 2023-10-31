@@ -20,6 +20,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
   Route::middleware(['checkUserAccessSuperAdmin'])->group(function () {
     // Rute yang hanya dapat diakses oleh super admin
     // Tempatkan rute Anda di sini
+    Route::get('/matapilih/list', 'AdminController@getMatapilih')->name('admin.matapilih.list');
     Route::get('/matapilih/create', 'AdminController@matapilih_create')->name('admin.matapilih/create');
     Route::post('/matapilih/store', 'AdminController@matapilih_store')->name('admin.matapilih/store');
     Route::get('/matapilih/edit/{id}', 'AdminController@matapilih_edit')->name('admin.matapilih/edit');
@@ -29,6 +30,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/matapilih/restore/{id}', 'AdminController@matapilih_restore')->name('admin.matapilih/restore');
     Route::get('/matapilih/forcedelete/{id}', 'AdminController@matapilih_forcedelete')->name('admin.matapilih/forcedelete');
 
+    Route::get('/category/list', 'CategoryController@getCategories')->name('admin.category.list');
     Route::get('/category/create', 'CategoryController@category_create')->name('admin.category/create');
     Route::post('/category/store', 'CategoryController@category_store')->name('admin.category/store');
     Route::get('/category/edit/{id}', 'CategoryController@category_edit')->name('admin.category/edit');
@@ -47,11 +49,13 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
   });
 
   Route::middleware(['checkUserAccessAdmin'])->group(function () {
+    Route::get('/matapilih/list', 'AdminController@getMatapilih')->name('admin.matapilih.list');
     Route::get('/matapilih/create', 'AdminController@matapilih_create')->name('admin.matapilih/create');
     Route::post('/matapilih/store', 'AdminController@matapilih_store')->name('admin.matapilih/store');
     Route::get('/matapilih/edit/{id}', 'AdminController@matapilih_edit')->name('admin.matapilih/edit');
     Route::post('/matapilih/update/{id}', 'AdminController@matapilih_update')->name('admin.matapilih/update');
-
+    
+    Route::get('/category/list', 'CategoryController@getCategories')->name('admin.category.list');
     Route::get('/category/create', 'CategoryController@category_create')->name('admin.category/create');
     Route::post('/category/store', 'CategoryController@category_store')->name('admin.category/store');
     Route::get('/category/edit/{id}', 'CategoryController@category_edit')->name('admin.category/edit');
