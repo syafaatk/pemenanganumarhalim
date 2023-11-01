@@ -123,12 +123,8 @@
         $.ajax({
             url: `https://indonesian-identification-card-ktp.p.rapidapi.com/api/v2/check?nik=${nik}`,
             headers: {
-                "X-RapidAPI-Key": "d086bd79b8mshab08176048284f6p14c2b6jsnd4e6fcb2260c",
-                //"X-RapidAPI-Key": "d086bd79b8mshab08176048284f6p14c2b6jsnd4e6fcb2260c",
-                // "X-RapidAPI-Key": "540541139cmshecfd4f767e3dc51p133e23jsn6b273bdb1615",
-                //"X-RapidAPI-Key": "4ffe7dbe87msh7cd86002f0083b6p142c04jsn2c2e55d1c550",
-                //"X-RapidAPI-Key": "6f3c23f051msh7222ed97b475a0dp1668b2jsnebcce03f9805",
-                "X-RapidAPI-Host": "indonesian-identification-card-ktp.p.rapidapi.com"
+                "X-RapidAPI-Key": "{{ config('app.API_Key')}}",
+                "X-RapidAPI-Host": "{{ config('app.API_Host')}}"
             },
             success: function(result){
                 if(result['success'] === false){

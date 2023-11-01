@@ -206,7 +206,7 @@ class AdminController extends Controller
     public function matapilih_edit($id)
     {
       $matapilih = Matapilih::findOrFail($id);
-      return view('admin.edit-matapilih')->with('matapilih',$matapilih)->with('koordinators', Koordinator::all());
+      return view('admin.edit-matapilih')->with('matapilih',$matapilih)->with('koordinators', Koordinator::all())->with('users',User::all());
     }
 
     // Matapilih Update
@@ -230,7 +230,7 @@ class AdminController extends Controller
       $matapilih->kecamatan = $request->kecamatan;
       $matapilih->kelurahan = $request->kelurahan;
       $matapilih->nohp = $request->nohp;
-      // $matapilih->user_id = $request->user_id;
+      $matapilih->user_id = $request->user_id;
       $matapilih->koordinator_id = $request->koordinator;
       // $matapilih->tags()->sync($request->tag);
       $matapilih->save();
