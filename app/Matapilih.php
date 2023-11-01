@@ -11,7 +11,7 @@ class Matapilih extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'nama', 'alamat' , 'nik', 'rt', 'rw', 'tps', 'kabupaten', 'kecamatan', 'kelurahan', 'nohp', 'user_id', 'koordinator_id'
+        'nama', 'alamat' , 'nik', 'rt', 'rw', 'tps', 'kabupaten', 'kecamatan', 'kelurahan', 'nohp', 'user_id', 'koordinator_id', 'is_manual'
     ];
 
     public function koordinator(){

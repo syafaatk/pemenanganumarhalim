@@ -160,6 +160,14 @@ class AdminController extends Controller
       return view('admin.create-matapilih', ['koordinator' => $data]);
     }
 
+    // Mata Pilih Create
+    public function matapilih_create_manual()
+    {
+      $data = Koordinator::latest()->get();
+      //dd($data);
+      return view('admin.create-matapilih-manual', ['koordinator' => $data , 'users' => User::latest()->get()]);
+    }
+
     // Mata Pilih Store
     public function matapilih_store(Request $request)
     {
@@ -194,6 +202,7 @@ class AdminController extends Controller
             'nohp' => $request->nohp,
             'user_id' => $request->user_id,
             'koordinator_id' => $request->koordinator,
+            'is_manual' => $request->is_manual
           ]);
           $matapilih->tags()->attach($request->tag);
           Session::flash('success','Mata Pilih Successfully Created.');
@@ -232,6 +241,7 @@ class AdminController extends Controller
       $matapilih->nohp = $request->nohp;
       $matapilih->user_id = $request->user_id;
       $matapilih->koordinator_id = $request->koordinator;
+      $matapilih->is_manual = $request->is_manual;
       // $matapilih->tags()->sync($request->tag);
       $matapilih->save();
       Session::flash('success','Matapilih has been updated!');

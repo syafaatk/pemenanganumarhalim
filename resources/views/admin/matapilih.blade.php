@@ -7,10 +7,17 @@
   <div id="layoutSidenav_content"><div class="container-fluid">
     <h1 class="mt-4">Mata Pilih</h1>
     <div class="row">
-        <div class="col-xl-3 col-md-6">
+        <div class="col-xl-2 col-md-4">
             <div class="card bg-primary text-white mb-4">
                 <a class="btn btn-primary" href="{{ route('admin.matapilih/create') }}">
                     Tambah Mata Pilih
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+            <div class="card bg-primary text-white mb-4">
+                <a class="btn btn-primary" href="{{ route('admin.matapilih/create-manual') }}">
+                    Tambah Mata Pilih Manual
                 </a>
             </div>
         </div>

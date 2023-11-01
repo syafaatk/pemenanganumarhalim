@@ -16,6 +16,7 @@
             <label for="nik">NIK</label>
             <div class="input-group">
                 <input name="nik" type="text" class="form-control" id="nik" placeholder="NIK..." value="{{ old('nik') }}" required>
+                <input name="is_manual" type="hidden" class="form-control" value="0" required>
                 <a href="#" class="btn btn-primary" onclick="CariNIK()">Cari DPT</a>
             </div>
           </div>
