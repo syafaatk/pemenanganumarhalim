@@ -145,6 +145,7 @@ class AdminController extends Controller
             ->leftJoin('koordinators','matapilihs.koordinator_id', '=', 'koordinators.id')
             ->leftJoin('users','matapilihs.user_id', '=', 'users.id')
             ->whereNull('matapilihs.deleted_at')
+            ->latest()
             ->get();
             return Datatables::of($data)
                 ->addIndexColumn()
