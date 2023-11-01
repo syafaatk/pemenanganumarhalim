@@ -174,16 +174,17 @@ class AdminController extends Controller
       // dd($request);
       $request->validate(
         [
-            'nik' => 'required'
+            'nik' => 'required|unique:matapilihs'
         ],
         [
-            'nik.required' => 'Unit tidak boleh kosong!'
+            'nik.required' => 'NIK tidak boleh kosong!',
+            'nik.unique' => 'NIK sudah didaftarkan!',
         ]
     );
       $this->validate($request,[
         'nama'=>'required|max:255',
         'alamat'=>'required',
-        'nik'=>'required|max:16|min:16',
+        'nik'=>'required|unique:matapilihs|max:16|min:16',
         'koordinator'=>'required'
       ]);
       $cek = Matapilih::where('nik', $request->nik)->first();

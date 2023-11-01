@@ -22,6 +22,41 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="nama">Nama</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="column1_search">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="nik">NIK</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="column2_search">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="koordinator">Koordinator</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="column10_search">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="koordinator">Admin</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="column11_search">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="card mb-4">
         <div class="card-header"><i class="fas fa-table mr-1"></i>All Posts</div>
         <div class="card-body">
@@ -98,6 +133,30 @@
                 pageSize: 'LEGAL'}
         ],
       });
+      $('#column1_search').on( 'keyup', function () {
+        table
+            .columns( 1 )
+            .search( this.value )
+            .draw();
+        });
+      $('#column2_search').on( 'keyup', function () {
+        table
+            .columns( 2 )
+            .search( this.value )
+            .draw();
+        });
+      $('#column10_search').on( 'keyup', function () {
+        table
+            .columns( 10 )
+            .search( this.value )
+            .draw();
+        });
+      $('#column11_search').on( 'keyup', function () {
+        table
+            .columns( 11 )
+            .search( this.value )
+            .draw();
+        });
     });
   </script>
 
