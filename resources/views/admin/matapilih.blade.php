@@ -104,7 +104,9 @@
                     <input class="form-control" type="text" id="column11_search">
                 </div>
             </div>
+            
         </div>
+        
     </div>
 
     <div class="card mb-4">
@@ -147,7 +149,7 @@
         serverSide: true,
         paging: true,
         pageLength: 10,
-        stateSave: true,
+        stateSave: false,
         lengthMenu: [ [10, 25, 50, 100, 200, 500, 1000 ], [10, 25, 50, 100, 200, 500, 1000, "All"] ],
         pagingType: "full_numbers",
         ajax: "{{ route('admin.matapilih.list') }}",
@@ -211,6 +213,9 @@
             }
         ],
       });
+    //   setInterval(function() {
+    //     table.ajax.reload();
+    //   }, 3000 );
       $('#column1_search').on( 'keyup', function () {
         table
             .columns( 1 )
