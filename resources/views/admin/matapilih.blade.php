@@ -142,6 +142,11 @@
       var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
+        paging: true,
+        pageLength: 10,
+        stateSave: true,
+        lengthMenu: [ [10, 25, 50, 100 -1], [10, 25, 50, 100, "All"] ],
+        pagingType: "full_numbers",
         ajax: "{{ route('admin.matapilih.list') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
@@ -169,7 +174,7 @@
                 }
             },
         ],
-        dom: 'Bfrtip',
+        dom: 'lBfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'print',
             {
