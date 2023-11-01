@@ -22,6 +22,10 @@
               <a href="">
                 @if($view2->keterangan == 4)
                     <div class="card-body text-white">KELUARGA</div>
+                @elseif($view2->keterangan == 3)
+                    <div class="card-body text-white">PARTAI</div>
+                @elseif($view2->keterangan == 2)
+                    <div class="card-body text-white">KKP</div>
                 @elseif($view2->keterangan == 1)
                     <div class="card-body text-white">USTADZ</div>
                 @else
