@@ -148,7 +148,7 @@
         paging: true,
         pageLength: 10,
         stateSave: true,
-        lengthMenu: [ [10, 25, 50, 100 -1], [10, 25, 50, 100, "All"] ],
+        lengthMenu: [ [10, 25, 50, 100, 200, 500, 1000 ], [10, 25, 50, 100, 200, 500, 1000, "All"] ],
         pagingType: "full_numbers",
         ajax: "{{ route('admin.matapilih.list') }}",
         columns: [
