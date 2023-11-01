@@ -160,6 +160,16 @@ class AdminController extends Controller
       //dd($data);
       return view('admin.create-matapilih', ['koordinator' => $data]);
     }
+    public function showNIK(Request $request)
+    {
+      $nik = Matapilih::all();
+      if($request->keyword != ''){
+        $nik = Matapilih::JOIN('users','users.id', '=', 'matapilihs.user_id')->where('nik','=',$request->keyword)->get();
+      }
+      return response()->json([
+        'nik' => $nik
+      ]);
+    }
 
     // Mata Pilih Create
     public function matapilih_create_manual()

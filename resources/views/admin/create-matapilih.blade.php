@@ -20,6 +20,9 @@
                 <a href="#" class="btn btn-primary" onclick="CariNIK()">Cari DPT</a>
             </div>
           </div>
+          <div class="form-group">
+          <small id="pesan"></small>
+          </div>
           <div class="row">
             <div class="col">
               <div class="form-group">
@@ -156,10 +159,50 @@
             
         })
     }
-    $(document).ready(function() {
+
+
+  var typingTimer;                //timer identifier
+  var doneTypingInterval = 2000;  //time in ms (4 seconds)
+
+  //on keyup, start the countdown
+  $('#nik').keyup(function(){
+      clearTimeout(typingTimer);
+      if ($('#nik').val()) {
+          typingTimer = setTimeout(search, doneTypingInterval);
+      }
+  });
+  function search(){
+       var keyword = $('#nik').val();
+       $.post('{{ route("admin.niksearch") }}',
+        {
+           _token: $('meta[name="csrf-token"]').attr('content'),
+           keyword:keyword
+         },
+         function(data){
+          table_post_row(data);
+            console.log(data);
+         });
+  }
+  // table row with ajax
+  function table_post_row(res){
+  let htmlView = '';
+  if(res.nik.length <= 0){
+      htmlView+= `
+         <tr>
+            <td colspan="4">No data</td>
+        </tr>`;
+  }
+  for(let i = 0; i < res.nik.length; i++){
+      htmlView += `
+             <td>Terdapat `+ (i+1) +` Data </td>
+             <td>`+res.nik[i].nama+` diinput oleh `+res.nik[i].name+` tanggal `+res.nik[i].created_at+`</td>`;
+  }
+       $('#pesan').html(htmlView);
+  }
+  $(document).ready(function() {
         $('.single').select2();
     });
-</script>
+  </script>
 </main>
 
 @endsection

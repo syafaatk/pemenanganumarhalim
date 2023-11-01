@@ -20,6 +20,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
   Route::middleware(['checkUserAccessSuperAdmin'])->group(function () {
     // Rute yang hanya dapat diakses oleh super admin
     // Tempatkan rute Anda di sini
+    Route::post('/matapilih/niksearch','AdminController@showNIK')->name('admin.niksearch');
     Route::get('/matapilih/list', 'AdminController@getMatapilih')->name('admin.matapilih.list');
     Route::get('/matapilih/create', 'AdminController@matapilih_create')->name('admin.matapilih/create');
     Route::get('/matapilih/create-manual', 'AdminController@matapilih_create_manual')->name('admin.matapilih/create-manual');
@@ -50,6 +51,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
   });
 
   Route::middleware(['checkUserAccessAdmin'])->group(function () {
+    Route::post('/matapilih/niksearch','AdminController@showNIK')->name('admin.niksearch');
     Route::get('/matapilih/list', 'AdminController@getMatapilih')->name('admin.matapilih.list');
     Route::get('/matapilih/create', 'AdminController@matapilih_create')->name('admin.matapilih/create');
     Route::post('/matapilih/store', 'AdminController@matapilih_store')->name('admin.matapilih/store');
