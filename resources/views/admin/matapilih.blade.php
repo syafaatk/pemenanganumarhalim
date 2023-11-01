@@ -180,14 +180,35 @@
         ],
         dom: 'lBfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'print',
+            'copy', 'csv', 'excel',
+            {
+                extend: 'print',
+                customize: function ( win ) {
+                    $(win.document.body)
+                        .css( 'font-size', '10pt' )
+                        .prepend(
+                            '<img src="" style="position:absolute; top:0; left:0;" />'
+                        );
+ 
+                    $(win.document.body).find( 'table' )
+                        .addClass( 'compact' )
+                        .css( 'font-size', 'inherit' );
+                },
+                exportOptions: {
+                    columns: [ 0,1,2,3,4,5,6,7,8,9,10,11,12 ]
+                }
+            },
             {
                 extend: 'pdfHtml5',
                 exportOptions: {
                 columns: [ 0, 1, 2]
                 },
                 orientation: 'landscape',
-                pageSize: 'LEGAL'}
+                pageSize: 'LEGAL',
+                exportOptions: {
+                    columns: [ 0,1,2,3,4,5,6,7,8,9,10,11,12 ]
+                }
+            }
         ],
       });
       $('#column1_search').on( 'keyup', function () {
