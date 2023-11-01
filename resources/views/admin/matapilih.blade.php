@@ -65,6 +65,30 @@
         </div>
         <div class="col">
             <div class="form-group">
+                <label for="kabkota">Kabupaten Kota</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="column6_search">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="kec">Kecamatan</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="column7_search">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="kel">Kelurahan</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="column8_search">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
                 <label for="koordinator">Koordinator</label>
                 <div class="input-group">
                     <input class="form-control" type="text" id="column10_search">
@@ -184,6 +208,24 @@
       $('#column5_search').on( 'keyup', function () {
         table
             .columns( 5 )
+            .search( this.value )
+            .draw();
+        });
+        $('#column6_search').on( 'keyup', function () {
+        table
+            .columns( 6 )
+            .search( this.value )
+            .draw();
+        });
+      $('#column7_search').on( 'keyup', function () {
+        table
+            .columns( 7 )
+            .search( this.value )
+            .draw();
+        });
+      $('#column8_search').on( 'keyup', function () {
+        table
+            .columns( 8 )
             .search( this.value )
             .draw();
         });
