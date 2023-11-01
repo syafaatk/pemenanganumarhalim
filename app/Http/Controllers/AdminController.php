@@ -174,11 +174,13 @@ class AdminController extends Controller
       // dd($request);
       $request->validate(
         [
-            'nik' => 'required|unique:matapilihs'
+            'nik' => 'required|unique:matapilihs|max:16|min:16'
         ],
         [
             'nik.required' => 'NIK tidak boleh kosong!',
             'nik.unique' => 'NIK sudah didaftarkan!',
+            'nik.max' => 'NIK tidak lebih dari 16 digit angka!',
+            'nik.min' => 'NIK tidak kurang dari 16 digit angka!',
         ]
     );
       $this->validate($request,[
