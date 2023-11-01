@@ -18,9 +18,14 @@ class KoordinatorController extends Controller
         ->whereNull('matapilihs.deleted_at')
         ->groupBy("koordinators.id")  
         ->get();
-    //dd($viewer);
+    $viewer2 = Koordinator::selectRaw('koordinators.keterangan, COUNT(*) as total')
+        ->leftJoin('matapilihs','koordinators.id', '=', 'matapilihs.koordinator_id')
+        ->groupBy("koordinators.keterangan")  
+        ->get();
+    //dd($viewer2);
     return view('admin.koordinator')->with('koordinators', Koordinator::latest()->get())
-                                    ->with('viewer',$viewer);
+                                    ->with('viewer',$viewer)
+                                    ->with('viewer2',$viewer2);
   }
 
   // Koodrinator Create

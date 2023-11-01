@@ -15,6 +15,24 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        @foreach($viewer2 as $view2)
+        <div class="col-xl-1 col-md-2">
+          <div class="card bg-danger text-white mb-4">
+              <a href="">
+                @if($view2->keterangan == 4)
+                    <div class="card-body text-white">KELUARGA</div>
+                @elseif($view2->keterangan == 1)
+                    <div class="card-body text-white">USTADZ</div>
+                @else
+                    <div class="card-body text-white">TANPA KET</div>
+                @endif
+              </a>
+              <div class="card-header">{{ $view2->total }}</div>
+          </div>
+        </div>
+        @endforeach
+      </div>
     <div class="card mb-4">
         <div class="card-header"><i class="fas fa-table mr-1"></i>Koordinator</div>
         <div class="card-body">
