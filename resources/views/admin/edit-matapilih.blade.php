@@ -17,7 +17,6 @@
           <label for="admin">Admin</label>
           <input type="text" disabled class="form-control" value="{{ $matapilih->user->name }}">
           <input name="user_id" type="hidden" class="form-control" id="admin" value="{{ Auth::user()->id }}" required>
-          <input name="is_manual" type="hidden" class="form-control" value="{{ $matapilih->is_manual }}" required>
         </div>
         @endif
         @if(Auth::user()->super_admin == "1")
@@ -39,6 +38,7 @@
             <div class="input-group">
                 <input disabled type="text" class="form-control" id="nik" placeholder="NIK..." value="{{ $matapilih->nik }}">
                 <input name="nik" type="hidden" class="form-control" id="nik" placeholder="NIK..." value="{{ $matapilih->nik }}" required>
+                <input name="is_manual" type="hidden" class="form-control" value="{{ $matapilih->is_manual }}" required>
             </div>
           </div>
           <div class="row">
