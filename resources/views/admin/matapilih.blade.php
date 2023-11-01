@@ -14,6 +14,7 @@
                 </a>
             </div>
         </div>
+        @if(Auth::user()->super_admin == "1")
         <div class="col-xl-2 col-md-4">
             <div class="card bg-primary text-white mb-4">
                 <a class="btn btn-primary" href="{{ route('admin.matapilih/create-manual') }}">
@@ -21,6 +22,7 @@
                 </a>
             </div>
         </div>
+        @endif
     </div>
     <div class="row">
         <div class="col">
@@ -124,6 +126,7 @@
                             <th>No HP</th>
                             <th>Koordinator</th>
                             <th>Admin</th>
+                            <th>Tanggal</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -161,6 +164,7 @@
             {data: 'nohp', name: 'nohp'},
             {data: 'nama_koordinator', name: 'nama_koordinator'},
             {data: 'nama_user', name: 'nama_user'},
+            {data: 'created_at', name: 'created_at'},
             {
                 data: 'id',
                 'render': function (data, type, full, meta) {
