@@ -41,6 +41,30 @@
         </div>
         <div class="col">
             <div class="form-group">
+                <label for="rt">RT</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="column3_search">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="rw">RW</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="column4_search">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="tps">TPS</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="column5_search">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
                 <label for="koordinator">Koordinator</label>
                 <div class="input-group">
                     <input class="form-control" type="text" id="column10_search">
@@ -142,6 +166,24 @@
       $('#column2_search').on( 'keyup', function () {
         table
             .columns( 2 )
+            .search( this.value )
+            .draw();
+        });
+      $('#column3_search').on( 'keyup', function () {
+        table
+            .columns( 3 )
+            .search( this.value )
+            .draw();
+        });
+      $('#column4_search').on( 'keyup', function () {
+        table
+            .columns( 4 )
+            .search( this.value )
+            .draw();
+        });
+      $('#column5_search').on( 'keyup', function () {
+        table
+            .columns( 5 )
             .search( this.value )
             .draw();
         });
