@@ -49,6 +49,7 @@
                             <th>Keterangan</th>
                             <th>No HP</th>
                             <th>Total</th>
+                            <th>Whatsapp</th>
                             @if(Auth::user()->super_admin == "1")
                             <th style="width:100px; text-align:center;">Edit</th>
                             <th style="width:100px; text-align:center;">Delete</th>
@@ -77,6 +78,13 @@
                               @foreach($viewer as $view)
                                 @if ($view->id == $koordinator->id)
                                     {{ $view->total }}
+                                @endif
+                              @endforeach
+                              </td>
+                              <td>
+                              @foreach($viewer as $view)
+                                @if ($view->id == $koordinator->id)
+                                <a class="btn btn-success" href="https://api.whatsapp.com/send?phone={{ $koordinator->nohp }}&text=Halo%20{{ $koordinator->name }}%2C%20Total%20matapilih%20anda%20{{ $view->total }}">WA</a>
                                 @endif
                               @endforeach
                               </td>
