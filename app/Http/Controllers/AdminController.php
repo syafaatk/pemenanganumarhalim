@@ -121,22 +121,46 @@ class AdminController extends Controller
 
     public function dashboard_new()
     {
-      $viewer = Matapilih::selectRaw('users.name, COUNT(*) as total')
-        ->JOIN('users','users.id', '=', 'matapilihs.user_id')
-        ->groupBy("users.name")  
-        ->get();
+      $matapilih = Matapilih::latest()->get();
       $viewer2 = Matapilih::selectRaw('users.name, COUNT(*) as total')
         ->JOIN('users','users.id', '=', 'matapilihs.user_id')
         ->groupBy("users.name")
         ->pluck('total')
         ->toJson();
-      $aktifitas = Matapilih::selectRaw('DATE(created_at) as tanggal , COUNT(CASE WHEN user_id = 1 THEN 1 ELSE NULL END) AS aktifitas_almira, COUNT(CASE WHEN user_id = 2 THEN 1 ELSE NULL END) AS aktifitas_nina, COUNT(CASE WHEN user_id = 3 THEN 1 ELSE NULL END) AS aktifitas_vina, COUNT(CASE WHEN user_id = 6 THEN 1 ELSE NULL END) AS aktifitas_indah') 
-        ->groupBy('tanggal')
-        ->get();
-      return view('admin.dashboard-new')->with('aktifitas',$aktifitas )
+      $palembang = Category::selectRaw('categories.name, COUNT(matapilihs.kecamatan) as total')
+        ->leftJoin('matapilihs','categories.name', '=', 'matapilihs.kecamatan')
+        ->whereNull('matapilihs.deleted_at')
+        ->where('categories.kabkota','=','PALEMBANG')
+        ->groupBy("categories.name");  
+      $banyuasin = Category::selectRaw('categories.name, COUNT(matapilihs.kecamatan) as total')
+        ->leftJoin('matapilihs','categories.name', '=', 'matapilihs.kecamatan')
+        ->whereNull('matapilihs.deleted_at')
+        ->where('categories.kabkota','=','BANYUASIN')
+        ->groupBy("categories.name");
+      //dd($aktifitas_tanggal);
+      $palembang_sum = Matapilih::where('kabupaten','=','KOTA PALEMBANG')->count();
+      $banyuasin_sum = Matapilih::where('kabupaten','=','BANYUASIN')->count();
+      $musibanyuasin_sum = Matapilih::where('kabupaten','=','MUSI BANYUASIN')->count();
+      $lubuklinggau_sum = Matapilih::where('kabupaten','=','KOTA LUBUK LINGGAU')->count();
+
+      $palembang_total = $palembang->pluck('total')->toJson();
+      $palembang_nama = $palembang->pluck('categories.name')->toJson();
+      $banyuasin_total = $banyuasin->pluck('total')->toJson();
+      $banyuasin_nama = $banyuasin->pluck('categories.name')->toJson();
+      //dd($palembang_sum);
+      //dd($kecamatan_nama);
+      //dd($viewer2);
+      return view('admin.dashboard-new')->with('matapilihs',$matapilih )
                                     ->with('category', Category::all())
                                     ->with('koordinators', Koordinator::all())
-                                    ->with('viewer',$viewer);
+                                    ->with('palembang_total',$palembang_total)
+                                    ->with('palembang_nama',$palembang_nama)
+                                    ->with('banyuasin_total',$banyuasin_total)
+                                    ->with('banyuasin_nama',$banyuasin_nama)
+                                    ->with('banyuasin_sum',$banyuasin_sum)
+                                    ->with('musibanyuasin_sum',$musibanyuasin_sum)
+                                    ->with('palembang_sum',$palembang_sum)
+                                    ->with('lubuklinggau_sum',$lubuklinggau_sum);
                                     // ->with('viewer',json_encode($viewer_1,JSON_NUMERIC_CHECK));
     }
 
