@@ -119,6 +119,27 @@ class AdminController extends Controller
                                     // ->with('viewer',json_encode($viewer_1,JSON_NUMERIC_CHECK));
     }
 
+    public function dashboard_new()
+    {
+      $viewer = Matapilih::selectRaw('users.name, COUNT(*) as total')
+        ->JOIN('users','users.id', '=', 'matapilihs.user_id')
+        ->groupBy("users.name")  
+        ->get();
+      $viewer2 = Matapilih::selectRaw('users.name, COUNT(*) as total')
+        ->JOIN('users','users.id', '=', 'matapilihs.user_id')
+        ->groupBy("users.name")
+        ->pluck('total')
+        ->toJson();
+      $aktifitas = Matapilih::selectRaw('DATE(created_at) as tanggal , COUNT(CASE WHEN user_id = 1 THEN 1 ELSE NULL END) AS aktifitas_almira, COUNT(CASE WHEN user_id = 2 THEN 1 ELSE NULL END) AS aktifitas_nina, COUNT(CASE WHEN user_id = 3 THEN 1 ELSE NULL END) AS aktifitas_vina, COUNT(CASE WHEN user_id = 6 THEN 1 ELSE NULL END) AS aktifitas_indah') 
+        ->groupBy('tanggal')
+        ->get();
+      return view('admin.dashboard-new')->with('aktifitas',$aktifitas )
+                                    ->with('category', Category::all())
+                                    ->with('koordinators', Koordinator::all())
+                                    ->with('viewer',$viewer);
+                                    // ->with('viewer',json_encode($viewer_1,JSON_NUMERIC_CHECK));
+    }
+
     // =============== Mata Pilih =============== //
     // Dashboard
     public function matapilih2()
