@@ -16,7 +16,7 @@
         <div class="form-group">
           <label for="admin">Admin</label>
           <input type="text" disabled class="form-control" value="{{ $matapilih->user->name }}">
-          <input name="user_id" type="hidden" class="form-control" id="admin" value="{{ $matapilih->user->id }}" required>
+          <input name="user_id" type="hidden" class="form-control" id="admin" value="{{ $matapilih->user_id }}" required>
         </div>
         @endif
         @if(Auth::user()->super_admin == "1")
