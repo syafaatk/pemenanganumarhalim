@@ -40,6 +40,7 @@
                         <th>Tanggal</th>
                         <th>Almira</th>
                         <th>Nina</th>
+                        <th>Indah</th>
                         <th>Vina</th>
                     </tr>
                 </thead>
@@ -49,6 +50,7 @@
                             <td>{{ $akt->tanggal }}</td>
                             <td>{{ $akt->aktifitas_almira }}</td>
                             <td>{{ $akt->aktifitas_nina }}</td>
+                            <td>{{ $akt->aktifitas_indah }}</td>
                             <td>{{ $akt->aktifitas_vina }}</td>
                         </tr>
                     @endforeach
