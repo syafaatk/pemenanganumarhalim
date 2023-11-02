@@ -122,6 +122,24 @@
         </div>
       </div>
     </div>
+    <div class="row">
+        <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Line chart</h4>
+                <canvas id="lineChart" style="height: 250px;"></canvas>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Bar chart</h4>
+                <canvas id="barChart" style="height: 230px;"></canvas>
+            </div>
+            </div>
+        </div>
+    </div>
     <!-- image card row starts here -->
     <div class="row">
       <div class="col-sm-4 stretch-card grid-margin">
