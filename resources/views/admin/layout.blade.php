@@ -34,7 +34,7 @@
         <!-- Navbar-->
         <ul class="navbar-nav ml-auto ml-md-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ route('admin.dashboard') }}">Dashboard</a>
+            <a class="nav-link" aria-current="page" href="{{ route('admin.dashboard') }}">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{{ route('admin.dashboard-admin') }}">Aktifitas</a>
@@ -119,6 +119,14 @@
 </footer>
 </div>
 </div>
+<script>
+  document.querySelectorAll(".nav-link").forEach((link) => {
+      if (link.href === window.location.href) {
+          link.classList.add("active");
+          link.setAttribute("aria-current", "page");
+      }
+  });
+</script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="{{ asset('admin/assets/demo/chart-pie-demo.js')}} "></script>
 {{-- <script src="{{ asset('admin/assets/demo/chart-bar-demo.js')}} "></script> --}}
