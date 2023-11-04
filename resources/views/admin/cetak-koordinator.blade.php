@@ -10,7 +10,7 @@
         }
     </style>
 </head>
-<body style="margin: 0mm 25mm 25mm 0mm;">
+<body style="margin: 15mm 5mm 25mm 5mm;">
 <table border="0" align="center" width="1000">
     <tr>
         <td><img src="{{ asset('upload\post\1588539656.png') }}" width="60" height="70"></td>
