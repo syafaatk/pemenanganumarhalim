@@ -4,7 +4,7 @@
     <title>Koordinator</title>
 </head>
 <body>
-<table border="0" align="center" width="1200">
+<table border="0" align="center" width="1000">
     <tr>
         <td><img src="{{ asset('upload\post\1588539656.png') }}" width="60" height="70"></td>
         <td>
@@ -36,7 +36,7 @@
 </table>
 
 @foreach($kelurahan as $kel)
-<table align="center" width="1200">
+<table align="center" width="1000">
     <tr>
         <td width="200">Kecamatan / Kelurahan</td>
         <td width="20">:</td>
@@ -45,7 +45,7 @@
         </td>
     </tr>
 </table>
-<table align="center" border="1" width="1200">
+<table align="center" border="1" width="1000">
     <thead>
         <th width="2%">No</th>
         <th width="20%">Nama</th>
