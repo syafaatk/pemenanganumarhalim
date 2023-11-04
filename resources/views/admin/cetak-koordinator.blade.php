@@ -57,7 +57,6 @@
         <th width="2%">No</th>
         <th width="20%">Nama</th>
         <th width="15%">NIK</th>
-        <th width="15%">Alamat</th>
         <th width="5%">RT</th>
         <th width="5%">RW</th>
         <th width="5%">TPS</th>
@@ -71,7 +70,6 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $d->nama }}</td>
             <td>{{ $d->nik }}</td>
-            <td>{{ $d->alamat }}</td>
             <td>{{ $d->rt }}</td>
             <td>{{ $d->rw }}</td>
             <td>{{ $d->tps }}</td>
