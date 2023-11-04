@@ -2,8 +2,15 @@
 <html lang="en">
 <head>
     <title>Koordinator</title>
+    <style>
+        @media print {
+            @page {
+                size: legal;
+            }
+        }
+    </style>
 </head>
-<body>
+<body style="margin: 0mm 25mm 25mm 0mm;">
 <table border="0" align="center" width="1000">
     <tr>
         <td><img src="{{ asset('upload\post\1588539656.png') }}" width="60" height="70"></td>
