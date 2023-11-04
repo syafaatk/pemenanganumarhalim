@@ -82,7 +82,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
   Route::get('/category', 'CategoryController@category')->name('admin.category');
   //koordinator
   Route::get('/koordinator', 'KoordinatorController@koordinator')->name('admin.koordinator');
-  Route::get('/koordinator/cetak/{id}', 'KoordinatorController@cetak')->name('admin.koordinator/cetak');
+  Route::post('/koordinator/cetak/{id}', 'KoordinatorController@cetak')->name('admin.koordinator/cetak');
   //tag
   Route::get('/tag', 'AdminController@tag')->name('admin.tag');
   Route::get('/tag/create', 'AdminController@tag_create')->name('admin.tag/create');

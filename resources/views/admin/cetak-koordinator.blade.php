@@ -27,9 +27,11 @@
     <tr>
         <td colspan="3"><hr></td>
     </tr>
+    <tr>
+        <td colspan="3">{{ date('j F Y', strtotime($start)) }} - {{ date('j F Y', strtotime($end)) }}</td>
+    </tr>
 </table>
 <br>
-
 @foreach($kelurahan as $kel)
 <table align="center" width="1000">
     <tr>
