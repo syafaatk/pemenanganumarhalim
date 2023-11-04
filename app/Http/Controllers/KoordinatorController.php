@@ -28,7 +28,7 @@ class KoordinatorController extends Controller
                                     ->with('viewer2',$viewer2);
   }
 
-  public function cetak(Request $request, $id)
+  public function cetaktanggal(Request $request, $id)
   {
     $kelurahan= Matapilih::distinct()->where('koordinator_id','=',$id)
                                      ->whereDate('created_at', '>=', $request->startdate)
@@ -39,10 +39,28 @@ class KoordinatorController extends Controller
     //dd($kelurahan);
     $start=$request->startdate;
     $end=$request->enddate;
+    //dd($start);
     return view('admin.cetak-koordinator')->with('kelurahan', $kelurahan)
                                           ->with('data', $data)
                                           ->with('start', $start)
                                           ->with('end', $end)
+                                          ->with('koordinator', Koordinator::findOrFail($id));
+  }
+
+  public function cetaksemua($id)
+  {
+    $kelurahan= Matapilih::distinct()->where('koordinator_id','=',$id)
+                                     ->orderBy('kelurahan', 'DESC')
+                                     ->get(['kecamatan','kelurahan']);
+    $data= Matapilih::where('koordinator_id','=',$id)->orderBy('kelurahan', 'DESC')->get();
+    //dd($kelurahan);
+    $start=Matapilih::selectRaw('DATE_FORMAT(created_at,"%Y-%m-%d") as created_date')->where('koordinator_id','=',$id)->orderBy('created_at','ASC')->get()->first();
+    $end=Matapilih::selectRaw('DATE_FORMAT(created_at,"%Y-%m-%d") as created_date')->where('koordinator_id','=',$id)->orderBy('created_at','DESC')->get('created_at')->first();
+    //dd($start->created_date);
+    return view('admin.cetak-koordinator')->with('kelurahan', $kelurahan)
+                                          ->with('data', $data)
+                                          ->with('start', $start->created_date)
+                                          ->with('end', $end->created_date)
                                           ->with('koordinator', Koordinator::findOrFail($id));
   }
 
