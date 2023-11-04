@@ -30,8 +30,8 @@ class KoordinatorController extends Controller
 
   public function cetak(Request $request, $id)
   {
-    $kelurahan= Matapilih::distinct()->where('koordinator_id','=',$id)->get(['kecamatan','kelurahan']);
-    $data= Matapilih::where('koordinator_id','=',$id)->get();
+    $kelurahan= Matapilih::distinct()->where('koordinator_id','=',$id)->orderBy('kelurahan', 'DESC')->get(['kecamatan','kelurahan']);
+    $data= Matapilih::where('koordinator_id','=',$id)->orderBy('kelurahan', 'DESC')->get();
     //dd($kelurahan);
     return view('admin.cetak-koordinator')->with('kelurahan', $kelurahan)
                                           ->with('data', $data)
