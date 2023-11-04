@@ -22,7 +22,7 @@
     </tr>
 </table>
 <br>
-<table align="center" width="1200">
+<table align="center" width="1000">
     <tr>
         <td width="200">Koordinator</td>
         <td width="20">:</td>
