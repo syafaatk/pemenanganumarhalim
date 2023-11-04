@@ -10031,7 +10031,13 @@ body {
   transition: opacity 0.3s ease-in-out;
 }
 
-@media (min-width: 992px) {
+@media (max-width: 480px) {
+  .tes{
+    display: none;
+  }
+}
+
+@media (min-width: 2000px) {
   #layoutSidenav #layoutSidenav_nav {
     transform: translateX(0);
   }
@@ -10065,7 +10071,7 @@ body {
   overflow-y: auto;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
-  /* padding-left: 225px; */
+  padding-left: 225px;
   top: 56px;
 }
 

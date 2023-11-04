@@ -30,22 +30,22 @@
       </script>
   @endif
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="{{ url('/home') }}">Admin CRUD</a><!-- Navbar Search-->
+        <a class="navbar-brand" href="{{ url('/home') }}">Admin CRUD</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button><!-- Navbar Search-->
         <!-- Navbar-->
         <ul class="navbar-nav ml-auto ml-md-0">
-          <li class="nav-item">
+          <li class="nav-item tes">
             <a class="nav-link" aria-current="page" href="{{ route('admin.dashboard') }}">Dashboard</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item tes">
             <a class="nav-link" aria-current="page" href="{{ route('admin.dashboard-admin') }}">Aktifitas</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item tes">
             <a class="nav-link" href="{{ route('admin.matapilih') }}">Mata Pilih</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item tes">
             <a class="nav-link" href="{{ route('admin.koordinator') }}">Koordinator</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item tes">
             <a class="nav-link" href="{{ route('admin.category') }}">Kecamatan</a>
           </li>
             <li class="nav-item dropdown">
@@ -68,7 +68,7 @@
         </ul>
     </nav>
     <div id="layoutSidenav">
-        {{-- <div id="layoutSidenav_nav">
+        <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
@@ -77,6 +77,7 @@
                             Dashboard
                         </a>
                         <hr>
+                        <a class="nav-link" aria-current="page" href="{{ route('admin.dashboard-admin') }}">Aktifitas</a>
                         <a class="nav-link" href="{{ route('admin.matapilih') }}">
                           <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Mata Pilih
@@ -90,17 +91,19 @@
                           <div class="sb-nav-link-icon"><i class="fa fa-bookmark" aria-hidden="true"></i></div>
                             Koordinator
                         </a>
+                        @if(Auth::user()->super_admin == "1")
                         <a class="nav-link" href="{{ route('admin.matapilih/trashed') }}">
                           <div class="sb-nav-link-icon"><i class="fa fa-bookmark" aria-hidden="true"></i></div>
-                            Trashed
+                            Mata pilih Terhapus
                         </a>
+                        @endif
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">{{ Auth::user()->name}}</div>
                 </div>
             </nav>
-        </div> --}}
+        </div>
 
 @yield('content')
 
