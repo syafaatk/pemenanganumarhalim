@@ -125,7 +125,7 @@
             </div>    
             <div class="form-group">
                 <label for="enddate">End Date</label>
-                <input type="date" name="enddate">
+                <input type="date" class="form-control" name="enddate">
             </div>
         </div>
         <div class="modal-footer">
