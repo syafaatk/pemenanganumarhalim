@@ -50,6 +50,7 @@
                             <th>No HP</th>
                             <th>Total</th>
                             <th>Whatsapp</th>
+                            <th>Print</th>
                             @if(Auth::user()->super_admin == "1")
                             <th style="width:100px; text-align:center;">Edit</th>
                             <th style="width:100px; text-align:center;">Delete</th>
@@ -81,13 +82,18 @@
                                 @endif
                               @endforeach
                               </td>
-                              <td>
+                              
                               @foreach($viewer as $view)
                                 @if ($view->id == $koordinator->id)
-                                <a class="btn btn-success" href="https://api.whatsapp.com/send?phone={{ $koordinator->nohp }}&text=Halo%20{{ $koordinator->name }}%2C%20Total%20matapilih%20anda%20{{ $view->total }}">WA</a>
+                                <td>
+                                    <a class="btn btn-success" href="https://api.whatsapp.com/send?phone={{ $koordinator->nohp }}&text=Halo%20{{ $koordinator->name }}%2C%20Total%20matapilih%20anda%20{{ $view->total }}"><i class="fab fa-whatsapp"></i></a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{ route('admin.koordinator/cetak',['id' => $koordinator->id]) }}"><i class="fa fa-print"></i></a>
+                                </td>
                                 @endif
                               @endforeach
-                              </td>
+                              
                               @if(Auth::user()->super_admin == "1")
                               <td class="md-0"><a href="{{ route('admin.koordinator/edit',['id' => $koordinator->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
                               <td class=""><a href="{{ route('admin.koordinator/delete',['id' => $koordinator->id]) }}"><i class="far fa-trash-alt"></i></a> </td>

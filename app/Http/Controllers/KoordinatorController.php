@@ -28,6 +28,16 @@ class KoordinatorController extends Controller
                                     ->with('viewer2',$viewer2);
   }
 
+  public function cetak(Request $request, $id)
+  {
+    $kelurahan= Matapilih::distinct()->where('koordinator_id','=',$id)->get(['kecamatan','kelurahan']);
+    $data= Matapilih::where('koordinator_id','=',$id)->get();
+    //dd($kelurahan);
+    return view('admin.cetak-koordinator')->with('kelurahan', $kelurahan)
+                                          ->with('data', $data)
+                                          ->with('koordinator', Koordinator::findOrFail($id));
+  }
+
   // Koodrinator Create
   public function koordinator_create()
   {

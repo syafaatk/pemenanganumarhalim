@@ -73,6 +73,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
   });
 
   Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
+  Route::get('/cetak', 'AdminController@cetak')->name('admin.cetak');
   Route::get('/dashboard-admin', 'AdminController@dashboard_admin')->name('admin.dashboard-admin');
   Route::get('/dashboard-new', 'AdminController@dashboard_new')->name('admin.dashboard-new');
   //matapilih
@@ -81,6 +82,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
   Route::get('/category', 'CategoryController@category')->name('admin.category');
   //koordinator
   Route::get('/koordinator', 'KoordinatorController@koordinator')->name('admin.koordinator');
+  Route::get('/koordinator/cetak/{id}', 'KoordinatorController@cetak')->name('admin.koordinator/cetak');
   //tag
   Route::get('/tag', 'AdminController@tag')->name('admin.tag');
   Route::get('/tag/create', 'AdminController@tag_create')->name('admin.tag/create');

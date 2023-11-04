@@ -183,6 +183,11 @@ class AdminController extends Controller
       return view('admin.matapilih')->with('koordinators', Koordinator::all());
     }
 
+    public function cetak()
+    {
+      return view('admin.cetak');
+    }
+
     public function getMatapilih(Request $request)
     {
         if ($request->ajax()) {
