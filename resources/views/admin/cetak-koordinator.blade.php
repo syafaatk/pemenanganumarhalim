@@ -29,6 +29,8 @@
     </tr>
 </table>
 <br>
+
+@foreach($kelurahan as $kel)
 <table align="center" width="1000">
     <tr>
         <td width="200">Koordinator</td>
@@ -40,10 +42,6 @@
         <td>:</td>
         <td colspan="3">{{ $koordinator->nohp }}</td>
     </tr>
-</table>
-
-@foreach($kelurahan as $kel)
-<table align="center" width="1000">
     <tr>
         <td width="200">Kecamatan / Kelurahan</td>
         <td width="20">:</td>
@@ -62,7 +60,7 @@
         <th width="5%">RW</th>
         <th width="5%">TPS</th>
         <th width="10%">Nomor HP</th>
-        <th width="10%">Tempat TPS</th>
+        <th width="10%">Paraf</th>
     </thead>
     <tbody>
         @foreach($data as $d)
