@@ -111,7 +111,7 @@ class AdminController extends Controller
         ->toJson();
       $aktifitas = Matapilih::selectRaw('DATE(created_at) as tanggal , COUNT(CASE WHEN user_id = 1 THEN 1 ELSE NULL END) AS aktifitas_almira, COUNT(CASE WHEN user_id = 2 THEN 1 ELSE NULL END) AS aktifitas_nina, COUNT(CASE WHEN user_id = 3 THEN 1 ELSE NULL END) AS aktifitas_vina, COUNT(CASE WHEN user_id = 6 THEN 1 ELSE NULL END) AS aktifitas_indah') 
         ->groupBy('tanggal')
-        ->sortBy('tanggal')
+        ->orderBy('tanggal')
         ->get();
       return view('admin.dashboard-admin')->with('aktifitas',$aktifitas )
                                     ->with('category', Category::all())
