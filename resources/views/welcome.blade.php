@@ -109,7 +109,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
     
 </head>
 <body>
-    <div class="flex-center position-ref full-height">
+    <div class="flex-center position-ref">
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
@@ -227,7 +227,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
                                     <div class="elementor-element elementor-element-7ea8a32 elementor-hidden-desktop elementor-hidden-tablet elementor-widget elementor-widget-video" data-id="7ea8a32" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/youtu.be\/gsqWKOmcpy4&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
                                         <div class="elementor-widget-container">
                                             <div class="elementor-wrapper elementor-open-inline">
-                                                <iframe class="elementor-video" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Anda Seorang Caleg? Luangkan waktu 3 menit melihat video ini" width="640" height="360" src="https://www.youtube.com/embed/gsqWKOmcpy4?controls=1&amp;rel=0&amp;playsinline=0&amp;modestbranding=0&amp;autoplay=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Ftemplate2.kamisatu.co.id&amp;widgetid=3" id="widget4"></iframe>		</div>
+                                                <iframe class="elementor-video" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Anda Seorang Caleg? Luangkan waktu 3 menit melihat video ini" width="640" height="360" src="{{ url('/upload/post/cea7ef3b.mp4') }}" id="widget4"></iframe>		</div>
                                             </div>
                                         </div>
                                     </div>

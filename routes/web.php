@@ -3,9 +3,6 @@
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/home', function () {
-  return view('welcome');
-});
 
 Auth::routes();
 
