@@ -89,35 +89,7 @@
                                     <a class="btn btn-success" href="https://api.whatsapp.com/send?phone={{ $koordinator->nohp }}&text=Halo%20{{ $koordinator->name }}%2C%20Total%20matapilih%20anda%20{{ $view->total }}"><i class="fab fa-whatsapp"></i></a>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#tanggalModal{{$koordinator->id}}"><i class="fa fa-print"></i> Pilih Tanggal</button>
-                                    <div class="modal fade" id="tanggalModal{{$koordinator->id}}" tabindex="-1" role="dialog" aria-labelledby="tanggalModalLabel">
-                                        <div class="modal-dialog" role="document">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h4 class="modal-title" id="tanggalModalLabel">Tanggal</h4>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            </div>
-                                            <form method="post" action="{{ route('admin.koordinator/cetaktanggal',['id' => $koordinator->id]) }}">
-                                              {{csrf_field()}}
-                                              <div class="modal-body">
-                                                  <div class="form-group">
-                                                      <label for="startdate">Start Date</label>
-                                                      <input type="date" class="form-control" name="startdate">
-                                                  </div>    
-                                                  <div class="form-group">
-                                                      <label for="enddate">End Date</label>
-                                                      <input type="date" class="form-control" name="enddate">
-                                                  </div>
-                                              </div>
-                                              <div class="modal-footer">
-                                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                  <button type="submit" class="btn btn-primary">Submit</button>
-                                              </div>
-                                            </form>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <a class="btn btn-primary" href="{{ route('admin.koordinator/cetaksemua',['id' => $koordinator->id]) }}"><i class="fa fa-print"></i> Semua</a>
+                                    <a class="btn btn-primary" href="{{ route('admin.koordinator/cetaksemua',['id' => $koordinator->id]) }}"><i class="fa fa-print"></i></a>
                                 </td>
                                 @endif
                               @endforeach
@@ -135,7 +107,34 @@
     </div>
 </div>
 </main>
-
+{{-- <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#tanggalModal{{$koordinator->id}}"><i class="fa fa-print"></i> Pilih Tanggal</button>
+<div class="modal fade" id="tanggalModal{{$koordinator->id}}" tabindex="-1" role="dialog" aria-labelledby="tanggalModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="tanggalModalLabel">Tanggal</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <form method="post" action="{{ route('admin.koordinator/cetaktanggal',['id' => $koordinator->id]) }}">
+            {{csrf_field()}}
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="startdate">Start Date</label>
+                    <input type="date" class="form-control" name="startdate">
+                </div>    
+                <div class="form-group">
+                    <label for="enddate">End Date</label>
+                    <input type="date" class="form-control" name="enddate">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div> --}}
 
 
 

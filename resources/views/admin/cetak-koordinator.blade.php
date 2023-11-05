@@ -32,7 +32,6 @@
     </tr>
 </table>
 <br>
-@foreach($kelurahan as $kel)
 <table align="center" width="1000">
     <tr>
         <td width="200">Koordinator</td>
@@ -44,6 +43,9 @@
         <td>:</td>
         <td colspan="3">{{ $koordinator->nohp }}</td>
     </tr>
+</table>
+@foreach($kelurahan as $kel)
+<table align="center" width="1000">
     <tr>
         <td width="200">Kecamatan / Kelurahan</td>
         <td width="20">:</td>
