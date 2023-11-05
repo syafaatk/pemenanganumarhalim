@@ -34,9 +34,10 @@
     <div class="card-header"><i class="fas fa-table mr-1"></i>All Aktifitas</div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTableaktifitas" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th width="5%">No</th>
                         <th>Tanggal</th>
                         <th>Almira</th>
                         <th>Nina</th>
@@ -47,6 +48,7 @@
                 <tbody>
                     @foreach($aktifitas as $akt)
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $akt->tanggal }}</td>
                             <td>{{ $akt->aktifitas_almira }}</td>
                             <td>{{ $akt->aktifitas_nina }}</td>
@@ -60,4 +62,18 @@
     </div>
 </div>
 </main>
+<script>
+  $(document).ready(function() {
+  $('#dataTableaktifitas').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+          'copy', 'csv', 'excel', 'print',
+          {
+            extend: 'pdfHtml5',
+            orientation: 'landscape',
+            pageSize: 'LEGAL'}
+      ]
+  } );
+} );
+</script>
 @endsection
