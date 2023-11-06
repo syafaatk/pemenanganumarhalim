@@ -23,7 +23,7 @@
                 @if($view2->keterangan == 4)
                     <div class="card-body text-white">KELUARGA</div>
                 @elseif($view2->keterangan == 3)
-                    <div class="card-body text-white">PARTAI</div>
+                    <div class="card-body text-white">SIMPATISAN</div>
                 @elseif($view2->keterangan == 2)
                     <div class="card-body text-white">KKP</div>
                 @elseif($view2->keterangan == 1)
@@ -68,7 +68,7 @@
                                 @elseif($koordinator->keterangan == 2)
                                     <td>KKP</td>
                                 @elseif($koordinator->keterangan == 3)
-                                    <td>PARTAI</td>
+                                    <td>SIMPATISAN</td>
                                 @elseif($koordinator->keterangan == 4)
                                     <td>KELUARGA</td>
                                 @else

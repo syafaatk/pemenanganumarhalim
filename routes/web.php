@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect('/login');
 });
 
 Auth::routes();
@@ -41,6 +41,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/koordinator/edit/{id}', 'KoordinatorController@koordinator_edit')->name('admin.koordinator/edit');
     Route::post('/koordinator/update/{id}', 'KoordinatorController@koordinator_update')->name('admin.koordinator/update');
     Route::get('/koordinator/delete/{id}', 'KoordinatorController@koordinator_delete')->name('admin.koordinator/delete');
+
+    Route::get('/user/create', 'UserController@user_create')->name('admin.user/create');
+    Route::post('/user/store', 'UserController@user_store')->name('admin.user/store');
+    Route::get('/user/edit/{id}', 'UserController@user_edit')->name('admin.user/edit');
+    Route::post('/user/update/{id}', 'UserController@user_update')->name('admin.user/update');
+    Route::get('/user/delete/{id}', 'UserController@user_delete')->name('admin.user/delete');
 
     Route::get('/tag/delete/{id}', 'AdminController@tag_delete')->name('admin.tag/delete');
     Route::get('/change-password', 'AdminController@changePassword')->name('admin.changepassword');

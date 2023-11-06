@@ -23,28 +23,28 @@
               @if ($koordinator->keterangan == 1)
                   <option value="1" selected>USTADZ</option>
                   <option value="2">KKP</option>
-                  <option value="3">Partai</option>
+                  <option value="3">Simpatisan</option>
                   <option value="4">Keluarga</option>
               @elseif($koordinator->keterangan == 2)
                   <option value="1">USTADZ</option>
                   <option value="2" selected>KKP</option>
-                  <option value="3">Partai</option>
+                  <option value="3">Simpatisan</option>
                   <option value="4">Keluarga</option>
               @elseif($koordinator->keterangan == 3)
                   <option value="1">USTADZ</option>
                   <option value="2">KKP</option>
-                  <option value="3" selected>Partai</option>
+                  <option value="3" selected>Simpatisan</option>
                   <option value="4">Keluarga</option>
               @elseif($koordinator->keterangan == 4)
                   <option value="1">USTADZ</option>
                   <option value="2">KKP</option>
-                  <option value="3">Partai</option>
+                  <option value="3">Simpatisan</option>
                   <option value="4" selected>Keluarga</option>
               @else
                   <option value=""></option>
                   <option value="1">USTADZ</option>
                   <option value="2">KKP</option>
-                  <option value="3">Partai</option>
+                  <option value="3">Simpatisan</option>
                   <option value="4">Keluarga</option>
               @endif
             </select>

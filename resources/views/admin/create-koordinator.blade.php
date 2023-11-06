@@ -23,7 +23,7 @@
               <option value=""></option>
               <option value="1">USTADZ</option>
               <option value="2">KKP</option>
-              <option value="3">Partai</option>
+              <option value="3">SIMPATISAN</option>
               <option value="4">Keluarga</option>
             </select>
           </div>
