@@ -42,7 +42,8 @@
                         <th>Almira</th>
                         <th>Nina</th>
                         <th>Indah</th>
-                        <th>Vina</th>
+                        <th>Yoki</th>
+                        <th>Budi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,7 +54,8 @@
                             <td>{{ $akt->aktifitas_almira }}</td>
                             <td>{{ $akt->aktifitas_nina }}</td>
                             <td>{{ $akt->aktifitas_indah }}</td>
-                            <td>{{ $akt->aktifitas_vina }}</td>
+                            <td>{{ $akt->aktifitas_yoki }}</td>
+                            <td>{{ $akt->aktifitas_budi }}</td>
                         </tr>
                     @endforeach
                 </tbody>

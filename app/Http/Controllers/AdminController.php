@@ -109,7 +109,7 @@ class AdminController extends Controller
         ->groupBy("users.name")
         ->pluck('total')
         ->toJson();
-      $aktifitas = Matapilih::selectRaw('DATE(created_at) as tanggal , COUNT(CASE WHEN user_id = 1 THEN 1 ELSE NULL END) AS aktifitas_almira, COUNT(CASE WHEN user_id = 2 THEN 1 ELSE NULL END) AS aktifitas_nina, COUNT(CASE WHEN user_id = 3 THEN 1 ELSE NULL END) AS aktifitas_vina, COUNT(CASE WHEN user_id = 6 THEN 1 ELSE NULL END) AS aktifitas_indah') 
+      $aktifitas = Matapilih::selectRaw('DATE(created_at) as tanggal , COUNT(CASE WHEN user_id = 1 THEN 1 ELSE NULL END) AS aktifitas_almira, COUNT(CASE WHEN user_id = 2 THEN 1 ELSE NULL END) AS aktifitas_nina, COUNT(CASE WHEN user_id = 3 THEN 1 ELSE NULL END) AS aktifitas_vina, COUNT(CASE WHEN user_id = 6 THEN 1 ELSE NULL END) AS aktifitas_indah, COUNT(CASE WHEN user_id = 8 THEN 1 ELSE NULL END) AS aktifitas_yoki, COUNT(CASE WHEN user_id = 9 THEN 1 ELSE NULL END) AS aktifitas_budi') 
         ->groupBy('tanggal')
         ->orderBy('created_at', 'DESC')->get();
       return view('admin.dashboard-admin')->with('aktifitas',$aktifitas )
