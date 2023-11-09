@@ -57,6 +57,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::post('/matapilih/niksearch','AdminController@showNIK')->name('admin.niksearch');
     Route::get('/matapilih/list', 'AdminController@getMatapilih')->name('admin.matapilih.list');
     Route::get('/matapilih/create', 'AdminController@matapilih_create')->name('admin.matapilih/create');
+    Route::get('/matapilih/create-manual', 'AdminController@matapilih_create_manual')->name('admin.matapilih/create-manual');
     Route::post('/matapilih/store', 'AdminController@matapilih_store')->name('admin.matapilih/store');
     Route::get('/matapilih/edit/{id}', 'AdminController@matapilih_edit')->name('admin.matapilih/edit');
     Route::post('/matapilih/update/{id}', 'AdminController@matapilih_update')->name('admin.matapilih/update');

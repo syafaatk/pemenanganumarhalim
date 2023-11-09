@@ -14,7 +14,7 @@
                 </a>
             </div>
         </div>
-        @if(Auth::user()->super_admin == "1")
+        {{-- @if(Auth::user()->super_admin == "1") --}}
         <div class="col-xl-2 col-md-4">
             <div class="card bg-primary text-white mb-4">
                 <a class="btn btn-primary" href="{{ route('admin.matapilih/create-manual') }}">
@@ -22,7 +22,7 @@
                 </a>
             </div>
         </div>
-        @endif
+        {{-- @endif --}}
     </div>
     <div class="row">
         <div class="col">
