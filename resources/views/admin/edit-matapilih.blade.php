@@ -12,13 +12,6 @@
       @include('layouts/errors')
       <form action="{{ route('admin.matapilih/update',['id' => $matapilih->id]) }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
-        @if(Auth::user()->super_admin == "0")
-        <div class="form-group">
-          <label for="admin">Admin</label>
-          <input type="text" disabled class="form-control" value="{{ $matapilih->user->name }}">
-          <input name="user_id" type="hidden" class="form-control" id="admin" value="{{ $matapilih->user_id }}" required>
-        </div>
-        @endif
         @if(Auth::user()->super_admin == "1")
         <div class="form-group">
           <label for="admin">Select Admin</label>
@@ -32,31 +25,60 @@
             @endforeach
           </select>
         </div>
+        <div class="form-group">
+          <label for="nik">NIK</label>
+          <div class="input-group">
+              <input name="nik" type="text" class="form-control" id="nik" placeholder="NIK..." value="{{ $matapilih->nik }}" required>
+              <input name="is_manual" type="hidden" class="form-control" value="{{ $matapilih->is_manual }}" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="nama">Nama</label>
+              <input name="nama" type="text" class="form-control" id="nama" placeholder="Nama..." value="{{ $matapilih->nama }}" required>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="alamat">Alamat</label>
+              <input name="alamat" type="text" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}" required>
+            </div>
+          </div>
+        </div>
         @endif
-          <div class="form-group">
-            <label for="nik">NIK</label>
-            <div class="input-group">
-                <input disabled type="text" class="form-control" id="nik" placeholder="NIK..." value="{{ $matapilih->nik }}">
-                <input name="nik" type="hidden" class="form-control" id="nik" placeholder="NIK..." value="{{ $matapilih->nik }}" required>
-                <input name="is_manual" type="hidden" class="form-control" value="{{ $matapilih->is_manual }}" required>
+        @if(Auth::user()->super_admin == "0")
+        <div class="form-group">
+          <label for="admin">Admin</label>
+          <input type="text" disabled class="form-control" value="{{ $matapilih->user->name }}">
+          <input name="user_id" type="hidden" class="form-control" id="admin" value="{{ $matapilih->user_id }}" required>
+        </div>
+        <div class="form-group">
+          <label for="nik">NIK</label>
+          <div class="input-group">
+              <input disabled type="text" class="form-control" id="nik" placeholder="NIK..." value="{{ $matapilih->nik }}">
+              <input name="nik" type="hidden" class="form-control" id="nik" placeholder="NIK..." value="{{ $matapilih->nik }}" required>
+              <input name="is_manual" type="hidden" class="form-control" value="{{ $matapilih->is_manual }}" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="nama">Nama</label>
+              <input disabled type="text" class="form-control" id="nama" placeholder="Nama..." value="{{ $matapilih->nama }}">
+              <input name="nama" type="hidden" class="form-control" id="nama" placeholder="Nama..." value="{{ $matapilih->nama }}" required>
             </div>
           </div>
-          <div class="row">
-            <div class="col">
-              <div class="form-group">
-                <label for="nama">Nama</label>
-                <input disabled type="text" class="form-control" id="nama" placeholder="Nama..." value="{{ $matapilih->nama }}">
-                <input name="nama" type="hidden" class="form-control" id="nama" placeholder="Nama..." value="{{ $matapilih->nama }}" required>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label for="alamat">Alamat</label>
-                {{-- <input disabled type="text" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}"> --}}
-                <input name="alamat" type="text" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}" required>
-              </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="alamat">Alamat</label>
+              <input disabled type="text" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}">
+              <input name="alamat" type="hidden" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}" required>
             </div>
           </div>
+        </div>
+        @endif
+          
             
           <div class="row">
             <div class="col">
@@ -72,6 +94,23 @@
               </div>
             </div>
           </div>
+          @if(Auth::user()->super_admin == "1")
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="tps">TPS</label>
+                <input name="tps" type="text" class="form-control" id="tps" placeholder="tps..." value="{{ $matapilih->tps }}" required>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="kabupaten">Kabupaten</label>
+                <input name="kabupaten" type="text" class="form-control" id="kabupaten" placeholder="kabupaten..." value="{{ $matapilih->kabupaten }}" required>
+              </div>
+            </div>
+          </div>
+          @endif
+          @if(Auth::user()->super_admin == "0")
           <div class="row">
             <div class="col">
               <div class="form-group">
@@ -88,6 +127,7 @@
               </div>
             </div>
           </div>
+          @endif
           <div class="row">
             <div class="col">
               <div class="form-group">
