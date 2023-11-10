@@ -110,7 +110,7 @@
               @endforeach
             </select>
           </div>
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="admin">Select Admin</label>
             <select name="user_id" class="form-control single" required>
                 <option value=""></option>
@@ -118,6 +118,11 @@
                 <option value="{{ $user->id }}">{{ $user->name }}</option>
               @endforeach
             </select>
+          </div> --}}
+          <div class="form-group">
+            <label for="nik">admin</label>
+            <input type="text" disabled class="form-control" value="{{ Auth::user()->name }}" required>
+            <input name="user_id" type="hidden" class="form-control" id="admin" value="{{ Auth::user()->id }}" required>
           </div>
           <button value="submit" class="btn btn-success">Simpan</button>
         </form>
