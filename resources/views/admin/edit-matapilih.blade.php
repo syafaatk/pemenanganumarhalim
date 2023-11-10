@@ -52,8 +52,8 @@
             <div class="col">
               <div class="form-group">
                 <label for="alamat">Alamat</label>
-                <input disabled type="text" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}">
-                <input name="alamat" type="hidden" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}" required>
+                {{-- <input disabled type="text" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}"> --}}
+                <input name="alamat" type="text" class="form-control" id="alamat" placeholder="Alamat..." value="{{ $matapilih->alamat }}" required>
               </div>
             </div>
           </div>

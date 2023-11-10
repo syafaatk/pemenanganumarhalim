@@ -226,10 +226,10 @@ class AdminController extends Controller
     {
       $data = Koordinator::latest()->get();
       $kabupaten = Matapilih::select('kabupaten')->distinct()->get();
-      $kecamatan = Matapilih::select('kecamatan')->distinct()->get();
-      $kelurahan = Matapilih::select('kelurahan')->distinct()->get();
+      $kecamatan = Matapilih::select('kabupaten','kecamatan')->distinct('kabupaten','kecamatan')->get();
+      $kelurahan = Matapilih::select('kecamatan','kelurahan')->distinct('kecamatan','kelurahan')->get();
 
-      //dd($kabupaten);
+      dd($kelurahan);
       return view('admin.create-matapilih-manual', ['koordinator' => $data , 'users' => User::latest()->get(), 'kabupaten' => $kabupaten, 'kecamatan' => $kecamatan, 'kelurahan' => $kelurahan]);
     }
 
