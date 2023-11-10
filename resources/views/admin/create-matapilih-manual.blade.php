@@ -59,22 +59,41 @@
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="kabupaten">Kabupaten</label>
-                <input name="kabupaten" type="text" class="form-control" id="kabupaten" placeholder="kabupaten..." value="{{ old('kabupaten') }}" required>
+                <label for="kabupaten1">Kabupaten</label>
+                <select name="kabupaten" class="form-control select2 kabupaten" id="kabupaten1" required>
+                  <option></option>
+                  @foreach($kabupaten as $k)
+                    <option value="{{ $k->kabupaten }}">{{ $k->kabupaten }}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <label for="kecamatan">Kecamatan</label>
-                <input name="kecamatan" type="text" class="form-control" id="kecamatan" placeholder="kecamatan..." value="{{ old('kecamatan') }}" required>
+                <label for="kecamatan1">Kecamatan</label>
+                <div class="input-group">
+                  <select name="kecamatan" class="form-control select2 kecamatan" id="kecamatan1" required>
+                    <option></option>
+                    @foreach($kecamatan as $k)
+                      <option value="{{ $k->kecamatan }}">{{ $k->kecamatan }}</option>
+                    @endforeach
+                  </select>
+                </div>
               </div>
             </div>
             <div class="col">
               <div class="form-group">
                 <label for="kelurahan">Kelurahan</label>
-                <input name="kelurahan" type="text" class="form-control" id="kelurahan" placeholder="kelurahan..." value="{{ old('kelurahan') }}" required>
+                <div class="input-group">
+                  <select name="kelurahan" class="form-control select2 kelurahan" id="kelurahan" required>
+                    <option></option>
+                    @foreach($kelurahan as $k)
+                      <option value="{{ $k->kelurahan }}">{{ $k->kelurahan }}</option>
+                    @endforeach
+                  </select>
+                </div>
               </div>
             </div>
           </div>
@@ -83,8 +102,8 @@
             <input name="nohp" type="text" class="form-control" id="nohp" placeholder="nohp..." value="{{ old('nohp') }}">
           </div>
           <div class="form-group">
-            <label for="exampleFormControlSelect1">Select Koordinator</label>
-            <select name="koordinator" class="form-control single" id="exampleFormControlSelect1" required>
+            <label for="exampleFormControlSelectkoor">Select Koordinator</label>
+            <select name="koordinator" class="form-control single" id="exampleFormControlSelectkoor" required>
               <option></option>
               @foreach($koordinator as $k)
                 <option value="{{ $k->id }}">{{ $k->name }}</option>
@@ -93,7 +112,7 @@
           </div>
           <div class="form-group">
             <label for="admin">Select Admin</label>
-            <select name="user_id" class="form-control single" id="exampleFormControlSelect1">
+            <select name="user_id" class="form-control single" required>
                 <option value=""></option>
               @foreach($users as $user)
                 <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -149,5 +168,18 @@
   }
        $('#pesan').html(htmlView);
   }
+  
+  $(document).ready(function() {
+        $('.single').select2();
+        $('.kabupaten').select2({
+          tags: true
+        });
+        $('.kecamatan').select2({
+          tags: true
+        });
+        $('.kelurahan').select2({
+          tags: true
+        });
+    });
 </script>
 @endsection

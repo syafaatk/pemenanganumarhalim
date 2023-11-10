@@ -225,8 +225,12 @@ class AdminController extends Controller
     public function matapilih_create_manual()
     {
       $data = Koordinator::latest()->get();
-      //dd($data);
-      return view('admin.create-matapilih-manual', ['koordinator' => $data , 'users' => User::latest()->get()]);
+      $kabupaten = Matapilih::select('kabupaten')->distinct()->get();
+      $kecamatan = Matapilih::select('kecamatan')->distinct()->get();
+      $kelurahan = Matapilih::select('kelurahan')->distinct()->get();
+
+      //dd($kabupaten);
+      return view('admin.create-matapilih-manual', ['koordinator' => $data , 'users' => User::latest()->get(), 'kabupaten' => $kabupaten, 'kecamatan' => $kecamatan, 'kelurahan' => $kelurahan]);
     }
 
     // Mata Pilih Store
