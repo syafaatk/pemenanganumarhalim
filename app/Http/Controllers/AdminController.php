@@ -213,8 +213,9 @@ class AdminController extends Controller
     public function showNIK(Request $request)
     {
       $nik = Matapilih::all();
+      
       if($request->keyword != ''){
-        $nik = Matapilih::JOIN('users','users.id', '=', 'matapilihs.user_id')->where('nik','=',$request->keyword)->get();
+        $nik = Matapilih::selectRaw('matapilihs.*,users.name as nama_user,koordinators.name as nama_koordinator')->JOIN('users','users.id', '=', 'matapilihs.user_id')->JOIN('koordinators','matapilihs.koordinator_id', '=', 'koordinators.id')->where('nik','=',$request->keyword)->get();
       }
       return response()->json([
         'nik' => $nik

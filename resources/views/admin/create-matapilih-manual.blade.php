@@ -169,7 +169,7 @@
   for(let i = 0; i < res.nik.length; i++){
       htmlView += `
              <td>Terdapat `+ (i+1) +` Data </td>
-             <td>`+res.nik[i].nama+` diinput oleh `+res.nik[i].name+` tanggal `+res.nik[i].created_at+`</td>`;
+             <td>`+res.nik[i].nama+` koordinator oleh `+res.nik[i].nama_koordinator+` dan diinput oleh `+res.nik[i].nama_user+` tanggal `+res.nik[i].created_at+`</td>`;
   }
        $('#pesan').html(htmlView);
   }
