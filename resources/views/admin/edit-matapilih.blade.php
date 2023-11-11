@@ -12,10 +12,10 @@
       @include('layouts/errors')
       <form action="{{ route('admin.matapilih/update',['id' => $matapilih->id]) }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
-        @if(Auth::user()->super_admin == "1")
+        @if(Auth::user()->super_admin == "2")
         <div class="form-group">
           <label for="admin">Select Admin</label>
-          <select name="user_id" class="form-control single" id="exampleFormControlSelect1">
+          <select name="user_id" class="form-control single" id="admin">
             @foreach($users as $user)
               <option value="{{ $user->id }}"
                 @if($user->id == $matapilih->user_id)
@@ -24,6 +24,13 @@
               >{{ $user->name }}</option>
             @endforeach
           </select>
+        </div>
+        @endif
+        @if(Auth::user()->super_admin == "1")
+        <div class="form-group">
+          <label for="admin">Admin</label>
+          <input type="text" disabled class="form-control" value="{{ $matapilih->user->name }}">
+          <input name="user_id" type="hidden" class="form-control" id="admin" value="{{ $matapilih->user_id }}" required>
         </div>
         <div class="form-group">
           <label for="nik">NIK</label>
