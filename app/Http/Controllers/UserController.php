@@ -12,16 +12,16 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('user.index', compact('users'));
+        return view('admin.user', compact('users'));
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function user_create()
     {
-        return view('user.create');
+        return view('admin.create-user');
     }
     /**
      * Store a newly created resource in storage.
@@ -29,7 +29,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function user_store(Request $request)
     {
         User::create($request->all());
         $msg = "New User Created successful! ";
@@ -41,7 +41,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function user_show($id)
     {
         $user = User::find($id);
         return view('user.show', compact('user'));
@@ -52,7 +52,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function user_edit($id)
     {
         $user = User::find($id);
         return view('user.edit', compact('user'));
@@ -64,7 +64,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function user_update(Request $request, $id)
     {
         $update = [
             "name"=>$request->name,
