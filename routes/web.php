@@ -44,7 +44,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
 
     Route::get('/user/create', 'UserController@user_create')->name('admin.user/create');
     Route::post('/user/store', 'UserController@user_store')->name('admin.user/store');
-    Route::get('/user/edit/{id}', 'UserController@user_edit')->name('admin.user/edit');
+    Route::get('/user/active/{id}', 'UserController@active')->name('admin.user/active');
     Route::post('/user/update/{id}', 'UserController@user_update')->name('admin.user/update');
     Route::get('/user/delete/{id}', 'UserController@user_delete')->name('admin.user/delete');
 
@@ -89,6 +89,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
   Route::post('/koordinator/cetaktanggal/{id}', 'KoordinatorController@cetaktanggal')->name('admin.koordinator/cetaktanggal');
   Route::get('/koordinator/cetaksemua/{id}', 'KoordinatorController@cetaksemua')->name('admin.koordinator/cetaksemua');
   //tag
+  Route::get('/user', 'UserController@index')->name('admin.user');
   Route::get('/tag', 'AdminController@tag')->name('admin.tag');
   Route::get('/tag/create', 'AdminController@tag_create')->name('admin.tag/create');
   Route::post('/tag/store', 'AdminController@tag_store')->name('admin.tag/store');

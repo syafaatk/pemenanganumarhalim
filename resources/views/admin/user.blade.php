@@ -3,8 +3,17 @@
 @section('title','User')
 
 @section('content')
-
-  <div id="layoutSidenav_content"><div class="container-fluid">
+<div id="layoutSidenav_content"><div class="container-fluid">
+    <h1 class="mt-4">User</h1>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <a class="btn btn-primary" href="{{ route('admin.user/create') }}">
+                    Tambah User
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="card mb-4">
         <div class="card-header"><i class="fas fa-table mr-1"></i>User</div>
         <div class="card-body">
@@ -14,35 +23,32 @@
                         <tr>
                             <th>No</th>
                             <th>Name</th>
-                            <th>Created_at</th>
-                            <th>content</th>
-                            <th>Restore</th>
-                            <th>Delete</th>
+                            <th>Email</th>
+                            <th>Is Superuser</th>
+                            <th>Is Active</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                      @foreach($posts as $post)
+                      @foreach($users as $user)
                           <tr>
-                              <td style="width:150px;
-                                        height:100px;
-                                        padding:3px;">
-                                        <img src="{{ asset($post->image) }}" alt="" style="width:100%; height:100%;">
-                              </td>
-                              <td>{{ $post->title }}</td>
-                              <td>
-                                @if(empty($post->category))
-                                  {{ $post->category_id }}
-                                @else
-                                  @foreach($categories as $category)
-                                    @if($post->category_id === $category->id)
-                                      {{ $category->name }}
-                                    @endif
-                                  @endforeach
-                                @endif
-                              </td>
-                            <td><a href="#">View Post</a> </td>
-                            <td class=""><a class="btn btn-success" href="{{ route('admin.post/restore',['id' => $post->id]) }}">Restore</a> </td>
-                            <td class=""><a class="btn btn-danger" href="{{ route('admin.post/forcedelete',['id' => $post->id]) }}">Delete</a> </td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            @if($user->super_admin == 1)
+                                <td class=""><a class="btn btn-success" style="color: #fff;">Yes</a></td>
+                            @else
+                                <td class=""><a class="btn btn-danger" style="color: #fff;">No</a></td>
+                            @endif
+                            @if($user->is_active == 1)
+                                <td class=""><a class="btn btn-success" style="color: #fff;">Yes</a></td>
+                            @else
+                                <td class=""><a class="btn btn-danger" style="color: #fff;">No</a></td>
+                            @endif
+                            <td class="">
+                                <a class="btn btn-success" href="{{ route('admin.user/active',['id' => $user->id]) }}">Change Status</a>
+                                {{-- <a class="btn btn-danger" href="{{ route('admin.user/delete',['id' => $user->id]) }}">Delete</a> --}}
+                            </td>
                           </tr>
                         @endforeach
                     </tbody>
@@ -50,18 +56,6 @@
             </div>
         </div>
     </div>
-
-    {{-- <div class="row">
-        <div class="col-xl-6">
-            <div class="card mb-4">
-            </div>
-        </div>
-        <div class="col-xl-6">
-            <div class="card mb-4">
-            </div>
-        </div>
-    </div> --}}
-
 </div>
 </main>
 

@@ -49,6 +49,9 @@
           <li class="nav-item tes">
             <a class="nav-link" href="{{ route('admin.category') }}">Kecamatan</a>
           </li>
+          <li class="nav-item tes">
+            <a class="nav-link" href="{{ route('admin.user') }}">User</a>
+          </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw" style="margin-right:10px;"></i>{{ Auth::user()->name}}</a>
                 <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="userDropdown">
@@ -78,7 +81,10 @@
                             Dashboard
                         </a>
                         <hr>
-                        <a class="nav-link" aria-current="page" href="{{ route('admin.dashboard-admin') }}">Aktifitas</a>
+                        <a class="nav-link" aria-current="page" href="{{ route('admin.dashboard-admin') }}">
+                          <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                          Aktifitas
+                        </a>
                         <a class="nav-link" href="{{ route('admin.matapilih') }}">
                           <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Mata Pilih
@@ -96,6 +102,10 @@
                         <a class="nav-link" href="{{ route('admin.matapilih/trashed') }}">
                           <div class="sb-nav-link-icon"><i class="fa fa-bookmark" aria-hidden="true"></i></div>
                             Mata pilih Terhapus
+                        </a>
+                        <a class="nav-link" href="{{ route('admin.user') }}">
+                          <div class="sb-nav-link-icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                            User
                         </a>
                         @endif
                     </div>

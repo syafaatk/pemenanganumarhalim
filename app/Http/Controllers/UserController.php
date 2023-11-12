@@ -2,6 +2,9 @@
 namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 class UserController extends Controller
 {
     /**
@@ -29,11 +32,25 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:2', 'confirmed'],
+        ]);
+    }
+
     public function user_store(Request $request)
     {
-        User::create($request->all());
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
         $msg = "New User Created successful! ";
-        return redirect('user')->with('msg', $msg);
+        return redirect('admin/user')->with('msg', $msg);
     }
     /**
      * Display the specified resource.
@@ -85,6 +102,23 @@ class UserController extends Controller
     {
         User::destroy($id);
         $msg = "User Deleted successful! ";
-        return redirect('user')->with('msg', $msg);
+        return redirect('admin/user')->with('msg', $msg);
+    }
+
+    public function active($id)
+    {
+        $user = User::find($id);
+        if($user->is_active==1):
+            $update = [
+                "is_active"=>0,
+            ];
+        else:
+            $update = [
+                "is_active"=>1,
+            ];
+        endif;
+        User::where('id', $id)->update($update);
+        $msg = "Change Status Successful! ";
+        return redirect('admin/user')->with('msg', $msg);
     }
 } 
