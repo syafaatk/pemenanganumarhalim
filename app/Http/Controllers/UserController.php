@@ -118,7 +118,40 @@ class UserController extends Controller
             ];
         endif;
         User::where('id', $id)->update($update);
-        $msg = "Change Status Successful! ";
+        $msg = "Change Active Successful! ";
+        return redirect('admin/user')->with('msg', $msg);
+    }
+    public function admin($id)
+    {
+        $user = User::find($id);
+        if($user->admin==1):
+            $update = [
+                "admin"=>0,
+            ];
+        else:
+            $update = [
+                "admin"=>1,
+            ];
+        endif;
+        User::where('id', $id)->update($update);
+        $msg = "Change Admin Successful! ";
+        return redirect('admin/user')->with('msg', $msg);
+    }
+
+    public function superadmin($id)
+    {
+        $user = User::find($id);
+        if($user->super_admin==1):
+            $update = [
+                "super_admin"=>0,
+            ];
+        else:
+            $update = [
+                "super_admin"=>1,
+            ];
+        endif;
+        User::where('id', $id)->update($update);
+        $msg = "Change Superadmin Successful! ";
         return redirect('admin/user')->with('msg', $msg);
     }
 } 

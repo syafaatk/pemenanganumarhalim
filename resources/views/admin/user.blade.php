@@ -24,6 +24,7 @@
                             <th>No</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Is Admin</th>
                             <th>Is Superuser</th>
                             <th>Is Active</th>
                             <th>Action</th>
@@ -35,6 +36,11 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            @if($user->admin == 1)
+                                <td class=""><a class="btn btn-success" style="color: #fff;">Yes</a></td>
+                            @else
+                                <td class=""><a class="btn btn-danger" style="color: #fff;">No</a></td>
+                            @endif
                             @if($user->super_admin == 1)
                                 <td class=""><a class="btn btn-success" style="color: #fff;">Yes</a></td>
                             @else
@@ -46,7 +52,9 @@
                                 <td class=""><a class="btn btn-danger" style="color: #fff;">No</a></td>
                             @endif
                             <td class="">
-                                <a class="btn btn-success" href="{{ route('admin.user/active',['id' => $user->id]) }}">Change Status</a>
+                                <a class="btn btn-success" href="{{ route('admin.user/superadmin',['id' => $user->id]) }}">Change Superadmin</a>
+                                <a class="btn btn-success" href="{{ route('admin.user/admin',['id' => $user->id]) }}">Change Admin</a>
+                                <a class="btn btn-success" href="{{ route('admin.user/active',['id' => $user->id]) }}">Change Active</a>
                                 {{-- <a class="btn btn-danger" href="{{ route('admin.user/delete',['id' => $user->id]) }}">Delete</a> --}}
                             </td>
                           </tr>

@@ -45,6 +45,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/user/create', 'UserController@user_create')->name('admin.user/create');
     Route::post('/user/store', 'UserController@user_store')->name('admin.user/store');
     Route::get('/user/active/{id}', 'UserController@active')->name('admin.user/active');
+    Route::get('/user/admin/{id}', 'UserController@admin')->name('admin.user/admin');
+    Route::get('/user/superadmin/{id}', 'UserController@superadmin')->name('admin.user/superadmin');
     Route::post('/user/update/{id}', 'UserController@user_update')->name('admin.user/update');
     Route::get('/user/delete/{id}', 'UserController@user_delete')->name('admin.user/delete');
 
