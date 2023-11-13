@@ -16,7 +16,7 @@
         <td><img src="{{ asset('upload\post\1588539656.png') }}" width="60" height="70"></td>
         <td>
             <center>
-                <font size="5">LAPORAN DATA KELURAHAN</font><br>
+                <font size="5">LAPORAN DATA KELURAHAN {{ $nama_kel }}</font><br>
                 <font size="4"><b>TIM PEMENANGAN KMS. H.M UMAR HALIM</b></font><br>
                 <font size="2"><i>CALEG DPR RI DAPIL SUMSEL 1</i></font><br>
                 <font size="2"><i>(2024-2029)</i></font><br>
@@ -35,10 +35,10 @@
 @foreach($kelurahan as $kelu)
 <table align="center" width="1000">
     <tr>
-        <td width="200">Kecamatan / Kelurahan</td>
+        <td width="200">Kelurahan</td>
         <td width="20">:</td>
         <td colspan="3">
-            {{ $kelu->kecamatan }} / {{ $kelu->kelurahan }}
+            {{ $kelu->kelurahan }}
         </td>
     </tr>
 </table>
@@ -48,14 +48,14 @@
         <th width="5%">Total</th>
     </thead>
     <tbody>
-        @foreach($kel as $d)
+    @foreach($kel as $d)
         @if($kelu->kelurahan == $d->kelurahan)
         <tr>
             <td>{{ $d->tps }}</td>
             <td>{{ $d->total }}</td>
         </tr>
         @endif
-        @endforeach
+    @endforeach
     </tbody>
 </table>
 <br>

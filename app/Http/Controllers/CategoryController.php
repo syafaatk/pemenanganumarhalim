@@ -123,6 +123,7 @@ class CategoryController extends Controller
     //dd($start->created_date);
     return view('admin.cetak-kelurahan')->with('kelurahan', $kelurahan)
                                           ->with('data', $data)
-                                          ->with('kel',$kel);
+                                          ->with('kel',$kel)
+                                          ->with('nama_kel',$category_name);
   }
 }
