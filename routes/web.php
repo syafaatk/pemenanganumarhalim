@@ -86,6 +86,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
   Route::get('/matapilih', 'AdminController@matapilih')->name('admin.matapilih');
   //category
   Route::get('/category', 'CategoryController@category')->name('admin.category');
+  Route::get('/category/cetaksemua/{id}', 'CategoryController@cetaksemua')->name('admin.category/cetaksemua');
   //koordinator
   Route::get('/koordinator', 'KoordinatorController@koordinator')->name('admin.koordinator');
   Route::post('/koordinator/cetaktanggal/{id}', 'KoordinatorController@cetaktanggal')->name('admin.koordinator/cetaktanggal');

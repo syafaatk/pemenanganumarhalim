@@ -6,6 +6,8 @@ use Session;
 use App\Post;
 use App\Tag;
 use App\Category;
+use App\Matapilih;
+use App\Koordinator;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -14,19 +16,34 @@ class CategoryController extends Controller
   //Category
   public function category()
   {
+    $data = Matapilih::selectRaw('kecamatan, JSON_ARRAY(
+        JSON_OBJECT(
+              "kelurahan", kelurahan,
+              "count_kelurahan", COUNT(kelurahan)
+        )
+    ) AS attribut')->where('kecamatan','=','ILIR TIMUR SATU')->groupBy('kecamatan', 'kelurahan')->get();
+    //dd($data);
     return view('admin.category');
   }
 
   public function getCategories(Request $request)
   {
       if ($request->ajax()) {
-          $data = Category::selectRaw('categories.id,categories.name,categories.kabkota, COUNT(matapilihs.kecamatan) as total')
+          $data = Category::selectRaw('categories.id,categories.name,categories.kabkota, COUNT(matapilihs.kecamatan) as total,  COUNT(matapilihs.kelurahan) as totalkel')
           ->leftJoin('matapilihs','categories.name', '=', 'matapilihs.kecamatan')
           ->whereNull('matapilihs.deleted_at')
           ->groupBy("categories.id")
           ->groupBy("categories.name")
           ->groupBy("categories.kabkota")
           ->get();
+          $data2 = Matapilih::selectRaw('kecamatan, JSON_ARRAY(
+              JSON_OBJECT(
+                    "kelurahan", kelurahan,
+                    "count_kelurahan", COUNT(kelurahan)
+              )
+          ) AS attribut')->where('kecamatan','=','ILIR TIMUR SATU')->groupBy('kecamatan', 'kelurahan')->get();
+          //dd($data);
+
           return Datatables::of($data)
               ->addIndexColumn()
               ->make(true);
@@ -85,5 +102,27 @@ class CategoryController extends Controller
     return back();
   }
 
-  // ////End
+  public function cetaksemua($id)
+  {
+    $category = Category::findOrFail($id);
+    $category_name = $category->name;
+    //dd($category_name);
+    $kelurahan= Matapilih::distinct()->where('kecamatan','=',$category_name)
+                                     ->orderBy('kelurahan', 'DESC')
+                                     ->get(['kecamatan','kelurahan']);
+    $data= Matapilih::where('kecamatan','=',$category_name)->orderBy('kelurahan', 'DESC')->get();
+    $kel = Matapilih::selectRaw('matapilihs.kelurahan,matapilihs.tps, COUNT(matapilihs.kelurahan) as total')
+        ->whereNull('matapilihs.deleted_at')
+        ->where('matapilihs.kecamatan','=',$category_name)
+        ->groupBy("matapilihs.kelurahan")
+        ->groupBy("matapilihs.tps")
+        ->orderBy('kelurahan', 'DESC')
+        ->orderBy('tps', 'ASC')
+        ->get();  
+    //dd($kel);
+    //dd($start->created_date);
+    return view('admin.cetak-kelurahan')->with('kelurahan', $kelurahan)
+                                          ->with('data', $data)
+                                          ->with('kel',$kel);
+  }
 }
