@@ -16,7 +16,7 @@
         <td><img src="{{ asset('upload\post\1588539656.png') }}" width="60" height="70"></td>
         <td>
             <center>
-                <font size="5">LAPORAN DATA KELURAHAN {{ $nama_kel }}</font><br>
+                <font size="5">LAPORAN DATA KECAMATAN {{ $nama_kel }}</font><br>
                 <font size="4"><b>TIM PEMENANGAN KMS. H.M UMAR HALIM</b></font><br>
                 <font size="2"><i>CALEG DPR RI DAPIL SUMSEL 1</i></font><br>
                 <font size="2"><i>(2024-2029)</i></font><br>
