@@ -111,7 +111,7 @@ class CategoryController extends Controller
                                      ->orderBy('kelurahan', 'DESC')
                                      ->get(['kecamatan','kelurahan']);
     $data= Matapilih::where('kecamatan','=',$category_name)->orderBy('kelurahan', 'DESC')->get();
-    $kel = Matapilih::selectRaw('matapilihs.kelurahan,matapilihs.tps, COUNT(matapilihs.kelurahan) as total')
+    $kel = Matapilih::selectRaw('matapilihs.kelurahan,lpad(matapilihs.tps,3,0)as tps_baru, COUNT(matapilihs.kelurahan) as total')
         ->whereNull('matapilihs.deleted_at')
         ->where('matapilihs.kecamatan','=',$category_name)
         ->groupBy("matapilihs.kelurahan")

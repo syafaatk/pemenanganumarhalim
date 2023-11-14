@@ -51,7 +51,7 @@
     @foreach($kel as $d)
         @if($kelu->kelurahan == $d->kelurahan)
         <tr>
-            <td>{{ $d->tps }}</td>
+            <td>{{ $d->tps_baru }}</td>
             <td>{{ $d->total }}</td>
         </tr>
         @endif
