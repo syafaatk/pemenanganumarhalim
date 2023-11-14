@@ -199,7 +199,7 @@ class AdminController extends Controller
     public function getMatapilih(Request $request)
     {
         if ($request->ajax()) {
-            $data = Matapilih::selectRaw('matapilihs.*,users.name as nama_user,koordinators.name as nama_koordinator')
+            $data = Matapilih::selectRaw('matapilihs.*,lpad(matapilihs.tps,3,0)as tps_baru,users.name as nama_user,koordinators.name as nama_koordinator')
             ->leftJoin('koordinators','matapilihs.koordinator_id', '=', 'koordinators.id')
             ->leftJoin('users','matapilihs.user_id', '=', 'users.id')
             ->whereNull('matapilihs.deleted_at')

@@ -143,6 +143,16 @@
 </div>
 </main>
 <script type="text/javascript">
+    function pad(number, length) {
+    
+        var str = '' + number;
+        while (str.length < length) {
+            str = '0' + str;
+        }
+    
+        return str;
+
+    }
     $(function () {
       var table = $('.yajra-datatable').DataTable({
         processing: true,
@@ -159,7 +169,12 @@
             {data: 'nik', name: 'nik'},
             {data: 'rt', name: 'rt'},
             {data: 'rw', name: 'rw'},
-            {data: 'tps', name: 'tps'},
+            {
+                data: 'tps_baru',
+                'render': function (data, type, full, meta) {
+                    return data;
+                }
+            },
             {data: 'kabupaten', name: 'kabupaten'},
             {data: 'kecamatan', name: 'kecamatan'},
             {data: 'kelurahan', name: 'kelurahan'},
@@ -219,61 +234,61 @@
       $('#column1_search').on( 'keyup', function () {
         table
             .columns( 1 )
-            .search( this.value )
+            .search( this.value , true, true, true)
             .draw();
         });
       $('#column2_search').on( 'keyup', function () {
         table
             .columns( 2 )
-            .search( this.value )
+            .search( this.value , true, true, true)
             .draw();
         });
       $('#column3_search').on( 'keyup', function () {
         table
             .columns( 3 )
-            .search( this.value )
+            .search( this.value , true, true, true)
             .draw();
         });
       $('#column4_search').on( 'keyup', function () {
         table
             .columns( 4 )
-            .search( this.value )
+            .search( this.value , true, true, true)
             .draw();
         });
       $('#column5_search').on( 'keyup', function () {
         table
             .columns( 5 )
-            .search( this.value )
+            .search( this.value , true, true, true)
             .draw();
         });
         $('#column6_search').on( 'keyup', function () {
         table
             .columns( 6 )
-            .search( this.value )
+            .search( this.value , true, true, true)
             .draw();
         });
       $('#column7_search').on( 'keyup', function () {
         table
             .columns( 7 )
-            .search( this.value )
+            .search( this.value , true, true, true)
             .draw();
         });
       $('#column8_search').on( 'keyup', function () {
         table
             .columns( 8 )
-            .search( this.value )
+            .search( this.value , true, true, true)
             .draw();
         });
       $('#column10_search').on( 'keyup', function () {
         table
             .columns( 10 )
-            .search( this.value )
+            .search( this.value , true, true, true)
             .draw();
         });
       $('#column11_search').on( 'keyup', function () {
         table
             .columns( 11 )
-            .search( this.value )
+            .search( this.value , true, true, true)
             .draw();
         });
     });
