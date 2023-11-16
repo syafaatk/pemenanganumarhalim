@@ -116,13 +116,14 @@ class AdminController extends Controller
       COUNT(CASE WHEN user_id = 1 THEN 1 ELSE NULL END) AS Almira, 
       COUNT(CASE WHEN user_id = 2 THEN 1 ELSE NULL END) AS Nina, 
       COUNT(CASE WHEN user_id = 3 THEN 1 ELSE NULL END) AS Vina, 
-      COUNT(CASE WHEN user_id = 5 THEN 1 ELSE NULL END) AS Fahmi, 
+      COUNT(CASE WHEN user_id = 4 THEN 1 ELSE NULL END) AS Fahmi, 
       COUNT(CASE WHEN user_id = 6 THEN 1 ELSE NULL END) AS Indah, 
       COUNT(CASE WHEN user_id = 8 THEN 1 ELSE NULL END) AS Yoki, 
       COUNT(CASE WHEN user_id = 9 THEN 1 ELSE NULL END) AS Budi,
       COUNT(CASE WHEN user_id = 13 THEN 1 ELSE NULL END) AS Indah, 
       COUNT(CASE WHEN user_id = 10 THEN 1 ELSE NULL END) AS Adelia,
-      COUNT(CASE WHEN user_id = 11 THEN 1 ELSE NULL END) AS VIRA') 
+      COUNT(CASE WHEN user_id = 13 THEN 1 ELSE NULL END) AS IndahPS,
+      COUNT(CASE WHEN user_id = 14 THEN 1 ELSE NULL END) AS VIRA') 
       ->JOIN('users','users.id', '=', 'matapilihs.user_id')  
       ->groupBy('tanggal')
       ->where('users.is_active','=',1) 
