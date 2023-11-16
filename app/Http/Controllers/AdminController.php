@@ -102,28 +102,36 @@ class AdminController extends Controller
     {
       $viewer = Matapilih::selectRaw('users.name, COUNT(*) as total')
         ->JOIN('users','users.id', '=', 'matapilihs.user_id')
-        ->groupBy("users.name")  
+        ->groupBy("users.name") 
+        ->where('users.is_active','=',1) 
         ->get();
       $viewer2 = Matapilih::selectRaw('users.name, COUNT(*) as total')
         ->JOIN('users','users.id', '=', 'matapilihs.user_id')
         ->groupBy("users.name")
         ->pluck('total')
         ->toJson();
-      $aktifitas = Matapilih::selectRaw('DATE(created_at) as tanggal, 
-      COUNT(CASE WHEN user_id = 1 THEN 1 ELSE NULL END) AS aktifitas_almira, 
-      COUNT(CASE WHEN user_id = 2 THEN 1 ELSE NULL END) AS aktifitas_nina, 
-      COUNT(CASE WHEN user_id = 3 THEN 1 ELSE NULL END) AS aktifitas_vina, 
-      COUNT(CASE WHEN user_id = 6 THEN 1 ELSE NULL END) AS aktifitas_indah, 
-      COUNT(CASE WHEN user_id = 8 THEN 1 ELSE NULL END) AS aktifitas_yoki, 
-      COUNT(CASE WHEN user_id = 9 THEN 1 ELSE NULL END) AS aktifitas_budi,
-      COUNT(CASE WHEN user_id = 13 THEN 1 ELSE NULL END) AS aktifitas_indahps, 
-      COUNT(CASE WHEN user_id = 10 THEN 1 ELSE NULL END) AS aktifitas_adelia') 
-        ->groupBy('tanggal')
-        ->orderBy('created_at', 'DESC')->get();
+      $nama = User::selectRaw('users.name, users.id')->where('users.is_active','=',1) 
+        ->get();
+      $aktifitas = Matapilih::selectRaw('DATE(matapilihs.created_at) as tanggal, 
+      COUNT(CASE WHEN user_id = 1 THEN 1 ELSE NULL END) AS Almira, 
+      COUNT(CASE WHEN user_id = 2 THEN 1 ELSE NULL END) AS Nina, 
+      COUNT(CASE WHEN user_id = 3 THEN 1 ELSE NULL END) AS Vina, 
+      COUNT(CASE WHEN user_id = 5 THEN 1 ELSE NULL END) AS Fahmi, 
+      COUNT(CASE WHEN user_id = 6 THEN 1 ELSE NULL END) AS Indah, 
+      COUNT(CASE WHEN user_id = 8 THEN 1 ELSE NULL END) AS Yoki, 
+      COUNT(CASE WHEN user_id = 9 THEN 1 ELSE NULL END) AS Budi,
+      COUNT(CASE WHEN user_id = 13 THEN 1 ELSE NULL END) AS Indah, 
+      COUNT(CASE WHEN user_id = 10 THEN 1 ELSE NULL END) AS Adelia,
+      COUNT(CASE WHEN user_id = 11 THEN 1 ELSE NULL END) AS VIRA') 
+      ->JOIN('users','users.id', '=', 'matapilihs.user_id')  
+      ->groupBy('tanggal')
+      ->where('users.is_active','=',1) 
+      ->orderBy('matapilihs.created_at', 'DESC')->get();
       return view('admin.dashboard-admin')->with('aktifitas',$aktifitas )
                                     ->with('category', Category::all())
                                     ->with('koordinators', Koordinator::all())
-                                    ->with('viewer',$viewer);
+                                    ->with('viewer',$viewer)
+                                    ->with('nama',$nama);
                                     // ->with('viewer',json_encode($viewer_1,JSON_NUMERIC_CHECK));
     }
 

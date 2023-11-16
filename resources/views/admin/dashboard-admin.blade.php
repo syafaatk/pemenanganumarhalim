@@ -39,13 +39,9 @@
                     <tr>
                         <th width="5%">No</th>
                         <th>Tanggal</th>
-                        <th>Almira</th>
-                        <th>Nina</th>
-                        <th>Indah</th>
-                        <th>Yoki</th>
-                        <th>Budi</th>
-                        <th>Adelia</th>
-                        <th>IndahPS</th>
+                        @foreach($nama as $n)
+                          <th>{{ $n->name }}</th>
+                        @endforeach
                     </tr>
                 </thead>
                 <tbody>
@@ -53,13 +49,9 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $akt->tanggal }}</td>
-                            <td>{{ $akt->aktifitas_almira }}</td>
-                            <td>{{ $akt->aktifitas_nina }}</td>
-                            <td>{{ $akt->aktifitas_indah }}</td>
-                            <td>{{ $akt->aktifitas_yoki }}</td>
-                            <td>{{ $akt->aktifitas_budi }}</td>
-                            <td>{{ $akt->aktifitas_adelia }}</td>
-                            <td>{{ $akt->aktifitas_indahps }}</td>
+                            @foreach($nama as $n)
+                              <td>{{ $akt->{$n->name} }}</th>
+                            @endforeach
                         </tr>
                     @endforeach
                 </tbody>
