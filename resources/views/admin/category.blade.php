@@ -67,6 +67,10 @@
       var table = $('#example').DataTable({
         processing: true,
         serverSide: true,
+        pageLength: 10,
+        stateSave: false,
+        lengthMenu: [ [10, 25, 50, 100, 200, 500, 1000 ], [10, 25, 50, 100, 200, 500, 1000, "All"] ],
+        pagingType: "full_numbers",
         ajax: "{{ route('admin.category.list') }}",
         columns: [
             {
@@ -103,7 +107,7 @@
                 }
             },
         ],
-        dom: 'Bfrtip',
+        dom: 'lBfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'print',
             {
