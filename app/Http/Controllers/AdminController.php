@@ -112,26 +112,16 @@ class AdminController extends Controller
         ->toJson();
       $nama = User::selectRaw('users.name, users.id')->where('users.is_active','=',1) 
         ->get();
-      $aktifitas = Matapilih::selectRaw('DATE(matapilihs.created_at) as tanggal, 
-      COUNT(CASE WHEN user_id = 1 THEN 1 ELSE NULL END) AS Almira, 
-      COUNT(CASE WHEN user_id = 2 THEN 1 ELSE NULL END) AS Nina, 
-      COUNT(CASE WHEN user_id = 3 THEN 1 ELSE NULL END) AS Vina, 
-      COUNT(CASE WHEN user_id = 4 THEN 1 ELSE NULL END) AS Fahmi, 
-      COUNT(CASE WHEN user_id = 6 THEN 1 ELSE NULL END) AS Indah, 
-      COUNT(CASE WHEN user_id = 8 THEN 1 ELSE NULL END) AS Yoki, 
-      COUNT(CASE WHEN user_id = 9 THEN 1 ELSE NULL END) AS Budi,
-      COUNT(CASE WHEN user_id = 13 THEN 1 ELSE NULL END) AS Indah, 
-      COUNT(CASE WHEN user_id = 10 THEN 1 ELSE NULL END) AS Adelia,
-      COUNT(CASE WHEN user_id = 13 THEN 1 ELSE NULL END) AS IndahPS,
-      COUNT(CASE WHEN user_id = 14 THEN 1 ELSE NULL END) AS VIRA,
-      COUNT(CASE WHEN user_id = 15 THEN 1 ELSE NULL END) AS Ismi,
-      COUNT(CASE WHEN user_id = 16 THEN 1 ELSE NULL END) AS Dini,
-      COUNT(CASE WHEN user_id = 17 THEN 1 ELSE NULL END) AS Emmy,
-      COUNT(CASE WHEN user_id = 18 THEN 1 ELSE NULL END) AS Atika') 
-      ->JOIN('users','users.id', '=', 'matapilihs.user_id')  
-      ->groupBy('tanggal')
-      ->where('users.is_active','=',1) 
-      ->orderBy('matapilihs.created_at', 'DESC')->get();
+
+      $users = User::where('is_active', 1)->pluck('name', 'id')->toArray();
+
+      $aktifitas = Matapilih::selectRaw('DATE(created_at) as tanggal, ' . implode(', ', array_map(function ($userId, $userName) {
+          return "COUNT(CASE WHEN user_id = $userId THEN 1 ELSE NULL END) AS $userName";
+      }, array_keys($users), array_values($users))))
+          ->groupBy('tanggal')
+          ->orderBy('created_at', 'DESC')
+          ->get();
+          
       return view('admin.dashboard-admin')->with('aktifitas',$aktifitas )
                                     ->with('category', Category::all())
                                     ->with('koordinators', Koordinator::all())
