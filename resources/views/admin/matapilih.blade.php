@@ -125,7 +125,6 @@
                             <th>Kabupaten</th>
                             <th>Kecamatan</th>
                             <th>Kelurahan</th>
-                            <th>No HP</th>
                             <th>Koordinator</th>
                             <th>Admin</th>
                             <th>Tanggal</th>
@@ -178,7 +177,6 @@
             {data: 'kabupaten', name: 'kabupaten'},
             {data: 'kecamatan', name: 'kecamatan'},
             {data: 'kelurahan', name: 'kelurahan'},
-            {data: 'nohp', name: 'nohp'},
             {data: 'nama_koordinator', name: 'nama_koordinator'},
             {data: 'nama_user', name: 'nama_user'},
             {data: 'created_at', name: 'created_at'},
@@ -191,7 +189,7 @@
             {
                 data: 'id',
                 'render': function (data, type, full, meta) {
-                    return '<a class="btn btn-danger" data-action="delete" href="{{ url("admin/matapilih/trash") }}/'+ data +'"><i class="far fa-trash-alt"></i></an>';
+                    return '<a class="btn btn-danger" data-action="delete" href="{{ url("admin/matapilih/trash") }}/'+ data +'"><i class="far fa-trash-alt"></i></a>';
                 }
             },
         ],

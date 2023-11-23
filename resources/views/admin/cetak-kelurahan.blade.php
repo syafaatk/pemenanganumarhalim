@@ -32,7 +32,9 @@
 <table align="center" width="1000">
 
 </table>
+
 @foreach($kelurahan as $kelu)
+<?php $totalperkel = 0; ?>
 <table align="center" width="1000">
     <tr>
         <td width="200">Kelurahan</td>
@@ -44,19 +46,30 @@
 </table>
 <table align="center" border="1" width="1000">
     <thead>
-        <th width="5%">TPS</th>
-        <th width="5%">Total</th>
+        <th width="1%">No</th>
+        <th width="15%">TPS</th>
+        <th width="15%">Total</th>
     </thead>
     <tbody>
+    <?php $no = 1; ?> 
     @foreach($kel as $d)
         @if($kelu->kelurahan == $d->kelurahan)
         <tr>
+            <td>{{ $no }}</td>
             <td>{{ $d->tps_baru }}</td>
             <td>{{ $d->total }}</td>
         </tr>
+        <?php 
+        $no++;
+        $totalperkel += $d->total;
+        ?> 
         @endif
     @endforeach
     </tbody>
+    <tfoot>
+        <th width="15%" colspan="2">Total</th>
+        <th width="15%">{{ $totalperkel }}</th>
+    </tfoot>
 </table>
 <br>
 @endforeach
