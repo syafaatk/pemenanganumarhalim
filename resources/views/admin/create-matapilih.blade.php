@@ -125,7 +125,7 @@
         }
         console.log('id', $("#nik").val());
         $.ajax({
-            url: "https://indonesian-identification-card-ktp.p.rapidapi.com/api/v3/check",
+            url: `https://indonesian-identification-card-ktp.p.rapidapi.com/api/v3/check?nik=${nik}`,
             headers: {
                 "X-RapidAPI-Key": "4ffe7dbe87msh7cd86002f0083b6p142c04jsn2c2e55d1c550",
                 "X-RapidAPI-Host": "indonesian-identification-card-ktp.p.rapidapi.com"
