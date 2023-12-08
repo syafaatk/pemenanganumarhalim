@@ -123,12 +123,12 @@
             alert('NIK harus diisi!');
             return;
         }
-        console.log('id', $("#nik").val());
+        // console.log('id', $("#nik").val());
         $.ajax({
             url: `https://indonesian-identification-card-ktp.p.rapidapi.com/api/v3/check?nik=${nik}`,
             headers: {
-                "X-RapidAPI-Key": "4ffe7dbe87msh7cd86002f0083b6p142c04jsn2c2e55d1c550",
-                "X-RapidAPI-Host": "indonesian-identification-card-ktp.p.rapidapi.com"
+                "X-RapidAPI-Key": "{{ config('app.API_Key')}}",
+                "X-RapidAPI-Host": "{{ config('app.API_Host')}}"
             },
             success: function(result){
                 if(result['success'] === false){
