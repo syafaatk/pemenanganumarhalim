@@ -123,41 +123,48 @@
             alert('NIK harus diisi!');
             return;
         }
-        // console.log('id', $("#nik").val());
-        $.ajax({
-            url: `https://indonesian-identification-card-ktp.p.rapidapi.com/api/v3/check?nik=${nik}`,
-            headers: {
-                "X-RapidAPI-Key": "4ffe7dbe87msh7cd86002f0083b6p142c04jsn2c2e55d1c550",
-                "X-RapidAPI-Host": "{{ config('app.API_Host')}}"
-            },
-            success: function(result){
-                if(result['success'] === false){
-                    alert('Terjadi Kesalahan!');
-                    return;
-                }
 
-                let parse_data = result['results']['parse_data'];
-                let realtime_data = result['results']['realtime_data']['data']['findNikSidalih'];
-                
-                $("#nama").val(realtime_data['nama']);
-                $("#alamat").val(realtime_data['alamat']);
-                $("#tps").val(realtime_data['tps']);
-                $("#kecamatan").val(realtime_data['kecamatan']);
-                $("#kabupaten").val(realtime_data['kabupaten']);
-                $("#kelurahan").val(realtime_data['kelurahan']);
-                $("#nama1").val(realtime_data['nama']);
-                $("#alamat1").val(realtime_data['alamat']);
-                $("#tps1").val(realtime_data['tps']);
-                $("#kecamatan1").val(realtime_data['kecamatan']);
-                $("#kabupaten1").val(realtime_data['kabupaten']);
-                $("#kelurahan1").val(realtime_data['kelurahan']);
-                $("#jenis_kelamin1").val(parse_data['jenis_kelamin']);
-            },
-            error: function(xhr, textStatus, error){
-                alert('Data NIK tidak ditemukan!');
+        const settings = {
+            async: true,
+            crossDomain: true,
+            url: `https://indonesian-identification-card-ktp.p.rapidapi.com/api/v3/check?nik=${nik}`,
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '{{ config('app.API_Key')}}',
+                'X-RapidAPI-Host': '{{ config('app.API_Host')}}'
             }
-            
-        })
+        };
+
+        $.ajax(settings).done(function (result) {
+            if (result['success'] === false) {
+                alert('Terjadi Kesalahan!');
+                return;
+            }
+
+            let parse_data = result['results']['parse_data'];
+            let realtime_data = result['results']['realtime_data']['findNikSidalih'];
+
+            console.log('id', realtime_data['nama']);
+
+            // Update input fields
+            $("#nama").val(realtime_data['nama']);
+            $("#alamat").val(realtime_data['alamat']);
+            $("#tps").val(realtime_data['tps']);
+            $("#kecamatan").val(realtime_data['kecamatan']);
+            $("#kabupaten").val(realtime_data['kabupaten']);
+            $("#kelurahan").val(realtime_data['kelurahan']);
+
+            // Assuming you have these additional input fields with IDs
+            $("#nama1").val(realtime_data['nama']);
+            $("#alamat1").val(realtime_data['alamat']);
+            $("#tps1").val(realtime_data['tps']);
+            $("#kecamatan1").val(realtime_data['kecamatan']);
+            $("#kabupaten1").val(realtime_data['kabupaten']);
+            $("#kelurahan1").val(realtime_data['kelurahan']);
+            $("#jenis_kelamin1").val(parse_data['jenis_kelamin']);
+        }).fail(function (xhr, textStatus, error) {
+            alert('Data NIK tidak ditemukan!');
+        });
     }
 
 
