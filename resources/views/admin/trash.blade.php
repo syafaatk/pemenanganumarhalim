@@ -12,6 +12,9 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>
+                                <input type="checkbox" id="checkAll">
+                            </th>
                             <th>Image</th>
                             <th>Title</th>
                             <th>Category</th>
@@ -23,6 +26,9 @@
                     <tbody>
                       @foreach($posts as $post)
                           <tr>
+                              <td>
+                                  <input type="checkbox" class="row-select" data-id="{{ $post->id }}">
+                              </td>
                               <td style="width:150px;
                                         height:100px;
                                         padding:3px;">
@@ -64,5 +70,55 @@
 
 </div>
 </main>
+<script>
+  $(document).ready(function () {
+    $('#checkAll').change(function () {
+        $('.row-select').prop('checked', this.checked);
+    });
+
+    $('.row-select').change(function () {
+        if ($('.row-select:checked').length == $('.row-select').length) {
+            $('#checkAll').prop('checked', true);
+        } else {
+            $('#checkAll').prop('checked', false);
+        }
+    });
+
+    $('#deleteSelected').click(function () {
+        var selectedIds = [];
+
+        $('.row-select:checked').each(function () {
+            selectedIds.push($(this).data('id'));
+        });
+
+        if (selectedIds.length > 0) {
+            var csrfToken = '{{ csrf_token() }}';
+
+            $.ajax({
+                url: '{{ route("admin.matapilih/multipleDelete") }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                data: { selectedIds: selectedIds },
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.message);
+                        // Reload the page or update the table as needed
+                        location.reload();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('AJAX Error: ', error);
+                }
+            });
+        } else {
+            alert('Please select at least one row to delete.');
+        }
+    });
+});
+</script>
 
 @endsection

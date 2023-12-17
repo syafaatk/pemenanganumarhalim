@@ -130,6 +130,7 @@
                             <th>Admin</th>
                             <th>Edit</th>
                             <th>Delete</th>
+                            <th>Checklist</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -141,6 +142,26 @@
 
 </div>
 </main>
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete the selected rows?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
     function pad(number, length) {
     
@@ -192,6 +213,14 @@
                     return '<a class="btn btn-danger" data-action="delete" href="{{ url("admin/matapilih/trash") }}/'+ data +'"><i class="far fa-trash-alt"></i></a>';
                 }
             },
+            {
+                data: null,
+                orderable: false,
+                searchable: false,
+                render: function (data, type, full, meta) {
+                    return '<input type="checkbox" class="row-select" data-id="' + data.id + '">';
+                }
+            }
         ],
         dom: 'lBfrtip',
         buttons: [
@@ -222,6 +251,54 @@
                 pageSize: 'LEGAL',
                 exportOptions: {
                     columns: [ 0,1,2,3,4,5,6,7,8,9,10,11,12 ]
+                }
+            },
+            {
+                text: 'Delete Selected',
+                action: function (e, dt, node, config) {
+                    var selectedIds = [];
+                    $('.row-select:checked').each(function () {
+                        selectedIds.push($(this).data('id'));
+                    });
+
+                    if (selectedIds.length > 0) {
+                        // Show confirmation modal
+                        $('#deleteConfirmationModal').modal('show');
+
+                        // Handle confirmation button click
+                        $('#confirmDeleteBtn').on('click', function () {
+                            // Include CSRF token in the headers using Laravel's csrf_token() function
+                            var csrfToken = '{{ csrf_token() }}';
+
+                            // Send AJAX request to deleteSelected endpoint
+                            $.ajax({
+                                url: '{{ route("admin.matapilih/deleteSelected") }}',
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRF-TOKEN': csrfToken
+                                },
+                                data: { selectedIds: selectedIds },
+                                success: function (response) {
+                                    if (response.success) {
+                                        alert(response.message);
+                                        // Reload the DataTable or update the table as needed
+                                        table.ajax.reload();
+                                    } else {
+                                        alert(response.message);
+                                    }
+                                },
+                                error: function (xhr, status, error) {
+                                    console.error('AJAX Error: ', error);
+                                },
+                                complete: function () {
+                                    // Close the confirmation modal
+                                    $('#deleteConfirmationModal').modal('hide');
+                                }
+                            });
+                        });
+                    } else {
+                        alert('Please select at least one row to delete.');
+                    }
                 }
             }
         ],

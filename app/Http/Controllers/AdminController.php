@@ -5,6 +5,7 @@ use DataTables;
 use App\Matapilih;
 use App\Koordinator;
 use App\Category;
+use App\Counter;
 use App\Tag;
 use App\User;
 use App\Profile;
@@ -245,6 +246,24 @@ class AdminController extends Controller
       return view('admin.create-matapilih-manual', ['koordinator' => $data , 'users' => User::latest()->get(), 'kabupaten' => $kabupaten, 'kecamatan' => $kecamatan, 'kelurahan' => $kelurahan]);
     }
 
+    public function counter_success()
+    {
+      $auth = Auth::user();
+      Counter::create([
+          'user_id' => $auth->id,
+          'status' => "1",
+      ]);
+    }
+
+    public function counter_failed()
+    {
+      $auth = Auth::user();
+      Counter::create([
+          'user_id' => $auth->id,
+          'status' => "0",
+      ]);
+    }
+
     // Mata Pilih Store
     public function matapilih_store(Request $request)
     {
@@ -426,5 +445,33 @@ class AdminController extends Controller
       Session::flash('success','Tag has deleted!');
 
       return back();
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $selectedIds = $request->input('selectedIds');
+
+        try {
+            // Assuming your model is Matapilih
+            Matapilih::whereIn('id', $selectedIds)->delete();
+
+            return response()->json(['success' => true, 'message' => 'Selected rows deleted successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Error deleting rows: ' . $e->getMessage()]);
+        }
+    }
+
+    public function multipleDelete(Request $request)
+    {
+        $selectedIds = $request->input('selectedIds');
+
+        try {
+            // Assuming your model is Post
+            Matapilih::whereIn('id', $selectedIds)->forceDelete();
+
+            return response()->json(['success' => true, 'message' => 'Selected rows permanently deleted successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Error permanently deleting rows: ' . $e->getMessage()]);
+        }
     }
 }

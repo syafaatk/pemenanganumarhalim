@@ -138,6 +138,17 @@
         $.ajax(settings).done(function (result) {
             if (result['success'] === false) {
                 alert('Terjadi Kesalahan!');
+                // Execute counter_failed API
+                $.ajax({
+                    url: '/admin/matapilih/counter_failed',
+                    method: 'GET',
+                    success: function (response) {
+                        console.log('Counter failed API executed successfully');
+                    },
+                    error: function (xhr, textStatus, error) {
+                        console.error('Error executing counter_failed API');
+                    }
+                });
                 return;
             }
 
@@ -162,10 +173,32 @@
             $("#kabupaten1").val(realtime_data['kabupaten']);
             $("#kelurahan1").val(realtime_data['kelurahan']);
             $("#jenis_kelamin1").val(parse_data['jenis_kelamin']);
+        // Execute counter_success API
+            $.ajax({
+                url: '/admin/matapilih/counter_success',
+                method: 'GET',
+                success: function (response) {
+                    console.log('Counter success API executed successfully');
+                },
+                error: function (xhr, textStatus, error) {
+                    console.error('Error executing counter_success API');
+                }
+            });
         }).fail(function (xhr, textStatus, error) {
             alert('Data NIK tidak ditemukan!');
+            // Execute counter_failed API
+            $.ajax({
+                url: '/admin/matapilih/counter_failed',
+                method: 'GET',
+                success: function (response) {
+                    console.log('Counter failed API executed successfully');
+                },
+                error: function (xhr, textStatus, error) {
+                    console.error('Error executing counter_failed API');
+                }
+            });
         });
-    }
+      }
 
 
   var typingTimer;                //timer identifier

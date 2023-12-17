@@ -28,6 +28,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/matapilih/trashed/', 'AdminController@matapilih_trashed')->name('admin.matapilih/trashed');
     Route::get('/matapilih/restore/{id}', 'AdminController@matapilih_restore')->name('admin.matapilih/restore');
     Route::get('/matapilih/forcedelete/{id}', 'AdminController@matapilih_forcedelete')->name('admin.matapilih/forcedelete');
+    Route::get('/matapilih/counter_success', 'AdminController@counter_success')->name('admin.matapilih/counter_success');
+    Route::get('/matapilih/counter_failed', 'AdminController@counter_failed')->name('admin.matapilih/counter_failed');
+    Route::post('/matapilih/deleteSelected', 'AdminController@deleteSelected')->name('admin.matapilih/deleteSelected');
+    Route::post('/matapilih/multipleDelete', 'AdminController@multipleDelete')->name('admin.matapilih/multipleDelete');
 
     Route::get('/category/list', 'CategoryController@getCategories')->name('admin.category.list');
     Route::get('/category/create', 'CategoryController@category_create')->name('admin.category/create');
@@ -63,6 +67,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::post('/matapilih/store', 'AdminController@matapilih_store')->name('admin.matapilih/store');
     Route::get('/matapilih/edit/{id}', 'AdminController@matapilih_edit')->name('admin.matapilih/edit');
     Route::post('/matapilih/update/{id}', 'AdminController@matapilih_update')->name('admin.matapilih/update');
+    Route::get('/matapilih/counter_success', 'AdminController@counter_success')->name('admin.matapilih/counter_success');
+    Route::get('/matapilih/counter_failed', 'AdminController@counter_failed')->name('admin.matapilih/counter_failed');
 
     Route::get('/category/list', 'CategoryController@getCategories')->name('admin.category.list');
     Route::get('/category/create', 'CategoryController@category_create')->name('admin.category/create');

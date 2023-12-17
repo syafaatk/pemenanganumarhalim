@@ -31,5 +31,9 @@ class User extends Authenticatable
 
     public function matapilihs(){
         return $this->hasMany('App\Matapilih');
-      }
+    }
+
+    public function counters(){
+        return $this->hasMany('App\Counter');
+    }
 }
