@@ -130,7 +130,7 @@
                             <th>Admin</th>
                             <th>Edit</th>
                             <th>Delete</th>
-                            <th>Checklist</th>
+                            <th><input type="checkbox" id="select-all">Checklist</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -213,14 +213,11 @@
                     return '<a class="btn btn-danger" data-action="delete" href="{{ url("admin/matapilih/trash") }}/'+ data +'"><i class="far fa-trash-alt"></i></a>';
                 }
             },
-            {
-                data: null,
-                orderable: false,
-                searchable: false,
+            {data: 'id', orderable: false, searchable: false,
                 render: function (data, type, full, meta) {
-                    return '<input type="checkbox" class="row-select" data-id="' + data.id + '">';
+                    return '<input type="checkbox" class="row-select" data-id="' + data + '">';
                 }
-            }
+            },
         ],
         dom: 'lBfrtip',
         buttons: [
@@ -302,6 +299,18 @@
                 }
             }
         ],
+      });
+
+      // Handle the "Select All" checkbox click event
+      $('#select-all').on('click', function () {
+        $('.row-select').prop('checked', $(this).prop('checked'));
+      });
+
+      $('.yajra-datatable tbody').on('change', '.row-select', function () {
+        // If any row checkbox is unchecked, uncheck the "Select All" checkbox
+        if (!$(this).prop('checked')) {
+            $('#select-all').prop('checked', false);
+        }
       });
     //   setInterval(function() {
     //     table.ajax.reload();
