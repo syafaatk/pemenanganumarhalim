@@ -474,4 +474,12 @@ class AdminController extends Controller
             return response()->json(['success' => false, 'message' => 'Error permanently deleting rows: ' . $e->getMessage()]);
         }
     }
+
+    public function DeleteAll()
+    {
+        // Assuming you have a 'deleted_at' column in your table
+        Matapilih::whereNotNull('deleted_at')->forcedelete();
+
+        return response()->json(['success' => true, 'message' => 'All Rows deleted successfully']);
+    }
 }

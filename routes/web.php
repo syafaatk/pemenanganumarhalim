@@ -32,6 +32,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/matapilih/counter_failed', 'AdminController@counter_failed')->name('admin.matapilih/counter_failed');
     Route::post('/matapilih/deleteSelected', 'AdminController@deleteSelected')->name('admin.matapilih/deleteSelected');
     Route::post('/matapilih/multipleDelete', 'AdminController@multipleDelete')->name('admin.matapilih/multipleDelete');
+    Route::get('/matapilih/DeleteAll', 'AdminController@DeleteAll')->name('admin.matapilih.DeleteAll');
 
     Route::get('/category/list', 'CategoryController@getCategories')->name('admin.category.list');
     Route::get('/category/create', 'CategoryController@category_create')->name('admin.category/create');

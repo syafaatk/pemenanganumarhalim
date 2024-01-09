@@ -1,7 +1,8 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
   $('#dataTable').DataTable( {
-      dom: 'Bfrtip',
+      dom: 'lBfrtip',
+      lengthMenu: [ [10, 25, 50, 100, 200, 500, 1000 ], [10, 25, 50, 100, 200, 500, 1000, "All"] ],
       buttons: [
           'copy', 'csv', 'excel', 'print',
           {

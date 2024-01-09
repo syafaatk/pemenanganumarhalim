@@ -10,6 +10,8 @@
         <div class="card-body">
             <div class="table-responsive">
                 <button type="button" class="btn btn-danger" id="deleteSelected">Delete Selected</button>
+                <button type="button" class="btn btn-danger" id="deleteAll">Empty Trash</button>
+                <hr>
 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -82,6 +84,26 @@
         </div>
     </div>
 </div>
+<!-- Modal for Confirmation -->
+<div class="modal fade" id="deleteConfirmationAllModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete the all rows?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteAll">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     $(document).ready(function () {
@@ -100,6 +122,11 @@
     $('#deleteSelected').click(function () {
         // Open the confirmation modal
         $('#deleteConfirmationModal').modal('show');
+    });
+
+    $('#deleteAll').click(function () {
+        // Open the confirmation modal
+        $('#deleteConfirmationAllModal').modal('show');
     });
 
     $('#confirmDelete').click(function () {
@@ -138,6 +165,33 @@
 
         // Close the confirmation modal
         $('#deleteConfirmationModal').modal('hide');
+    });
+
+    $('#confirmDeleteAll').click(function () {
+        var csrfToken = '{{ csrf_token() }}';
+
+        $.ajax({
+            url: '{{ route("admin.matapilih.DeleteAll") }}',
+            method: 'GET',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            success: function (response) {
+                if (response.success) {
+                    alert(response.message);
+                    // Reload the page or update the table as needed
+                    location.reload();
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('AJAX Error: ', error);
+            }
+        });
+
+        // Close the confirmation modal
+        $('#deleteConfirmationAllModal').modal('hide');
     });
 });
   </script>
