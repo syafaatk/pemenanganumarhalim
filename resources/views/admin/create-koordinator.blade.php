@@ -25,6 +25,7 @@
               <option value="2">KKP</option>
               <option value="3">SIMPATISAN</option>
               <option value="4">Keluarga</option>
+              <option value="5">DATA PIM</option>
             </select>
           </div>
           <div class="form-group">

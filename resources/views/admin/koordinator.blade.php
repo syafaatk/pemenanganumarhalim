@@ -28,6 +28,8 @@
                     <div class="card-body text-white">KKP</div>
                 @elseif($view2->keterangan == 1)
                     <div class="card-body text-white">USTADZ</div>
+                @elseif($view2->keterangan == 5)
+                    <div class="card-body text-white">DATA PIM</div>
                 @else
                     <div class="card-body text-white">TANPA KET</div>
                 @endif
@@ -71,6 +73,8 @@
                                     <td>SIMPATISAN</td>
                                 @elseif($koordinator->keterangan == 4)
                                     <td>KELUARGA</td>
+                                @elseif($koordinator->keterangan == 5)
+                                    <td>DATA PIM</td>
                                 @else
                                     <td>-</td>
                                 @endif

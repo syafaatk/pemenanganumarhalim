@@ -25,27 +25,38 @@
                   <option value="2">KKP</option>
                   <option value="3">Simpatisan</option>
                   <option value="4">Keluarga</option>
+                  <option value="5">DATA PIM</option>
               @elseif($koordinator->keterangan == 2)
                   <option value="1">USTADZ</option>
                   <option value="2" selected>KKP</option>
                   <option value="3">Simpatisan</option>
                   <option value="4">Keluarga</option>
+                  <option value="5">DATA PIM</option>
               @elseif($koordinator->keterangan == 3)
                   <option value="1">USTADZ</option>
                   <option value="2">KKP</option>
                   <option value="3" selected>Simpatisan</option>
                   <option value="4">Keluarga</option>
+                  <option value="5">DATA PIM</option>
               @elseif($koordinator->keterangan == 4)
                   <option value="1">USTADZ</option>
                   <option value="2">KKP</option>
                   <option value="3">Simpatisan</option>
                   <option value="4" selected>Keluarga</option>
+                  <option value="5">DATA PIM</option>
+              @elseif($koordinator->keterangan == 5)
+                  <option value="1">USTADZ</option>
+                  <option value="2">KKP</option>
+                  <option value="3">Simpatisan</option>
+                  <option value="4">Keluarga</option>
+                  <option value="5" selected>DATA PIM</option>
               @else
                   <option value=""></option>
                   <option value="1">USTADZ</option>
                   <option value="2">KKP</option>
                   <option value="3">Simpatisan</option>
                   <option value="4">Keluarga</option>
+                  <option value="5">DATA PIM</option>
               @endif
             </select>
           </div>
